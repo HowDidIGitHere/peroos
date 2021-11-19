@@ -1,5 +1,5 @@
 {
-  "name": "special-spork",
+  "name": "at-a-glance",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HowDidIGitHere/special-spork.git"
+    "url": "git+https://github.com/HowDidIGitHere/at-a-glance.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HowDidIGitHere/special-spork/issues"
+    "url": "https://github.com/HowDidIGitHere/at-a-glance/issues"
   },
-  "homepage": "https://github.com/HowDidIGitHere/special-spork#readme",
+  "homepage": "https://github.com/HowDidIGitHere/at-a-glance#readme",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
