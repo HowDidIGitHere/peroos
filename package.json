@@ -1,5 +1,5 @@
 {
-  "name": "at-a-glance",
+  "name": "peroos",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HowDidIGitHere/at-a-glance.git"
+    "url": "git+https://github.com/HowDidIGitHere/peroos.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HowDidIGitHere/at-a-glance/issues"
+    "url": "https://github.com/HowDidIGitHere/peroos/issues"
   },
-  "homepage": "https://github.com/HowDidIGitHere/at-a-glance#readme",
+  "homepage": "https://github.com/HowDidIGitHere/peroos#readme",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",

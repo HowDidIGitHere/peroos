@@ -1,7 +1,7 @@
 var path = require('path');
 
 module.exports = {
-  entry: "./frontend/at_a_glance.jsx",
+  entry: "./frontend/peroos.jsx",
   output: {
       path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
       filename: "bundle.js"
