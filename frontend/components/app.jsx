@@ -1,8 +1,6 @@
 import React from "react";
 import { Route } from "react-router";
-import Nav from "./navbar/nav";
-import LoginFormContainer from "./session/login_form_container";
-import SignupFormContainer from "./session/signup_form_container";
+import NavContainer from "./navbar/nav_container";
 import Modal from "./modal/modal";
 
 const App = () => (
@@ -10,7 +8,7 @@ const App = () => (
     <Modal /> 
     <header>
       <h1>Peroos</h1>
-      <Nav />
+      <NavContainer />
     </header>
 
     {/* <Route path='/login' component={props => <LoginFormContainer {...props}/>} />
