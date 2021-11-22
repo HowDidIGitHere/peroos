@@ -48,25 +48,24 @@ class SessionForm extends React.Component {
           (<p>By continuing, you are setting up a Peroos account and agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>)
         }
         {/* Google OAuth and Apple Auth */}
-        <br/>
         <form onSubmit={this.handleSubmit}>
           <div>
             <br/>
-            <label>Username:
+            <label>Username: 
               <input type="text"
                 value={this.state.username}
                 onChange={this.update('username')}
               />
             </label>
             <br/>
-            <label>Password:
+            <label>Password: 
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
               />
             </label>
             <br/>
-            <input className="session-submit" type="submit" value={this.props.formType} />
+            <input type="submit" value={this.props.formType} />
           </div>
         </form>
         {this.renderErrors()}
