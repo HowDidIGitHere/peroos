@@ -34,7 +34,14 @@
   transform: translate(-50%, -50%);
 }
 
+.modal-child span {
+  font-size: 2em;
+  cursor: pointer;
+}
+
 header {
+  /* position: -webkit-sticky; */
+  position: sticky;
   background-color: white;
   display: flex;
   justify-content: space-between;
@@ -48,12 +55,33 @@ body {
 
 .session-button {
   color: #0079d3;
+  padding: 4px 16px;
   border: 1px solid #0079d3;
   font-size: 14px;
   background-color: white;
-  width: 60px;
-  height: 20px;
-  margin-right: 5px;
+  width: 86px;
+  height: 22px;
+  margin-left: 16px;
   border-radius: 35px 35px 35px 35px;
   cursor: pointer;
+
+  font-family: Noto Sans, Arial, sans-serif;
+  letter-spacing: unset;
+  font-weight: 700;
+  text-align: center;
+}
+
+.filled-blue {
+  color: white;
+  background-color: #0079d3;
+}
+
+.setting-button {
+  padding: 2px 15px;
+  margin: 7px;
+}
+
+.setting-button:hover {
+  padding: 1px 14px;
+  border: 1px solid lightgray;
 }

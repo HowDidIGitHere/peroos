@@ -53,20 +53,21 @@ class SessionForm extends React.Component {
           <div>
             <br/>
             <label>Username: 
-              <input type="text"
+              <input type='text'
                 value={this.state.username}
                 onChange={this.update('username')}
               />
             </label>
             <br/>
             <label>Password: 
-              <input type="password"
+              <input type='password'
                 value={this.state.password}
                 onChange={this.update('password')}
               />
             </label>
             <br/>
-            <input type="submit" value={this.props.formType} />
+            {/* <input type='submit' value={this.props.formType} /> */}
+            <button className='session-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
         {this.renderErrors()}

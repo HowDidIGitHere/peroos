@@ -5,8 +5,8 @@ const Nav = (props) => {
     <div>
       {/* Search Bar */}
       <button className='session-button' onClick={() => props.openModal('login')}>Log In</button>
-      <button className='session-button' onClick={() => props.openModal('signup')}>Sign Up</button>
-      <button>⚙️</button>
+      <button className='session-button filled-blue' onClick={() => props.openModal('signup')}>Sign Up</button>
+      <button className='setting-button'>👤</button>
       {/* button for settings */}
     </div>
   )
