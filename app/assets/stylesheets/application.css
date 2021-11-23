@@ -39,8 +39,21 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 50px;
 }
 
 body {
-  background-color: #dbe0e6;
+  background-color: #DAE0E6;
+}
+
+.session-button {
+  color: #0079d3;
+  border: 1px solid #0079d3;
+  font-size: 14px;
+  background-color: white;
+  width: 60px;
+  height: 20px;
+  margin-right: 5px;
+  border-radius: 35px 35px 35px 35px;
+  cursor: pointer;
 }

@@ -4,8 +4,8 @@ const Nav = (props) => {
   const loggedOut = () => (
     <div>
       {/* Search Bar */}
-      <button onClick={() => props.openModal('login')}>Log In</button>
-      <button onClick={() => props.openModal('signup')}>Sign Up</button>
+      <button className='session-button' onClick={() => props.openModal('login')}>Log In</button>
+      <button className='session-button' onClick={() => props.openModal('signup')}>Sign Up</button>
       <button>⚙️</button>
       {/* button for settings */}
     </div>
