@@ -7,7 +7,7 @@ const App = () => (
   <div>
     <Modal /> 
     <header>
-      <h1>Peroos</h1>
+      <h1 className='logo'>Peroos</h1>
       <NavContainer />
     </header>
 

@@ -71,6 +71,10 @@ body {
   text-align: center;
 }
 
+.session-button:hover {
+  background-color: #33a8ff;
+}
+
 .filled-blue {
   color: white;
   background-color: #0079d3;
@@ -84,4 +88,12 @@ body {
 .setting-button:hover {
   padding: 1px 14px;
   border: 1px solid lightgray;
+}
+
+.logo {
+  font-family: Noto Sans, Arial, sans-serif;
+  font-weight: 700;
+  text-align: center;
+  font-size: 25px;
+  margin-left: 20px;
 }
