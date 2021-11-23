@@ -40,7 +40,8 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='session-modal'>
+        <span onClick={() => this.props.closeModal()}>&times;</span>
         <h4>{this.props.formType}</h4>
         {
           this.props.formType === 'Login' ? 
