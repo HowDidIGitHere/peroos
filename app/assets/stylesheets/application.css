@@ -35,7 +35,12 @@
 }
 
 header {
+  background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+body {
+  background-color: #dbe0e6;
 }
