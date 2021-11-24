@@ -42,19 +42,22 @@
 
 header {
   /* position: -webkit-sticky; */
+  /* position: fixed; */
   position: sticky;
   background-color: white;
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
+  border-bottom: 1px solid #ccc;
+  width: 100%;
 }
 
 body {
   background-color: #DAE0E6;
 }
 
-.session-button {
+.bubble-button {
   color: #0079d3;
   padding: 4px 16px;
   border: 1px solid #0079d3;
@@ -72,11 +75,11 @@ body {
   text-align: center;
 }
 
-.session-button:hover {
+.bubble-button:hover {
   background-color: rgb(244, 249, 253);
 }
 
-.session-button:active {
+.bubble-button:active {
   background-color: rgb(208 228 246);
 }
 
@@ -158,5 +161,16 @@ body {
 
 .modal-child  button {
   margin-bottom: 10px;
+}
 
+.home-description {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding: 12px;
+  height: 286px;
+  width: 215px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router";
 import NavContainer from "./navbar/nav_container";
 import Modal from "./modal/modal";
-import HomeDescContainer from "./home_description/home_desc_container";
+import Sidebar from "./sidebar/side";
 
 const App = () => (
   <div>
@@ -16,11 +16,8 @@ const App = () => (
       <section>
         {/* Posts placeholder */}
       </section>
-      <aside>
-        {/* <TopCommunitiesContainer /> */}
-        <HomeDescContainer />
-        {/* <Footer /> */}
-      </aside>
+
+      <Sidebar />
     </main>
 
     {/* <Route path='/login' component={props => <LoginFormContainer {...props}/>} />

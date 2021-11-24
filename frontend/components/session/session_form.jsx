@@ -82,7 +82,7 @@ class SessionForm extends React.Component {
             </label> */}
             <br />
             {/* <input type='submit' value={this.props.formType} /> */}
-            <button className='session-button filled-blue' type='submit'>{this.props.formType}</button>
+            <button className='bubble-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
         {this.renderErrors()}
