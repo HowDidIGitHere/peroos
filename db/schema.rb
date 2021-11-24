@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_19_235956) do
+ActiveRecord::Schema.define(version: 2021_11_24_201106) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "communities", force: :cascade do |t|
+    t.string "sub", null: false
+    t.string "icon"
+    t.text "about", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "creator_id", null: false
+    t.index ["creator_id"], name: "index_communities_on_creator_id"
+    t.index ["sub"], name: "index_communities_on_sub", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username", null: false

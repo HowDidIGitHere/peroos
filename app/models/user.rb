@@ -7,6 +7,10 @@ class User < ApplicationRecord
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
+  has_many :communities,
+    foreign_key: :creator_id,
+    class_name: :Community
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     if user && user.is_valid_password?(password)
