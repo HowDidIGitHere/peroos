@@ -32,6 +32,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  font-family: Noto Sans, Arial, sans-serif;
 }
 
 .modal-child span {
@@ -72,12 +73,25 @@ body {
 }
 
 .session-button:hover {
-  background-color: #33a8ff;
+  background-color: rgb(244, 249, 253);
+}
+
+.session-button:active {
+  background-color: rgb(208 228 246);
 }
 
 .filled-blue {
   color: white;
+  background-color: rgb(26, 109, 205)  ;
+}
+
+.filled-blue:hover {
+  color: white;
   background-color: #0079d3;
+}
+
+.filled-blue:active {
+  background-color: rgb(57, 134, 213); 
 }
 
 .setting-button {
@@ -96,4 +110,53 @@ body {
   text-align: center;
   font-size: 25px;
   margin-left: 20px;
+}
+
+.input-group {
+  position: relative;
+  margin: 20px 0 5px;
+}
+
+.input-group > input {
+  font-size: 14px;
+  padding: 22px 10px 12px 12px;
+  display: block;
+  height: 48;
+  width: 280px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: rgba(251, 251, 250, 0.7);
+}
+
+.input-group > input:hover,
+.input-group > input:focus {
+  outline: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.input-group > label {
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2 ease all;
+}
+
+.input-group > input:hover ~ label,
+.input-group > input:focus ~ label,
+.input-group > input:valid ~ label {
+  top: 5px;
+  font-size: 12px;
+}
+
+.modal-child  button {
+  margin-bottom: 10px;
+
 }

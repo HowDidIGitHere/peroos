@@ -23,16 +23,16 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    return(
+    return (
       <ul>
         {
-          Array.isArray(this.props.errors) ? 
+          Array.isArray(this.props.errors) ?
             this.props.errors.map((error, i) => (
               <li key={`error-${i}`}>
                 {error}
               </li>
             )) :
-          ''
+            ''
         }
       </ul>
     );
@@ -44,15 +44,30 @@ class SessionForm extends React.Component {
         <span onClick={() => this.props.closeModal()}>&times;</span>
         <h4>{this.props.formType}</h4>
         {
-          this.props.formType === 'Login' ? 
-          (<p>By continuing, you agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>) : 
-          (<p>By continuing, you are setting up a Peroos account and agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>)
+          this.props.formType === 'Login' ?
+            (<p>By continuing, you agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>) :
+            (<p>By continuing, you are setting up a Peroos account and agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>)
         }
         {/* Google OAuth and Apple Auth */}
         <form onSubmit={this.handleSubmit}>
           <div>
-            <br/>
-            <label>Username: 
+            <br />
+
+            <div class='input-group'>
+              <input type='text' onChange={this.update('username')} required />
+              <span class='highlight'></span>
+              <span class='bar'></span>
+              <label>Username</label>
+            </div>
+
+            <div class='input-group'>
+              <input type='password' onChange={this.update('password')} required />
+              <span class='highlight'></span>
+              <span class='bar'></span>
+              <label>Password</label>
+            </div>
+
+            {/* <label>Username: 
               <input type='text'
                 value={this.state.username}
                 onChange={this.update('username')}
@@ -64,17 +79,17 @@ class SessionForm extends React.Component {
                 value={this.state.password}
                 onChange={this.update('password')}
               />
-            </label>
-            <br/>
+            </label> */}
+            <br />
             {/* <input type='submit' value={this.props.formType} /> */}
             <button className='session-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
         {this.renderErrors()}
         {
-          this.props.formType === 'Login' ? 
-          (<p>New to Peroos? {this.props.otherForm}</p>) :
-          (<p>Already a Perooser? {this.props.otherForm}</p>)
+          this.props.formType === 'Login' ?
+            (<p>New to Peroos? {this.props.otherForm}</p>) :
+            (<p>Already a Perooser? {this.props.otherForm}</p>)
         }
       </div>
     );
