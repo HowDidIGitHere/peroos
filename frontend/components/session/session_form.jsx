@@ -59,17 +59,17 @@ class SessionForm extends React.Component {
           <div>
             <br />
 
-            <div class='input-group'>
+            <div className='input-group'>
               <input type='text' onChange={this.update('username')} required />
-              <span class='highlight'></span>
-              <span class='bar'></span>
+              <span className='highlight'></span>
+              <span className='bar'></span>
               <label>Username</label>
             </div>
 
-            <div class='input-group'>
+            <div className='input-group'>
               <input type='password' onChange={this.update('password')} required />
-              <span class='highlight'></span>
-              <span class='bar'></span>
+              <span className='highlight'></span>
+              <span className='bar'></span>
               <label>Password</label>
             </div>
 
