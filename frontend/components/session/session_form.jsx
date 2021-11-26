@@ -51,13 +51,13 @@ class SessionForm extends React.Component {
         <h4>{this.props.formType}</h4>
         {
           this.props.formType === 'Login' ?
-            (<p>By continuing, you agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>) :
-            (<p>By continuing, you are setting up a Peroos account and agree to our <a href='#'>User Agreement</a> and <a href='#'>Privacy Policy</a>.</p>)
+            (<p>By continuing, you agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>) :
+            (<p>By continuing, you are setting up a Peroos account and agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>)
         }
         {/* Google OAuth and Apple Auth */}
         <form onSubmit={this.handleSubmit}>
           <div>
-            <br />
+            {/* <br /> */}
 
             <div className='input-group'>
               <input type='text' onChange={this.update('username')} required />
@@ -97,7 +97,7 @@ class SessionForm extends React.Component {
             (<p>New to Peroos? {this.props.otherForm}</p>) :
             (<p>Already a Perooser? {this.props.otherForm}</p>)
         }
-        <p>Just looking around? <button onClick={this.demoLogin}>DEMO LOGIN</button></p>
+        <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
       </div>
     );
   }

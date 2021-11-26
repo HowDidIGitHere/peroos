@@ -3,7 +3,7 @@ import { closeModal } from '../../actions/modal_actions'
 import { connect } from "react-redux";
 import LoginFormContainer from "../session/login_form_container";
 import SignupFormContainer from "../session/signup_form_container";
-import CreateCommunityContainer from '../home_description/home_desc_container'
+import CreateCommunityContainer from "../create_community/create_community_container";
 
 const Modal = ({ modal }) => {
   if (!modal) return null;
@@ -18,6 +18,7 @@ const Modal = ({ modal }) => {
       break;
     case 'createCommunity':
       component = <CreateCommunityContainer />
+      break;
     default:
       return null;
   }
