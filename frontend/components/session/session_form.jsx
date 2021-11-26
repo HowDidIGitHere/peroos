@@ -57,7 +57,6 @@ class SessionForm extends React.Component {
         {/* Google OAuth and Apple Auth */}
         <form onSubmit={this.handleSubmit}>
           <div>
-            {/* <br /> */}
 
             <div className='input-group'>
               <input type='text' onChange={this.update('username')} required />
@@ -73,21 +72,7 @@ class SessionForm extends React.Component {
               <label>Password</label>
             </div>
 
-            {/* <label>Username: 
-              <input type='text'
-                value={this.state.username}
-                onChange={this.update('username')}
-              />
-            </label>
-            <br/>
-            <label>Password: 
-              <input type='password'
-                value={this.state.password}
-                onChange={this.update('password')}
-              />
-            </label> */}
             <br />
-            {/* <input type='submit' value={this.props.formType} /> */}
             <button className='bubble-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
