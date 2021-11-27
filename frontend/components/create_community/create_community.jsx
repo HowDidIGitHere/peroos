@@ -1,11 +1,19 @@
 import React from "react";
 
-class CreateCommunity extends React.Component {
+class CreateCommunityForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sub: ''
+      sub: '',
+      creator_id: this.props.currentUserId
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    const community = Object.assign({}, this.state);
+    this.props.processForm(community).then(this.props.closeModal());
   }
   
   update(field) {
@@ -17,13 +25,14 @@ class CreateCommunity extends React.Component {
   render() {
     return (
       <div>
+        <span onClick={() => this.props.closeModal()}>&times;</span>
         <h1>Create a community</h1>
         <h2>Name</h2>
         <p>Community names including capitalization cannot be changed.</p>
         
-        <form onSubmit={}>
+        <form onSubmit={this.handleSubmit}>
           <div className='input-group'>
-            <input type='text' onChange={this.update('sub')} maxlength="21" required />
+            <input type='text' onChange={this.update('sub')} maxLength="21" required />
             <span className='highlight'></span>
             <span className='bar'></span>
             <label>Community</label>
@@ -38,4 +47,4 @@ class CreateCommunity extends React.Component {
   }
 }
 
-export default CreateCommunity;
+export default CreateCommunityForm;

@@ -1,7 +1,7 @@
 class Community < ApplicationRecord
   
-  validates :sub, :about, :creator_id, presence: true
-  validates :creator_id, uniqueness: true
+  validates :sub, :creator_id, presence: true
+  validates :sub, uniqueness: true
   validates :sub, length: { maximum: 21 }
 
   belongs_to :creator,

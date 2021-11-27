@@ -2,7 +2,7 @@ import {
   RECEIVE_ALL_COMMUNITIES,
   RECEIVE_COMMUNITY,
   REMOVE_COMMUNITY,
-  RECEIVE_ERRORS
+  RECEIVE_COMMUNITY_ERRORS
 } from '../actions/community_actions';
 
 const communitiesErrorsReducer = (state = null, action) => {
@@ -14,7 +14,7 @@ const communitiesErrorsReducer = (state = null, action) => {
       return null;
     case REMOVE_COMMUNITY:
       return null;
-    case RECEIVE_ERRORS:
+    case RECEIVE_COMMUNITY_ERRORS:
       return action.errors.responseJSON;
     default:
       return state;

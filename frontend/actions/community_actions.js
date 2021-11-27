@@ -5,7 +5,7 @@ import { receiveCurrentUser } from './session_actions';
 export const RECEIVE_ALL_COMMUNITIES = 'RECEIVE_ALL_COMMUNITIES';
 export const RECEIVE_COMMUNITY = 'RECEIVE_COMMUNITY';
 export const REMOVE_COMMUNITY = 'REMOVE_COMMUNITY';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_COMMUNITY_ERRORS = 'RECEIVE_COMMUNITY_ERRORS';
 
 // actions
 export const receiveAllCommunities = communities => ({
@@ -18,13 +18,13 @@ export const receiveCommunity = community => ({
   community
 });
 
-export const removeCommunity = community => ({
+export const removeCommunity = communityId => ({
   type: REMOVE_COMMUNITY,
   communityId
 });
 
 export const receiveErrors = errors => ({
-  type: RECEIVE_ERRORS,
+  type: RECEIVE_COMMUNITY_ERRORS,
   errors
 });
 
@@ -41,7 +41,7 @@ export const getCommunity = communityId => dispatch => (
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const createCommnity = community => dispatch => (
+export const createCommunity = community => dispatch => (
   CommunityAPIutil.createCommnity(community)
     .then(community => dispatch(receiveCommunity(community)))
     .fail(errors => dispatch(receiveErrors(errors)))
