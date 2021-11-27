@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle))
+  getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle)),
+  // follow: () => dispatch()
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommunityPage));
