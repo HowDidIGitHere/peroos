@@ -217,3 +217,7 @@ p {
 .thick-font {
   font-weight: 700;
 }
+
+.communities-header {
+  height: 100px;
+}

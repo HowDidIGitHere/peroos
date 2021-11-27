@@ -8,4 +8,4 @@
 
 User.create(username: 'thePerooser', password: 'justPeroosing')
 
-Community.create(sub: 'Cute Animals', creator_id: 1)
+Community.create(sub: 'CuteAnimals', creator_id: 1)

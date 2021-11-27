@@ -18,9 +18,9 @@ export const receiveCommunity = community => ({
   community
 });
 
-export const removeCommunity = communityId => ({
+export const removeCommunity = communityTitle => ({
   type: REMOVE_COMMUNITY,
-  communityId
+  communityTitle
 });
 
 export const receiveErrors = errors => ({
@@ -35,8 +35,8 @@ export const getAllCommunities = () => dispatch => (
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const getCommunity = communityId => dispatch => (
-  CommunityAPIutil.getCommunity(communityId)
+export const getCommunity = communityTitle => dispatch => (
+  CommunityAPIutil.getCommunity(communityTitle)
     .then(community => dispatch(receiveCommunity(community)))
     .fail(errors => dispatch(receiveErrors(errors)))
 );
@@ -53,8 +53,8 @@ export const editCommunity = community => dispatch => (
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
-export const deleteCommunity = communityId => dispatch => (
-  CommunityAPIutil.deleteCommunity(communityId)
+export const deleteCommunity = communityTitle => dispatch => (
+  CommunityAPIutil.deleteCommunity(communityTitle)
     .then(community => dispatch(removeCommunity(community)))
     .fail(errors => dispatch(receiveErrors(errors)))
 );

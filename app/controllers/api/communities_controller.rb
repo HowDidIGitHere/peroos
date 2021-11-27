@@ -6,7 +6,7 @@ class Api::CommunitiesController < ApplicationController
   end
 
   def show
-    @community = Community.find(params[:id])
+    @community = Community.find_by(sub: params[:id])
     if @community
       render :show
     else
@@ -25,7 +25,7 @@ class Api::CommunitiesController < ApplicationController
   end
 
   def update
-    @community = Community.find(params[:id])
+    @community = Community.find_by(sub: params[:id])
     if @community.update(community_params)
       render :show
     else
@@ -34,7 +34,7 @@ class Api::CommunitiesController < ApplicationController
   end
 
   def destroy
-    @community = Community.find(params[:id])
+    @community = Community.find_by(sub: params[:id])
     if current_user.id == @community.creator_id
       @community.delete
       render :show

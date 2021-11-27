@@ -12,10 +12,10 @@ const communitiesReducer = (state = {}, action) => {
     case RECEIVE_ALL_COMMUNITIES:
       return action.communities;
     case RECEIVE_COMMUNITY:
-      nextState[action.community.id] = action.community;
+      nextState[action.community.sub] = action.community;
       return nextState;
     case REMOVE_COMMUNITY:
-      delete nextState[action.community.id];
+      delete nextState[action.communityTitle];
       return nextState;
     default:
       return state;
