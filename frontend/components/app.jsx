@@ -15,13 +15,12 @@ const App = () => (
     <main>
       <section>
         {/* Posts placeholder */}
+        <Route path='/communities' component={props => <CommunitiesList {...props} />} />
       </section>
 
       <Sidebar />
     </main>
 
-    {/* <Route path='/login' component={props => <LoginFormContainer {...props}/>} />
-    <Route path='/signup' component={props => <SignupFormContainer {...props}/>} /> */}
   </div>
 )
 
