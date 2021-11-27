@@ -1,0 +1,1 @@
+json.extract! community, :id, :sub, :about, :icon
