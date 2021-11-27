@@ -49,12 +49,13 @@ header {
   /* position: fixed; */
   position: sticky;
   background-color: white;
-  display: flex;
+  display: inline-flex;
   justify-content: space-between;
   align-items: center;
   height: 50px;
   border-bottom: 1px solid #ccc;
   width: 100%;
+  /* padding: 0 20px; */
 }
 
 body {
@@ -277,4 +278,57 @@ p {
   font-weight: 500;
   line-height: 18px;
   color: #7c7c7c;
+}
+
+.header-user-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.header-user-dropdown > button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  text-align: left;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px 0;
+  min-height: 32px;
+  margin-left: 8px;
+}
+
+.header-user-dropdown > button:active,
+.header-user-dropdown > button:hover {
+  border: 1px solid #edeff1;
+}
+
+.header-user-button-sec {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header-user-button-sec:first-child {
+  display: flex;
+  align-items: center;
+  margin-left: 8px;
+  text-align: left;
+  width: 175px
+}
+
+.user-dropdown-menu {
+  /* display: none; */
+  position: fixed;
+  background-color: white;
+  border-radius: 0 0 4px 4px;
+  border: 1px solid #edeff1;
+  border-top: none;
+  margin-top: -2px;
+  max-height: 80%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-top: 6px;
+  width: 211px;
+  z-index: 10;
 }

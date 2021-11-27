@@ -39,6 +39,7 @@ class CreateCommunityForm extends React.Component {
 
           <p>{21 - this.state.sub.length} Characters remaining</p>
 
+          <button className='bubble-button'>Cancel</button>
           <button className='bubble-button filled-blue' type='submit'>Create Community</button>
         </form>
       </div>
