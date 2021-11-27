@@ -2,9 +2,10 @@ class Community < ApplicationRecord
   
   validates :sub, :creator_id, presence: true
   validates :sub, uniqueness: true
-  validates :sub, length: { maximum: 21 }
+  validates :sub, length: { maximum: 21 }, allow_nil: true
 
   belongs_to :creator,
+    primary_key: :id,
     foreign_key: :creator_id,
     class_name: :User
 

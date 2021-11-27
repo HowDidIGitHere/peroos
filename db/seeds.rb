@@ -7,3 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(username: 'thePerooser', password: 'justPeroosing')
+
+Community.create(sub: 'Cute Animals', creator_id: 1)
