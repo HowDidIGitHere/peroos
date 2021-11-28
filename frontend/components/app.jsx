@@ -29,7 +29,7 @@ const App = () => (
         </Switch>
       </section>
 
-      {/* <Sidebar /> */}
+      <Sidebar />
     </main>
 
   </div>

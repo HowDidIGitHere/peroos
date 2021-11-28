@@ -7,9 +7,6 @@ export const RECEIVE_COMMUNITY = 'RECEIVE_COMMUNITY';
 export const REMOVE_COMMUNITY = 'REMOVE_COMMUNITY';
 export const RECEIVE_COMMUNITY_ERRORS = 'RECEIVE_COMMUNITY_ERRORS';
 
-export const RECEIVE_FOLLOW = 'RECEIVE_FOLLOW';
-export const REMOVE_FOLLOW = 'REMOVE_FOLLOW';
-
 // actions
 export const receiveAllCommunities = communities => ({
   type: RECEIVE_ALL_COMMUNITIES,
@@ -29,15 +26,6 @@ export const removeCommunity = communityTitle => ({
 export const receiveErrors = errors => ({
   type: RECEIVE_COMMUNITY_ERRORS,
   errors
-});
-
-
-export const receiveFollow = follow => ({
-
-});
-
-export const removeFollow = followId => ({
-
 });
 
 // thunk action creators

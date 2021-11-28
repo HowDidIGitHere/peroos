@@ -16,7 +16,7 @@ class Api::CommunitiesController < ApplicationController
 
   def create
     @community = Community.new(community_params)
-    @community.creator_id = current_user.id
+    # @community.creator_id = current_user.id
     if @community.save
       render :show
     else
@@ -45,6 +45,6 @@ class Api::CommunitiesController < ApplicationController
 
   private
   def community_params
-    params.require(:community).permit(:sub, :about, :icon)
+    params.require(:community).permit(:sub, :about, :icon, :creator_id)
   end
 end

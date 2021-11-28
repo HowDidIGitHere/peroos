@@ -121,6 +121,7 @@ p {
 }
 
 .setting-button {
+  height: 30px;
   padding: 2px 15px;
   margin: 7px;
   display: inline-flex;

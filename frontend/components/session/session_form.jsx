@@ -79,10 +79,14 @@ class SessionForm extends React.Component {
         {this.renderErrors()}
         {
           this.props.formType === 'Login' ?
-            (<p>New to Peroos? {this.props.otherForm}</p>) :
+            (
+              <div>
+                <p>New to Peroos? {this.props.otherForm}</p>
+                <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
+              </div>
+            ) :
             (<p>Already a Perooser? {this.props.otherForm}</p>)
         }
-        <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
       </div>
     );
   }

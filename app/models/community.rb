@@ -9,6 +9,11 @@ class Community < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :User
 
+  # has_many :follows,
+  #   primary_key: :sub,
+  #   foreign_key: :community_name,
+  #   class_name: :Follow
+
   has_many :follows,
     primary_key: :id,
     foreign_key: :community_id,

@@ -4,7 +4,8 @@ class CreateCommunityForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      sub: ''
+      sub: '',
+      creator_id: this.props.sessionId
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
