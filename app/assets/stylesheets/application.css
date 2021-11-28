@@ -418,7 +418,6 @@ p {
 .communities-list-ex {
   align-items: center;
   background-color: #f6f7f8;
-  /* background-color: red; */
   border-bottom: thin solid #edeff1;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -471,4 +470,112 @@ p {
 
 .community-list-item > h1 {
   margin-right: 10px;
+}
+
+.about-community {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.about-community-header {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 12px;
+  background-color: #0079d3;
+  color: white;
+  padding: 0 12px 12px;
+}
+
+.about-community-header > h2 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 20px;
+  padding: 12px 0 0;
+}
+
+.about-community-description {
+  max-height: none;
+  padding: 12px;
+}
+
+.about-community-description > p {
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.user-tracker {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.user-tracker > span {
+  padding-right: 4px;
+}
+
+.user-tracker > span > h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.user-tracker > span > p {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.about-community-description > hr {
+  background-color: #edeff1;
+  border: none;
+  height: 1px;
+  margin: 16px 0;
+}
+
+.community-cake-tracker > p {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 18px;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+.card {
+  margin-top: 16px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: visible;
+  word-wrap: break-word;
+}
+
+.footer-card-content {
+  display: flex;
+  padding: 12px 8px;
+}
+
+.footer-card-content > div {
+  flex-flow: column nowrap;
+  width: 50%;
+  padding: 0 4px;
+  display: flex;
+}
+
+.footer-card-content > div > a {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.reserved-rights {
+  display: flex;
+  padding: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
 }

@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import NotFoundPage from "../not_found/not_found";
+import FooterCard from "../sidebar/footer_card";
+import CommunityAbout from "./community_about";
 
 class CommunityPage extends React.Component {
   constructor(props) {
@@ -48,6 +50,10 @@ class CommunityPage extends React.Component {
           {/* <Feed/> */}
           {/* {this.props.community ? (this.props.currentUserId === this.props.community.creator_id ? <h1>Hello!</h1> : <h1>Goodbye!</h1>) : ''} */}
           
+          <aside>
+            <CommunityAbout community={this.props.community}/>
+            <FooterCard />
+          </aside>
         </div>
       ) : <NotFoundPage />
     }
