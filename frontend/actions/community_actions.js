@@ -1,5 +1,5 @@
 import * as CommunityAPIutil from '../util/community_api_util';
-import { receiveCurrentUser } from './session_actions';
+import * as FollowAPIutil from '../util/follow_api_util';
 
 // action types
 export const RECEIVE_ALL_COMMUNITIES = 'RECEIVE_ALL_COMMUNITIES';
@@ -49,7 +49,7 @@ export const createCommunity = community => dispatch => (
 
 export const editCommunity = community => dispatch => (
   CommunityAPIutil.editCommunity(community)
-    .then(community => dispatch(receiveCurrentUser(community)))
+    .then(community => dispatch(receiveCommunity(community)))
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
@@ -57,4 +57,14 @@ export const deleteCommunity = communityTitle => dispatch => (
   CommunityAPIutil.deleteCommunity(communityTitle)
     .then(community => dispatch(removeCommunity(community)))
     .fail(errors => dispatch(receiveErrors(errors)))
+);
+
+export const followCommunity = follow => dispatch => (
+  FollowAPIutil.follow(follow)
+    .then(community => dispatch(receiveCommunity(community)))
+);
+
+export const unfollowCommunity = follow => dispatch => (
+  FollowAPIutil.unfollow(follow)
+    .then(community => dispatch(receiveCommunity(community)))
 );

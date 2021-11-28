@@ -27,7 +27,17 @@ class CommunityPage extends React.Component {
                     <h2>p/{this.props.community.sub}</h2>
                   </div>
                   {/* add onclick to follow */}
-                  <button className='bubble-button filled-blue'>Join</button>
+                  {
+                    this.props.currentUserId ?
+                    (this.props.community.followed_by_current_user ? (
+                      <button className='bubble-button' onClick={() => this.props.unfollow({ community_id: this.props.community.id })}>Joined</button>
+                    ) : (
+                      <button className='bubble-button filled-blue' onClick={() => this.props.follow({ community_id: this.props.community.id })}>Join</button>
+                    )) : (
+                      <button className='bubble-button filled-blue' onClick={() => this.props.openModal('login')}>Join</button>
+                    )
+                  }
+                  
                 </div>
               </div>
               <div>

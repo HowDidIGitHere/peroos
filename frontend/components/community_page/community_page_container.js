@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { getCommunity } from "../../actions/community_actions";
+import { followCommunity, getCommunity, unfollowCommunity } from "../../actions/community_actions";
+import { openModal } from "../../actions/modal_actions";
 import CommunityPage from "./community_page";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -10,7 +11,9 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle)),
-  // follow: () => dispatch()
+  follow: follow => dispatch(followCommunity(follow)),
+  unfollow: follow => dispatch(unfollowCommunity(follow)),
+  openModal: modal => dispatch(openModal(modal))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommunityPage));

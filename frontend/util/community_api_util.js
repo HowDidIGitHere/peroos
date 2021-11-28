@@ -23,7 +23,7 @@ export const createCommnity = community => (
 export const editCommunity = community => (
   $.ajax({
     method: 'PATCH',
-    url: `/api/communities/${community.id}`,
+    url: `/api/communities/${community.sub}`,
     data: { community }
   })
 );

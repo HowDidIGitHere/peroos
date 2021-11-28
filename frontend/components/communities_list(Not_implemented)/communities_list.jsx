@@ -37,7 +37,7 @@ class CommunitiesList extends React.Component {
                         {/* <img/>COMMUNITY ICON */}
                         <h1>{community.sub}</h1>
                       </span>
-                      <p>{community.followers.length}</p>
+                      <p>{community.follower_count}</p>
                     </Link>
                   </li>
                 )) : ''

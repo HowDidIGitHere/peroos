@@ -5,17 +5,17 @@ class Api::FollowsController < ApplicationController
     @follow.user_id = current_user.id
     if @follow.save
       @community = @follow.community
-      render 'api/community/show'
+      render 'api/communities/show'
     else
       render json: @follow.errors.full_messages, status: 401
     end
   end
 
-  def delete
+  def destroy
     @follow = Follow.find_by(user_id: current_user.id, community_id: params[:follow][:community_id])
     @follow.delete
     @community = @follow.community
-    render 'api/community/show'
+    render 'api/communities/show'
   end
 
   private
