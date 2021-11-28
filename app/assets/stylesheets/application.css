@@ -47,7 +47,7 @@ body {
 header {
   /* position: -webkit-sticky; */
   /* position: fixed; */
-  position: sticky;
+  position: fixed;
   background-color: white;
   display: inline-flex;
   justify-content: space-between;
@@ -55,7 +55,13 @@ header {
   height: 50px;
   border-bottom: 1px solid #ccc;
   width: 100%;
+  z-index: 80;
   /* padding: 0 20px; */
+}
+
+.hidden-buffer {
+  height: 50px;
+  width: 100%;
 }
 
 body {
@@ -331,4 +337,99 @@ p {
   padding-top: 6px;
   width: 211px;
   z-index: 10;
+}
+
+.communities-list-header {
+  background-color: white;
+  height: 96px;
+  padding: 0px;
+}
+
+.communities-list-header-content {
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  justify-content: center;
+  height: 96px;
+  margin: 0px 24px;
+  max-width: 1200px;
+  padding: 0px 16px;
+}
+
+.communities-list-header-content > h1 {
+  padding-bottom: 6px;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 26px;
+}
+
+.communities-list-header-content > p {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: #7c7c7c;
+}
+
+.communities-list-content {
+  max-width: 1248px;
+  padding: 20px 24px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.communities-listing {
+  max-width: 740px;
+  width: 640px;
+  flex: 1 1 100%;
+}
+
+.communities-list-ex {
+  align-items: center;
+  background-color: #f6f7f8;
+  /* background-color: red; */
+  border-bottom: thin solid #edeff1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  display: flex;
+  height: 40px;
+  justify-content: space-between;
+  padding: 0px 16px;
+  position: sticky;
+  top: 48px;
+  z-index: 3;
+}
+
+.communities-list-ex > h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.communities-list-ex > p {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #7c7c7c;
+}
+
+.communities-list-entries {
+  background-color: white;
+  list-style: none;
+  padding-left: 0px;
+  margin-top: 0px;
+}
+
+.communities-list-entries > li {
+  border-bottom: thin solid #edeff1;
+}
+
+.communities-list-entries > li > a {
+  height: 64px;
+  padding: 0px 24px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
 }

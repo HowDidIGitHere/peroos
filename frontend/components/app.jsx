@@ -16,6 +16,7 @@ const App = () => (
       </Link>
       <NavContainer />
     </header>
+    <div className='hidden-buffer'></div>
 
     <main>
       <section>
@@ -24,6 +25,7 @@ const App = () => (
           <Route path='/communities' component={props => <CommunitiesListContainer {...props} />} />
           {/* <Route path='/:communityTitle/comments/:postId' component={props => < {...props} />} /> */}
           <Route path='/:communityTitle' component={props => <CommunityPageContainer {...props} />} />
+          {/* <Route path='/' component={props => <HomePageContainer {...props}/>} /> */}
         </Switch>
       </section>
 
