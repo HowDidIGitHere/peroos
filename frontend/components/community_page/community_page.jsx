@@ -49,11 +49,24 @@ class CommunityPage extends React.Component {
           </div>
           {/* <Feed/> */}
           {/* {this.props.community ? (this.props.currentUserId === this.props.community.creator_id ? <h1>Hello!</h1> : <h1>Goodbye!</h1>) : ''} */}
-          
-          <aside>
-            <CommunityAbout community={this.props.community}/>
-            <FooterCard />
-          </aside>
+          <div className='community-content'>
+            <div className='main-community-page'>
+              <div className='temp card'>
+                PLACEHOLDER CARDS
+              </div>
+              <div className='temp card'>
+                PLACEHOLDER CARDS
+              </div>
+              <div className='temp card'>
+                PLACEHOLDER CARDS
+              </div>
+            </div>
+            <div className='sidebar-community-page'>
+              <CommunityAbout community={this.props.community}/>
+              {/* <ModeratorsCard community={this.props.community} /> */}
+              <FooterCard />
+            </div>
+          </div>
         </div>
       ) : <NotFoundPage />
     }

@@ -535,6 +535,17 @@ p {
   margin: 16px 0;
 }
 
+.community-cake-tracker {
+  display: flex;
+  flex-direction: row;
+}
+
+.community-cake-tracker > svg {
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+}
+
 .community-cake-tracker > p {
   font-size: 14px;
   font-weight: 400;
@@ -578,4 +589,22 @@ p {
   font-size: 12px;
   font-weight: 400;
   line-height: 16px;
+}
+
+.community-content {
+  display: flex;
+  max-width: 100%;
+  padding: 4px 24px, 20px, 24px;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.main-community-page {
+  width: 640px;
+}
+
+.sidebar-community-page {
+  margin-left: 24px;
+  margin-top: 0;
 }
