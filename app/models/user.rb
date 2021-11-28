@@ -12,6 +12,15 @@ class User < ApplicationRecord
     foreign_key: :creator_id,
     class_name: :Community
 
+  has_many :follows,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: :Follow
+
+  has_many :followings,
+    through: :follows,
+    source: :community
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     if user && user.is_valid_password?(password)

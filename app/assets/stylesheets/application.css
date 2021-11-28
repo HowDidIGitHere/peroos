@@ -79,7 +79,7 @@ p {
   font-size: 14px;
   background-color: white;
   width: 86px;
-  /* height: 22px; */
+  height: 22px;
   margin-left: 16px;
   border-radius: 35px 35px 35px 35px;
   cursor: pointer;
@@ -112,9 +112,33 @@ p {
   background-color: rgb(57, 134, 213); 
 }
 
+.right-nav {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}
+
 .setting-button {
   padding: 2px 15px;
   margin: 7px;
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-around;
+  align-content: center;
+}
+
+.silhouette {
+  height: 22px;
+  width: 27px;
+}
+
+.chevron {
+  width: 15px;
+  height: 21px;
 }
 
 .setting-button:hover {
@@ -432,4 +456,14 @@ p {
   align-items: center;
   display: flex;
   justify-content: space-between;
+}
+
+.community-list-item {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-evenly; */
+}
+
+.community-list-item > h1 {
+  margin-right: 10px;
 }

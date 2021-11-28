@@ -32,8 +32,12 @@ class CommunitiesList extends React.Component {
                 this.props.allCommunities ? this.props.allCommunities.map((community, idx) => (
                   <li key={`com-${idx}`}>
                     <Link to={`/${community.sub}`}>
-                      <h1>{community.sub}</h1>
-                      {/* <p>NUM FOLLOWERS</p> */}
+                      <span className='community-list-item'>
+                        <h1>{idx + 1}</h1>
+                        {/* <img/>COMMUNITY ICON */}
+                        <h1>{community.sub}</h1>
+                      </span>
+                      <p>{community.followers.length}</p>
                     </Link>
                   </li>
                 )) : ''
