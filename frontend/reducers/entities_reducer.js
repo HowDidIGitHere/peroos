@@ -1,12 +1,13 @@
 import { combineReducers } from "redux";
 import communitiesReducer from "./communities_reducer";
 import usersReducer from "./users_reducer";
+import postsReducer from "./posts_reducer";
 
 const entitiesReducer = combineReducers({
   users: usersReducer,
   communities: communitiesReducer,
   // follows: followsReducer,
-  // posts: postsReducer,
+  posts: postsReducer,
   // comments: commentsReducer,
   // votes: votesReducer,
   // saves: savesReducer

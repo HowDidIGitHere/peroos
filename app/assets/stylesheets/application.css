@@ -861,6 +861,19 @@ p {
   display: list-item;
 }
 
+.create-post-form-send {
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 0 16px 16px;
+}
+
+.create-post-form-send > hr {
+  width: 100%;
+  border: 0;
+  border-top: 1px solid #edeff1;
+}
+
 .create-post-form-send-buttons {
   position: relative;
   width: 100%;
@@ -872,5 +885,8 @@ p {
   padding-top: 8px;
   display: flex;
   justify-content: flex-end;
+}
 
+.create-post-form-send-buttons > div .bubble-button {
+  height: 30px;
 }

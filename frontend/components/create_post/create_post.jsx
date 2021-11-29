@@ -70,18 +70,7 @@ class CreatePost extends React.Component {
                   </div>
                   <div>
                     <div className='create-post-form-input-optional'>
-                      <div>
-                        <div className='create-post-form-input-markdown-modes'>
-
-                        </div>
-                        <div className='create-post-form-input-optional-textbox'>
-                          <div>
-                            <div>
-                              
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -92,8 +81,8 @@ class CreatePost extends React.Component {
                   <hr/>
                   <div className='create-post-form-send-buttons'>
                     <div>
-                      <Link to='/'>CANCEL</Link>
-                      <button>POST</button>
+                      <Link to='/'><button className='bubble-button'>Cancel</button></Link>
+                      <button className='bubble-button filled-blue'>POST</button>
                     </div>
                   </div>
                 </div>
