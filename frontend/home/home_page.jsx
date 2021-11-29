@@ -1,5 +1,5 @@
 import React from "react";
-import HomeDesc from "../components/home_description/home_desc";
+import HomeDescContainer from "../components/home_description/home_desc_container";
 import FooterCard from "../components/sidebar/footer_card";
 
 class HomePage extends React.Component {
@@ -24,7 +24,7 @@ class HomePage extends React.Component {
         <div className='sidebar-community-page'>
           {/* <CommunityAbout community={this.props.community}/> */}
           {/* <ModeratorsCard community={this.props.community} /> */}
-          <HomeDesc />
+          <HomeDescContainer />
           <FooterCard />
         </div>
       </div>

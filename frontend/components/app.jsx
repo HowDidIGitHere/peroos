@@ -2,7 +2,6 @@ import React from "react";
 import { Route, Switch } from "react-router";
 import NavContainer from "./navbar/nav_container";
 import Modal from "./modal/modal";
-import Sidebar from "./sidebar/side";
 import { Link } from "react-router-dom";
 import CommunityPageContainer from "./community_page/community_page_container";
 import CommunitiesListContainer from "./communities_list(Not_implemented)/communities_list_container";
