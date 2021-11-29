@@ -5,8 +5,9 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
 
-    resources :communities
+    resources :communities, except: [:edit, :new]
     resources :follows, only: [:create, :destroy]
+    resources :posts, except: [:edit, :new]
   end
 
   root to: 'static_pages#root'
