@@ -10,7 +10,7 @@ class Api::PostsController < ApplicationController
     if @post
       render :show
     else
-      render json: @post.errors.full_messages, status 404
+      render json: @post.errors.full_messages, status: 404
     end
   end
 
