@@ -2,7 +2,7 @@ import React from "react";
 
 const FooterCard = props => {
   return (
-    <div className='card'>
+    <div className='card aside-card'>
       <div className='footer-card-content'>
         <div>
           <a href='#'>Help</a>

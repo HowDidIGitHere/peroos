@@ -2,7 +2,7 @@ import React from "react";
 
 const CommunityAbout = (props) => {
   return (
-    <div className='about-community card'>
+    <div className='about-community card aside-card'>
       <div className='about-community-header'>
         <h2>About Community</h2>
         {/* <svg>ICON</svg> */}

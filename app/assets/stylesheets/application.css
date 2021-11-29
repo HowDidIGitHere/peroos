@@ -205,15 +205,16 @@ p {
 
 .home-description {
   display: flex;
+  align-items: center;
   justify-content: end;
   /* align-items: center; */
   flex-direction: column;
   padding: 0 12px 12px;
-  width: 285px;
+  /* width: 285px; */
   height: 228px;
-  background-color: white;
+  /* background-color: white;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 4px; */
   font-size: 14px;
   font-weight: 400;
 }
@@ -565,6 +566,16 @@ p {
   word-wrap: break-word;
 }
 
+.post-card {
+  width: 639px;
+  max-width: 639px;
+}
+
+.aside-card {
+  width: 286px;
+  max-width: 286px;
+}
+
 .footer-card-content {
   display: flex;
   padding: 12px 8px;
@@ -609,4 +620,137 @@ p {
 .sidebar-community-page {
   margin-left: 24px;
   margin-top: 0;
+}
+
+.peroos-content-page {
+  max-width: 1248px;
+  padding: 20px 24px;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.content-section {
+  max-width: 740px;
+  width: 640px;
+  flex: 1 1 100%;
+}
+
+.create-post-draft-cont {
+  padding: 4px;
+  margin: 16px 0;
+  border-bottom: 1px solid #edeff1;
+  display: flex;
+}
+
+.create-post-draft-cont > a {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+  flex: 1;
+}
+
+.community-selection-tab {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.create-post-form {
+  background-color: white;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.create-post-form-type-tabs {
+  margin: 0 0 12px;
+  overflow: auto;
+}
+
+.create-post-form-type-tabs > div {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.create-post-form-type-tabs > div > button {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  padding: 15px 17px;
+  z-index: 1;
+  position: relative;
+  flex: 1;
+  text-align: center;
+  border-color: #edeff1;
+  border-style: solid;
+  border-width: 0 1px 1px 0;
+  border-radius: 0;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+  border: none;
+}
+
+.create-post-form-input {
+  margin: 16px;
+}
+
+.create-post-form-input-title {
+  margin-bottom: 8px;
+}
+
+.create-post-form-input-title > div {
+  position: relative;
+}
+
+.create-post-form-input-title > div > textarea {
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  height: 39px;
+  padding: 8px 68px 8px 16px;
+  border: 1px solid #edeff1;
+  background-color: transparent;
+  resize: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  outline: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.create-post-form-input-title > div > div {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .5px;
+  line-height: 12px;
+  bottom: 12px;
+  color: #878a8c;
+  pointer-events: none;
+  position: absolute;
+  right: 12px;
+}
+
+.create-post-form-input-optional {
+  position: relative;
+}
+
+.create-post-form-input-optional > div {
+  border-radius: 4px;
+  background-color: white;
+  position: relative;
+  border: 1px solid #edeff1;
+}
+
+.content-sidebar {
+
 }

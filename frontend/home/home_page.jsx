@@ -11,13 +11,7 @@ class HomePage extends React.Component {
     return (
       <div className='community-content'>
         <div className='main-community-page'>
-          <div className='temp card'>
-            PLACEHOLDER CARDS
-          </div>
-          <div className='temp card'>
-            PLACEHOLDER CARDS
-          </div>
-          <div className='temp card'>
+          <div className='temp card post-card'>
             PLACEHOLDER CARDS
           </div>
         </div>

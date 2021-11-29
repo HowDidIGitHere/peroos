@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ModeratorsCard = props => {
   return (
-    <div className='card'>
+    <div className='card aside-card'>
       <div>
         <h2>Moderator</h2>
       </div>
