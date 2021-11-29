@@ -53,9 +53,6 @@ class CommunityPage extends React.Component {
           <div className='community-content'>
             <div className='main-community-page'>
               <CreatePostCardContainer />
-              <div className='temp card post-card'>
-                PLACEHOLDER CARDS
-              </div>
             </div>
             <div className='sidebar-community-page'>
               <CommunityAbout community={this.props.community}/>

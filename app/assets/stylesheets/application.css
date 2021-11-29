@@ -752,7 +752,15 @@ p {
 }
 
 .content-sidebar {
+  margin-left: 24px;
+  margin-top: 0px;
+  flex: 0 0 312px;
+  width: 312px;
+}
 
+.sidebar-cards-container {
+  padding-top: 11px;
+  width: inherit;
 }
 
 .create-post-card-content {
@@ -822,4 +830,47 @@ p {
 
 .link-icon > svg {
   height: 20px;
+}
+
+.posting-to-content {
+  padding: 12px;
+}
+
+.posting-to-content > div {
+  font-size: 16px;
+  line-height: 20px;
+  align-content: center;
+  border-bottom: 1px solid #edeff1;
+  display: flex;
+  font-weight: 500;
+}
+
+.posting-to-content > ol {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 18px;
+  list-style: decimal;
+  list-style-position: inside;
+}
+
+.posting-to-content > ol > li {
+  border-bottom: 1px solid #edeff1;
+  padding: 10px 5px;
+  display: list-item;
+}
+
+.create-post-form-send-buttons {
+  position: relative;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.create-post-form-send-buttons > div {
+  flex-direction: row;
+  padding-top: 8px;
+  display: flex;
+  justify-content: flex-end;
+
 }

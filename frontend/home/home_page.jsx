@@ -1,6 +1,7 @@
 import React from "react";
 import HomeDescContainer from "../components/home_description/home_desc_container";
 import FooterCard from "../components/sidebar/footer_card";
+import CreatePostCardContainer from "../components/create_post/create_post_card_container";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -11,9 +12,7 @@ class HomePage extends React.Component {
     return (
       <div className='community-content'>
         <div className='main-community-page'>
-          <div className='temp card post-card'>
-            PLACEHOLDER CARDS
-          </div>
+          <CreatePostCardContainer />
         </div>
         <div className='sidebar-community-page'>
           {/* <CommunityAbout community={this.props.community}/> */}
