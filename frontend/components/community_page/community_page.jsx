@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CreatePostCardContainer from "../create_post/create_post_card_container";
 import NotFoundPage from "../not_found/not_found";
 import FooterCard from "../sidebar/footer_card";
 import CommunityAbout from "./community_about";
@@ -51,6 +52,7 @@ class CommunityPage extends React.Component {
           {/* {this.props.community ? (this.props.currentUserId === this.props.community.creator_id ? <h1>Hello!</h1> : <h1>Goodbye!</h1>) : ''} */}
           <div className='community-content'>
             <div className='main-community-page'>
+              <CreatePostCardContainer />
               <div className='temp card post-card'>
                 PLACEHOLDER CARDS
               </div>

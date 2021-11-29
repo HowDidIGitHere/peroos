@@ -754,3 +754,72 @@ p {
 .content-sidebar {
 
 }
+
+.create-post-card-content {
+  background-color: white;
+  border-radius: 4px;
+  /* border: 1px solid #ccc; */
+  /* margin-bottom: 16px; */
+  display: flex;
+  align-items: center;
+  padding: 8px;
+}
+
+.create-post-card-input-container {
+  display: flex;
+  flex-grow: 1;
+}
+
+.create-post-card-input {
+  background-color: #f6f7f8;
+  border-radius: 4px;
+  border: 1px solid #edeff1;
+  box-shadow: none;
+  box-sizing: border-box;
+  flex-grow: 1;
+  height: 38px;
+  margin-right: 8px;
+  outline: none;
+  padding: 0 16px;
+}
+
+.create-post-card-input:hover {
+  background-color: white;
+  border: 1px solid #0079d3;
+}
+
+.image-icon {
+  padding: 6px 6px 1px 6px;
+  margin: 0 2px;
+  background-color: white;
+  border-radius: 4px;
+  color: #bababa;
+}
+
+.link-icon {
+  padding: 9px 8.5px 3px 8.5px;
+  margin: 0 2px;
+  background-color: white;
+  border-radius: 4px;
+  color: #bababa;
+}
+
+.image-icon:hover,
+.link-icon:hover {
+  color: #949597;
+  background-color: #ededed;
+}
+
+.image-icon:active,
+.link-icon:active {
+  color: #7f8182;
+  background-color: #c9c9c9;
+}
+
+.image-icon > svg {
+  height: 25px;
+}
+
+.link-icon > svg {
+  height: 20px;
+}
