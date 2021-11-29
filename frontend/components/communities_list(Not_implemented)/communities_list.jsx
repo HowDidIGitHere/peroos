@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import FooterCard from "../sidebar/footer_card";
 
 class CommunitiesList extends React.Component {
   constructor(props) {
@@ -21,30 +22,41 @@ class CommunitiesList extends React.Component {
           </div>
         </div>
 
-        <div className='communities-list-content'>
-          <div className='communities-listing'>
-            <div className='communities-list-ex'>
-              <h2>Top Communities</h2>
-              <p>Followers</p>
+        <div className='community-content'>
+          <div className='main-community-page'>
+            <div className='communities-listing'>
+              <div className='communities-list-ex'>
+                <h2>Top Communities</h2>
+                <p>Followers</p>
+              </div>
+              <ol className='communities-list-entries'>
+                {
+                  this.props.allCommunities ? this.props.allCommunities.map((community, idx) => (
+                    <li key={`com-${idx}`}>
+                      <Link to={`/${community.sub}`}>
+                        <span className='community-list-item'>
+                          <h1>{idx + 1}</h1>
+                          {/* <img/>COMMUNITY ICON */}
+                          <h1>{community.sub}</h1>
+                        </span>
+                        <p>{community.follower_count}</p>
+                      </Link>
+                    </li>
+                  )) : ''
+                }
+              </ol>
             </div>
-            <ol className='communities-list-entries'>
-              {
-                this.props.allCommunities ? this.props.allCommunities.map((community, idx) => (
-                  <li key={`com-${idx}`}>
-                    <Link to={`/${community.sub}`}>
-                      <span className='community-list-item'>
-                        <h1>{idx + 1}</h1>
-                        {/* <img/>COMMUNITY ICON */}
-                        <h1>{community.sub}</h1>
-                      </span>
-                      <p>{community.follower_count}</p>
-                    </Link>
-                  </li>
-                )) : ''
-              }
-            </ol>
+          </div>
+          <div className='sidebar-community-page'>
+            {/* <CommunityAbout community={this.props.community}/> */}
+            {/* <ModeratorsCard community={this.props.community} /> */}
+            <FooterCard />
           </div>
         </div>
+
+
+        {/* <div className='communities-list-content'>
+        </div> */}
       </div>
 
     )

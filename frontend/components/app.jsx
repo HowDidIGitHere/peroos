@@ -6,6 +6,7 @@ import Sidebar from "./sidebar/side";
 import { Link } from "react-router-dom";
 import CommunityPageContainer from "./community_page/community_page_container";
 import CommunitiesListContainer from "./communities_list(Not_implemented)/communities_list_container";
+import HomePageContainer from "../home/home_page_container";
 
 const App = () => (
   <div>
@@ -19,17 +20,13 @@ const App = () => (
     <div className='hidden-buffer'></div>
 
     <main>
-      <section>
-        <Switch>
-          {/* <Route path='/submit' component={props => <CreatePostContainer {...props} />} /> */}
-          <Route path='/communities' component={props => <CommunitiesListContainer {...props} />} />
-          {/* <Route path='/:communityTitle/comments/:postId' component={props => < {...props} />} /> */}
-          <Route path='/:communityTitle' component={props => <CommunityPageContainer {...props} />} />
-          {/* <Route path='/' component={props => <HomePageContainer {...props}/>} /> */}
-        </Switch>
-      </section>
-
-      <Sidebar />
+      <Switch>
+        {/* <Route path='/submit' component={props => <CreatePostContainer {...props} />} /> */}
+        <Route path='/communities' component={props => <CommunitiesListContainer {...props} />} />
+        {/* <Route path='/:communityTitle/comments/:postId' component={props => < {...props} />} /> */}
+        <Route path='/:communityTitle' component={props => <CommunityPageContainer {...props} />} />
+        <Route path='/' component={props => <HomePageContainer {...props}/>} />
+      </Switch>
     </main>
 
   </div>

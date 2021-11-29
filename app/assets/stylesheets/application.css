@@ -410,6 +410,7 @@ p {
 }
 
 .communities-listing {
+  margin-top: 16px;
   max-width: 740px;
   width: 640px;
   flex: 1 1 100%;
@@ -485,6 +486,7 @@ p {
   background-color: #0079d3;
   color: white;
   padding: 0 12px 12px;
+  border-radius: 4px 4px 0 0;
 }
 
 .about-community-header > h2 {
