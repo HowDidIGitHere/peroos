@@ -23,4 +23,9 @@ class Community < ApplicationRecord
     through: :follows,
     source: :user
 
+  has_many :posts,
+    primary_key: :id,
+    foreign_key: :community_id,
+    class_name: :Post
+
 end
