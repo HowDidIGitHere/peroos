@@ -922,14 +922,75 @@ p {
   padding-left: 40px;
   cursor: pointer;
   transition: color .5s,fill .5s,box-shadow .5s;
-  margin-bottom: 10px;
   overflow: hidden;
   color: #6c6e70;
   position: relative;
+  background-color: white;
+}
+
+.vote-counter {
+  width: 40px;
+  border-left: 4px solid transparent;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  left: 0;
+  padding: 8px 4px 8px 0;
+  position: absolute;
+  top: 0;
+}
+
+.vote-counter > div {
+  align-items: center;
+  display: flex;
+  fill: inherit;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.vote-counter > div > div {
+  color: black;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  word-break: normal;
+  margin-right: 1px;
+  margin-top: 1px;
+}
+
+.vote-counter > div > div > a {
+  align-items: center;
+  display: flex;
+  flex-direction: row-reverse;
+  height: 12px;
+  line-height: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.vote-counter > div > button {
+  height: 24px;
+  width: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-counter > div > button:hover {
+  color: red;
+}
+
+.vote-counter > div > button > svg {
+  border-radius: 2px;
+  height: 20px;
+  width: 20px;
+  color: #878a8c;
 }
 
 .post-content-body {
   padding-top: 8px;
+  background-color: white;
 }
 
 .post-card-border:hover {
@@ -945,4 +1006,195 @@ p {
   align-items: start;
   margin: 0 8px 8px;
   position: relative;
+}
+
+.posted-by > div {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.posted-by > div > div {
+  /* display: inline;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  align-items: center; */
+  display: flex;
+  flex-direction: row;
+}
+
+.username-link-highlight:hover {
+  text-decoration: underline;
+}
+
+.post-title-sec {
+  color: #0079d3;
+  margin: 0px 8px;
+}
+
+.post-title-sec > div {
+  display: inline;
+  position: relative;
+  text-decoration: none;
+  word-break: break-word;
+}
+
+.post-title-sec > div > a > h1 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 22px;
+  display: inline;
+  padding-right: 5px;
+  word-wrap: break-word;
+}
+
+.post-body-sec {
+  margin-top: 8px;
+}
+
+.post-body-sec > div {
+  max-height: 250px;
+  -webkit-mask-image: linear-gradient(180deg,#000 60%,transparent);
+  mask-image: linear-gradient(180deg,#000 60%,transparent);
+  overflow: hidden;
+  padding: 5px 8px 10px;
+}
+
+.post-body-sec > div > div {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  word-break: break-word;
+  overflow: auto;
+  padding-bottom: 1px;
+  margin-bottom: -1px;
+}
+
+.post-footer-sec {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  padding-right: 10px;
+  overflow-y: visible;
+  cursor: pointer;
+}
+
+.post-footer-sec > div {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  padding: 0 8px 0 4px;
+  flex-grow: 1;
+  cursor: pointer;
+}
+
+.post-footer-sec > div > a {
+  padding: 8px;
+  word-break: normal;
+  margin-right: 4px;
+  align-items: center;
+  display: flex;
+  border-radius: 2px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  box-sizing: border-box;
+}
+
+.vote-counter > div > button:hover,
+.post-footer-sec > div > a:hover,
+.post-share-button > button:hover,
+.post-save-button > button:hover,
+.post-ellipses-button > button:hover {
+  background-color: #e8e8e8;
+}
+
+.post-footer-sec > div > a > svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 6px;
+}
+
+.post-share-button {
+  margin: 0 4px 0 0;
+  width: auto;
+  word-break: normal;
+  align-items: center;
+  display: flex;
+}
+
+.post-share-button > button {
+  border-radius: 2px;
+  margin-right: 4px;
+  padding: 8px;
+  white-space: nowrap;
+  width: auto;
+  word-break: normal;
+  word-wrap: normal;
+  height: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+.post-share-button > button > svg {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.post-save-button {
+  align-items: center;
+  display: flex;
+}
+
+.post-save-button > button {
+  border-radius: 2px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.post-save-button > button > svg {
+  width: 15px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.post-ellipses-button {
+  margin-left: 3px;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.post-ellipses-button > button {
+  border-radius: 2px;
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+  width: 100%;
+}
+
+.post-ellipses-button > button > svg {
+  width: 5px;
+  height: 5px;
+  margin: 0 1px;
+}
+
+.post-ellipses-button > button:last-child {
+  margin-right: 0;
 }
