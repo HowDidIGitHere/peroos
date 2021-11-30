@@ -955,7 +955,7 @@ p {
   font-weight: 700;
   line-height: 16px;
   word-break: normal;
-  margin-right: 1px;
+  /* margin-right: .5px; */
   margin-top: 1px;
 }
 
