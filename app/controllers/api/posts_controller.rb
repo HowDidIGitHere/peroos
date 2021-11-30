@@ -1,8 +1,12 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
-    render :index
+    @posts = Post.where(community_id: params[:community_id])
+    if @posts
+      render :index
+    else
+      render json: @posts.errors.full_messages, status: 404
+    end
   end
 
   def show

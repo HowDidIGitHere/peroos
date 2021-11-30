@@ -12,7 +12,15 @@ class CommunityPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id));
+    this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id))
+      // .then(responseCom => {
+      //   console.log(responseCom.community)
+      //   this.props.getAllPosts(responseCom.community.id)
+      //   .then(responsePosts => {
+      //     console.log(responsePosts.posts)
+      //     this.setState({ posts: Object.values(responsePosts.posts) })
+      //   })
+      // });
   }
 
   render() {
