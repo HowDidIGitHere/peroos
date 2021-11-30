@@ -12,14 +12,14 @@ class CreatePost extends React.Component {
         body: '',
         media: '',
         link: '',
-        community_id: this.props.match.params
+        community_id: undefined
       }
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.getCommunity();
+    this.props.getCommunity().then(response => this.setState({ post: Object.assign({}, this.state.post, { community_id: response.community.id }) }));
   }
 
   handleChange(type) {
@@ -37,8 +37,7 @@ class CreatePost extends React.Component {
     e.stopPropagation();
     // let tempPost = Object.assign({}, this.state.post);
     // tempPost[community_id] = this.props.community.id;
-    console.log(this.state.post);
-    // this.props.createPost(tempPost);
+    this.props.createPost(this.state.post).then(() => this.props.history.push(`/${this.props.match.params.communityTitle}`));
   }
 
   render() {
