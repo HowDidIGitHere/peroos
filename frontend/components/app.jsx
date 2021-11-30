@@ -8,6 +8,7 @@ import CommunitiesListContainer from "./communities_list/communities_list_contai
 import HomePageContainer from "../home/home_page_container";
 import { ProtectedRoute } from "../util/route_utils";
 import CreatePostContainer from "./create_post/create_post_container";
+import SearchBarContainer from "./searchbar/searchbar_container";
 
 const App = () => (
   <div>
@@ -16,6 +17,7 @@ const App = () => (
       <Link to='/'>
         <h1 className='logo'>peroos</h1>
       </Link>
+      <SearchBarContainer />
       <NavContainer />
     </header>
     <div className='hidden-buffer'></div>
