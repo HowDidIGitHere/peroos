@@ -1,3 +1,10 @@
+export const getAllPosts = community_id => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/communities/${community_id}/posts`
+  })
+);
+
 export const getPost = postId => (
   $.ajax({
     method: 'GET',

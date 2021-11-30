@@ -747,11 +747,11 @@ p {
 .create-post-form-input-optional > div > textarea {
   overflow-x: hidden;
   overflow-wrap: break-word;
-  height: 100px;
+  height: 160px;
   padding: 8px 16px;
   border: 1px solid #edeff1;
   background-color: transparent;
-  min-height: 100px;
+  min-height: 160px;
   resize: vertical;
   box-sizing: border-box;
   overflow: hidden;
@@ -766,7 +766,7 @@ p {
 
 .create-post-form-input-title > div > textarea:focus,
 .create-post-form-input-optional > div > textarea:focus {
-  border: 1px solid black;
+  border: 1px solid #898989;
 }
 /* 
 .create-post-form-input-optional > div {
@@ -914,4 +914,35 @@ p {
 
 .create-post-form-send-buttons > div .bubble-button {
   height: 30px;
+  width: 92px;
+}
+
+.post-content {
+  border-radius: 4px;
+  padding-left: 40px;
+  cursor: pointer;
+  transition: color .5s,fill .5s,box-shadow .5s;
+  margin-bottom: 10px;
+  overflow: hidden;
+  color: #6c6e70;
+  position: relative;
+}
+
+.post-content-body {
+  padding-top: 8px;
+}
+
+.post-card-border:hover {
+  border: 1px solid #898989;
+}
+
+.posted-by {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: start;
+  margin: 0 8px 8px;
+  position: relative;
 }

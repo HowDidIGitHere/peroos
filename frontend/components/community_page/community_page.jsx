@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CreatePostCardContainer from "../create_post/create_post_card_container";
 import NotFoundPage from "../not_found/not_found";
+import PostCard from "../post_card/post_card";
 import FooterCard from "../sidebar/footer_card";
 import CommunityAbout from "./community_about";
 
@@ -11,7 +12,7 @@ class CommunityPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCommunity();
+    this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id));
   }
 
   render() {
@@ -53,6 +54,15 @@ class CommunityPage extends React.Component {
           <div className='community-content'>
             <div className='main-community-page'>
               <CreatePostCardContainer />
+              {
+                this.props.posts ? (
+                  <ul>
+                    {
+                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} post={post} />)
+                    }
+                  </ul>
+                ) : null
+              }
             </div>
             <div className='sidebar-community-page'>
               <CommunityAbout community={this.props.community}/>

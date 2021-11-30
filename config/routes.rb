@@ -5,9 +5,11 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
 
-    resources :communities, except: [:edit, :new]
+    resources :communities, except: [:edit, :new] do
+      resources :posts, only: [:index]
+    end
     resources :follows, only: [:create, :destroy]
-    resources :posts, except: [:edit, :new]
+    resources :posts, except: [:index, :edit, :new]
   end
 
   root to: 'static_pages#root'

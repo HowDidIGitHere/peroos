@@ -1,4 +1,5 @@
 import {
+  RECEIVE_ALL_POSTS,
   RECEIVE_POST,
   RECEIVE_POST_ERRORS
 } from '../actions/post_actions';
@@ -6,6 +7,8 @@ import {
 const postsErrorsReducer = (state = null, action) => {
 
   switch (action.type) {
+    case RECEIVE_ALL_POSTS:
+      return null;
     case RECEIVE_POST:
       return null;
     case RECEIVE_POST_ERRORS:
