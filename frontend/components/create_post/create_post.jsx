@@ -12,15 +12,33 @@ class CreatePost extends React.Component {
         body: '',
         media: '',
         link: '',
-        community_id: undefined
+        community_id: this.props.match.params
       }
     }
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.props.getCommunity();
   }
 
   handleChange(type) {
-    return e => this.setState({ 
-      post: { [type]: e.currentTarget.value }
-    });
+    return e => {
+      let tempPost = Object.assign({}, this.state.post);
+      tempPost[type] = e.target.value;
+      this.setState({ 
+        post: tempPost
+      });
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    // let tempPost = Object.assign({}, this.state.post);
+    // tempPost[community_id] = this.props.community.id;
+    console.log(this.state.post);
+    // this.props.createPost(tempPost);
   }
 
   render() {
@@ -62,15 +80,15 @@ class CreatePost extends React.Component {
                 <div className='create-post-form-input'>
                   <div className='create-post-form-input-title'>
                     <div>
-                      <textarea onChange={this.handleChange('title')} maxLength='300' placeholder='Title' rows='1'>{this.state.post.title}</textarea>
+                      <textarea onChange={this.handleChange('title')} maxLength='300' value={this.state.post.title} placeholder='Title' rows='1'></textarea>
                       <div>
                         {this.state.post.title.length}/300
                       </div>
                     </div>
                   </div>
-                  <div>
-                    <div className='create-post-form-input-optional'>
-                      
+                  <div className='create-post-form-input-optional'>
+                    <div>
+                      <textarea onChange={this.handleChange('body')} maxLength='40000' value={this.state.post.body} placeholder='Text (optional)' rows="10" ></textarea>
                     </div>
                   </div>
                 </div>
@@ -81,8 +99,8 @@ class CreatePost extends React.Component {
                   <hr/>
                   <div className='create-post-form-send-buttons'>
                     <div>
-                      <Link to='/'><button className='bubble-button'>Cancel</button></Link>
-                      <button className='bubble-button filled-blue'>POST</button>
+                      <Link to='/'><button className='bubble-button'>CANCEL</button></Link>
+                      <button onClick={this.handleSubmit} className='bubble-button filled-blue'>POST</button>
                     </div>
                   </div>
                 </div>

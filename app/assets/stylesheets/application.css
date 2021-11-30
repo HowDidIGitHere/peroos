@@ -552,7 +552,7 @@ p {
 .community-cake-tracker > p {
   font-size: 14px;
   font-weight: 400;
-  line-height: 18px;
+  line-height: 22px;
   display: flex;
   flex-flow: row nowrap;
 }
@@ -744,12 +744,37 @@ p {
   position: relative;
 }
 
+.create-post-form-input-optional > div > textarea {
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  height: 100px;
+  padding: 8px 16px;
+  border: 1px solid #edeff1;
+  background-color: transparent;
+  min-height: 100px;
+  resize: vertical;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  outline: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+}
+
+.create-post-form-input-title > div > textarea:focus,
+.create-post-form-input-optional > div > textarea:focus {
+  border: 1px solid black;
+}
+/* 
 .create-post-form-input-optional > div {
   border-radius: 4px;
   background-color: white;
   position: relative;
   border: 1px solid #edeff1;
-}
+} */
 
 .content-sidebar {
   margin-left: 24px;

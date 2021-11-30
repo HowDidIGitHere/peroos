@@ -30,19 +30,19 @@ export const getPost = postId => dispatch => (
 );
 
 export const createPost = post => dispatch => (
-  PostAPIutil.getPost(post)
+  PostAPIutil.createPost(post)
     .then(post => dispatch(receivePost(post)))
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
 export const editPost = post => dispatch => (
-  PostAPIutil.getPost(post)
+  PostAPIutil.editPost(post)
     .then(post => dispatch(receivePost(post)))
     .fail(errors => dispatch(receiveErrors(errors)))
 );
 
 export const deletePost = postId => dispatch => (
-  PostAPIutil.getPost(postId)
+  PostAPIutil.deletePost(postId)
     .then(post => dispatch(receivePost(post)))
 );
 

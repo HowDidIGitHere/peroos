@@ -23,6 +23,7 @@ const App = () => (
     <main>
       <Switch>
         <ProtectedRoute path='/submit' component={props => <CreatePostContainer {...props} />} />
+        <ProtectedRoute path='/:communityTitle/submit' component={props => <CreatePostContainer {...props} />} />
         <Route path='/communities' component={props => <CommunitiesListContainer {...props} />} />
         {/* <Route path='/:communityTitle/comments/:postId' component={props => < {...props} />} /> */}
         <Route path='/:communityTitle' component={props => <CommunityPageContainer {...props} />} />
