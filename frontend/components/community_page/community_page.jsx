@@ -64,7 +64,7 @@ class CommunityPage extends React.Component {
                 this.props.posts ? (
                   <ul>
                     {
-                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} post={post} />)
+                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} history={this.props.history} community={this.props.community.sub} post={post} />)
                     }
                   </ul>
                 ) : null

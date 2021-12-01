@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CommunityAbout from "../community_page/community_about";
+import FooterCard from "../sidebar/footer_card";
 
 class Post extends React.Component {
   constructor(props) {
@@ -7,10 +9,14 @@ class Post extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getCommunity();
     this.props.getCurrentPost();
   }
 
   render() {
+    if (!this.props.community || !this.props.currentPost) {
+      return '...loading'
+    }
     const { body, media, list } = this.props.currentPost;
     const postContent = body ? body : (media ? media : list);
     return (
@@ -31,10 +37,10 @@ class Post extends React.Component {
                 </div>
               </div>
               <div>
-                <button>
+                <Link to={`/${this.props.community.sub}`}>
                   <p>&times;</p>
                   <p>Close</p>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
@@ -63,17 +69,73 @@ class Post extends React.Component {
                       </button>
                     </div>
                   </div>
-                  <div>
-                    
+                  <div className='post-content-posted-by'>
+                    <div>
+                      <Link to={`/${this.props.community.sub}`}>p/{this.props.community.sub}</Link>
+                    </div>
+                    <span>•</span>
+                    <div>
+                      <div>
+                        <p>Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.currentPost.poster}</Link> {this.props.currentPost.created_at}</p>
+                      </div>
+                    </div>
                   </div>
-                  <div></div>
-                  <div></div>
-                  <div></div>
+                  <div className='post-content-title'>
+                    <div>
+                      <h1>{this.props.currentPost.title}</h1>
+                    </div>
+                  </div>
+                  <div className='post-content-body-sec'>
+                    <div>
+                      <p>{this.props.currentPost.body}</p>
+                    </div>
+                  </div>
+
+                  <div className='post-footer-sec'>
+                    <div>
+                      <Link to={`/`}>
+                        <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment-alt" className="svg-inline--fa fa-comment-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                          <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"></path>
+                        </svg>
+                        <p>0 Comments</p>
+                      </Link>
+                      <div className='post-share-button'>
+                        <button>
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="share" className="svg-inline--fa fa-share fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                            <path fill="currentColor" d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"></path>
+                          </svg>
+                          <p>Share</p>
+                        </button>
+                      </div>
+                      <div className='post-save-button'>
+                        <button>
+                          <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bookmark" className="svg-inline--fa fa-bookmark fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+                            <path fill="currentColor" d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"></path>
+                          </svg>
+                          <p>Save</p>
+                        </button>
+                      </div>
+                      <div className='post-ellipses-button'>
+                        <button>
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" className="svg-inline--fa fa-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg>
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" className="svg-inline--fa fa-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg>
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="circle" className="svg-inline--fa fa-circle fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8z"></path></svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
                 </div>
+
+              <div className='post-comment-form'>
+
+              </div>
               </div>
             </div>
             <div className='post-body-aside'>
-              
+              <CommunityAbout match={this.props.match} community={this.props.community} currentUserId={this.props.currentUserId} />
+              {/* <ModeratorsCard community={this.props.community} /> */}
+              <FooterCard />
             </div>
           </div>
         </div>

@@ -31,7 +31,7 @@ class HomePage extends React.Component {
               <ul>
                 {
                   this.props.personalFeed.map((post, idx) => (
-                    <PostCard key={`post-personal-${idx}`} post={post} />
+                    <PostCard key={`post-personal-${idx}`} history={this.props.history} community={post.community} post={post} />
                   ))
                 }
               </ul>
