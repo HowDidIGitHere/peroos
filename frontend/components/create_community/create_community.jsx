@@ -15,7 +15,7 @@ class CreateCommunityForm extends React.Component {
     const community = Object.assign({}, this.state);
     this.props.processForm(community)
       .then(() => this.props.closeModal())
-      .fail(() => console.log('Oh no'))
+      .fail(() => console.log('Oh no'));
   }
   
   update(field) {
@@ -45,7 +45,7 @@ class CreateCommunityForm extends React.Component {
             </div>
           </div>
           <div className='create-community-errors'>
-            <span>{this.props.errors ? this.props.errors : null}</span>
+            <span>{this.props.errors ? this.props.errors[0] : null}</span>
           </div>
           <div className='create-community-footer'>
             <button className='bubble-button' onClick={() => this.props.closeModal()}>Cancel</button>

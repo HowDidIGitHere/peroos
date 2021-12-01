@@ -1,8 +1,10 @@
 class Community < ApplicationRecord
   
+  VALID_CHARS = []
+
   validates :sub, :creator_id, presence: true
   validates :sub, uniqueness: true
-  validates :sub, length: { maximum: 21 }, allow_nil: true
+  validates :sub, length: { minimum: 3, maximum: 21 }, format: { with: /\A[a-zA-Z0-9]\z/, message: 'only allows letters and numbers' }
 
   belongs_to :creator,
     primary_key: :id,
