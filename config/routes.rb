@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     resources :communities, except: [:edit, :new] do
       resources :posts, only: [:index]
     end
+
+    get '/posts', to: 'posts#feed'
+
     resources :follows, only: [:create, :destroy]
     resources :posts, except: [:index, :edit, :new]
   end

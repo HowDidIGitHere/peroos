@@ -9,10 +9,18 @@ import CommunityAbout from "./community_about";
 class CommunityPage extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      page: 0
+    }
   }
 
   componentDidMount() {
     this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id))
+    window.onscroll = (e) => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.setState({ page: this.state.page + 1 }, () => this.props.getAllPosts(this.props.community.id, this.state.page).then(() => console.log(this.state.page)))
+      }
+    }
   }
 
   render() {

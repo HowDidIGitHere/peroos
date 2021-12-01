@@ -1,12 +1,14 @@
 import { connect } from "react-redux";
 import HomePage from "./home_page";
+import { getPersonalFeed } from "../actions/post_actions";
 
 const mapStateToProps = state => ({
-  session: state.session.currentUserId
+  currentUserId: state.session.currentUserId,
+  personalFeed: state.entities.posts
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  getPersonalFeed: page => dispatch(getPersonalFeed(page))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

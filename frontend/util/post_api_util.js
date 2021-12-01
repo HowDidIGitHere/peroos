@@ -1,7 +1,16 @@
-export const getAllPosts = community_id => (
+export const getPersonalFeed = page => (
   $.ajax({
     method: 'GET',
-    url: `/api/communities/${community_id}/posts`
+    url: `/api/posts`,
+    data: { page }
+  })
+);
+
+export const getAllPosts = (community_id, page) => (
+  $.ajax({
+    method: 'GET',
+    url: `/api/communities/${community_id}/posts`,
+    data: { page }
   })
 );
 

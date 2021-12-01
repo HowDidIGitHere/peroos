@@ -8,7 +8,7 @@ import CommunityPage from "./community_page";
 const mapStateToProps = (state, ownProps) => ({
   currentUserId: state.session.currentUserId,
   community: state.entities.communities[ownProps.match.params.communityTitle],
-  posts: Object.values(state.entities.posts)
+  posts: state.entities.posts
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   follow: follow => dispatch(followCommunity(follow)),
   unfollow: follow => dispatch(unfollowCommunity(follow)),
   openModal: modal => dispatch(openModal(modal)),
-  getAllPosts: communityId => dispatch(getAllPosts(communityId))
+  getAllPosts: (communityId, page) => dispatch(getAllPosts(communityId, page))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommunityPage));

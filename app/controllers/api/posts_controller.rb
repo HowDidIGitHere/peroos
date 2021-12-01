@@ -1,11 +1,22 @@
 class Api::PostsController < ApplicationController
 
+  before_action :set_page, only: [:index, :feed]
+
   def index
-    @posts = Post.where(community_id: params[:community_id])
+    @posts = Post.where(community_id: params[:community_id]).limit(10).offset(@page.to_i * 10).order(created_at: :desc)
     if @posts
       render :index
     else
       render json: @posts.errors.full_messages, status: 404
+    end
+  end
+
+  def feed
+    @posts = Post.limit(10).offset(@page.to_i * 10).order(created_at: :desc)
+    if @posts
+      render :index
+    else
+      render json: @post.errors.full_messages, status: 404
     end
   end
 
@@ -46,6 +57,10 @@ class Api::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body, :media, :link, :community_id)
+  end
+
+  def set_page
+    @page = params[:page] || 0
   end
 
 end
