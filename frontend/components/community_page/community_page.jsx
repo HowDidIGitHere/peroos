@@ -15,10 +15,10 @@ class CommunityPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id))
+    this.props.getCommunity().then(() => !this.props.posts ? this.props.getAllPosts(this.props.community.id) : console.log('oof'))
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.setState({ page: this.state.page + 1 }, () => this.props.getAllPosts(this.props.community.id, this.state.page).then(() => console.log(this.state.page)))
+        this.setState({ page: this.state.page + 1 }, () => this.props.getAllPosts(this.props.community.id, this.state.page))
       }
     }
   }

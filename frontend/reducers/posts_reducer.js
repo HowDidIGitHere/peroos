@@ -17,9 +17,10 @@ const postsReducer = (state = null, action) => {
     case RECEIVE_EVEN_MOVE_POSTS:
       nextState = state ? state.concat(action.posts) : action.posts;
       return nextState;
-    // case RECEIVE_POST: 
-      // nextState[action.post.id] = action.post;
-      // return nextState;
+    case RECEIVE_POST: 
+      nextState = state ? state : [];
+      nextState.unshift(action.post)
+      return nextState;
     // case REMOVE_POST:
       // delete nextState[action.post.id];
       // return nextState;

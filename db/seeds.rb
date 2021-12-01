@@ -8,4 +8,7 @@
 
 User.create(username: 'thePerooser', password: 'justPeroosing')
 
-Community.create(sub: 'CuteAnimals', creator_id: 1)
+Community.create(sub: 'test', about: 'Just for testing.', creator_id: 1)
+(1..100).each do |n|
+  Post.create(title: "test #{n}", poster_id: 1, community_id: 1, body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', )
+end

@@ -13,7 +13,7 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getPersonalFeed()
+    !this.props.personalFeed ? this.props.getPersonalFeed() : console.log('oops')
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         this.setState({ page: this.state.page + 1 }, () => this.props.getPersonalFeed(this.state.page).then(() => console.log(this.state.page)))
