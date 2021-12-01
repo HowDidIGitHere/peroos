@@ -47,7 +47,9 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className='session-modal'>
-        <span onClick={() => this.props.closeModal()}>&times;</span>
+        <div className='session-modal-x'>
+          <span onClick={() => this.props.closeModal()}>&times;</span>
+        </div>
         <h4>{this.props.formType}</h4>
         {
           this.props.formType === 'Login' ?
@@ -72,11 +74,18 @@ class SessionForm extends React.Component {
               <label>Password</label>
             </div>
 
-            <br />
             <button className='bubble-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
-        {this.renderErrors()}
+        {/* {this.renderErrors()} */}
+        {
+          this.props.formType === 'Login' ? (
+          <div className='forgor'>
+            <p>
+              Forgot your <button>username</button> or <button>password</button>?
+            </p>
+          </div>) : null
+        }
         {
           this.props.formType === 'Login' ?
             (
@@ -85,7 +94,11 @@ class SessionForm extends React.Component {
                 <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
               </div>
             ) :
-            (<p>Already a Perooser? {this.props.otherForm}</p>)
+            (
+              <div>
+                <p>Already a Perooser? {this.props.otherForm}</p>
+              </div>
+            )
         }
       </div>
     );
