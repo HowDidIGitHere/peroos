@@ -12,12 +12,15 @@ class HomePage extends React.Component {
     return (
       <div className='community-content'>
         <div className='main-community-page'>
-          <CreatePostCardContainer />
+          {this.props.session ? <CreatePostCardContainer /> : null}
+          {
+
+          }
         </div>
         <div className='sidebar-community-page'>
           {/* <CommunityAbout community={this.props.community}/> */}
           {/* <ModeratorsCard community={this.props.community} /> */}
-          <HomeDescContainer />
+          {this.props.session ? <HomeDescContainer /> : null}
           <FooterCard />
         </div>
       </div>

@@ -31,7 +31,7 @@ body {
 .modal-child {
   position: absolute;
   background-color: white;
-  padding: 20px;
+  padding: 16px;
   border-radius: 5px;
   top: 50%;
   left: 50%;
@@ -1252,4 +1252,172 @@ p {
   outline: none;
   width: 100%;
   font-weight: 400;
+}
+
+.filter-feed-content {
+  align-items: center;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  padding: 10px 12px;
+}
+
+.hidden-create-post-button {
+  margin-top: 12px;
+}
+
+.hidden-create-post-button > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden-create-post-button > div > a {
+  margin-left: 0;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
+.create-community-content {
+  display: flex;
+  align-items: center;
+  /* box-sizing: border-box; */
+  /* padding: 16px; */
+  position: relative;
+  /* border-radius: 0 4px 4px 0; */
+  /* flex: 1 1 100%; */
+  margin: 0;
+  /* max-height: 100%;
+  max-width: 100w;
+  overflow-y: auto; */
+}
+
+.create-community-content > div {
+  max-height: 100%;
+  max-width: 492px;
+}
+
+.create-community-content > div > h1 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  border-bottom: 1px solid #edeff1;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding: 0 0 16px;
+}
+
+.create-community-name-input {
+  flex-direction: column;
+  margin-bottom: 30px;
+  display: flex;
+  flex-wrap: row wrap;
+}
+
+.create-community-name-sec {
+  max-width: 100%;
+  margin-bottom: -4px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 8px;
+}
+
+.create-community-name-sec > h2 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 20px;
+  display: flex;
+  margin-bottom: 4px;
+}
+
+.create-community-name-sec > p {
+  font-weight: 400;
+  color: #7c7c7c;
+}
+
+.create-community-input-sec {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 12px;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+.create-community-input-sec > h2 {
+  color: #989ca0;
+  position: relative;
+  top: 28px;
+  left: 12px;
+}
+
+.create-community-input-sec > input {
+  max-height: 37px;
+  padding-top: 4px;
+  padding-left: 24px;
+  box-sizing: border-box;
+  height: 48px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  padding: 12px 24px 12px 26px;
+  width: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  font-family: inherit;
+  background-color: white;
+  border: 1px solid #edeff1;
+}
+
+.create-community-input-sec > input:focus {
+  border: 2px solid black;
+}
+
+.create-community-input-sec > p {
+  color: #7c7c7c;
+  padding: 5px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.create-community-footer {
+  background-color: #edeff1;
+  width: 100%;
+  padding: 16px;
+  padding-bottom: 6px;
+  margin: 16px -16px -16px;
+  display: flex;
+  justify-content: flex-end;
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.create-community-footer > .bubble-button {
+  width: 128px;
+}
+
+.create-community-footer > button:first-child {
+  width: 55px;
+}
+
+.create-community-errors {
+  margin: -32px 0 16px;
+  margin-left: 4px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 16px;
+  color: red;
+  padding-top: 4px;
+  text-align: right;
+  display: flex;
+}
+
+.create-community-errors > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
 }

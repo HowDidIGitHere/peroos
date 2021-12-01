@@ -13,14 +13,6 @@ class CommunityPage extends React.Component {
 
   componentDidMount() {
     this.props.getCommunity().then(() => this.props.getAllPosts(this.props.community.id))
-      // .then(responseCom => {
-      //   console.log(responseCom.community)
-      //   this.props.getAllPosts(responseCom.community.id)
-      //   .then(responsePosts => {
-      //     console.log(responsePosts.posts)
-      //     this.setState({ posts: Object.values(responsePosts.posts) })
-      //   })
-      // });
   }
 
   render() {
@@ -59,7 +51,7 @@ class CommunityPage extends React.Component {
           </div>
           <div className='community-content'>
             <div className='main-community-page'>
-              <CreatePostCardContainer />
+              {this.props.currentUserId ? <CreatePostCardContainer /> : null}
               {
                 this.props.posts ? (
                   <ul>
@@ -71,7 +63,7 @@ class CommunityPage extends React.Component {
               }
             </div>
             <div className='sidebar-community-page'>
-              <CommunityAbout community={this.props.community}/>
+              <CommunityAbout match={this.props.match} community={this.props.community} currentUserId={this.props.currentUserId} />
               {/* <ModeratorsCard community={this.props.community} /> */}
               <FooterCard />
             </div>

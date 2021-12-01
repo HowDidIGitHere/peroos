@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CommunityAbout = (props) => {
   return (
@@ -39,6 +40,15 @@ const CommunityAbout = (props) => {
 
           <p>Created {props.community.cake_date}</p>
         </div>
+        {
+          props.currentUserId ? (
+            <div className='hidden-create-post-button'>
+              <div>
+                <Link to={`/${props.match.params.communityTitle}/submit`} className='bubble-button filled-blue'>Create Post</Link>
+              </div>
+            </div>
+          ) : null
+        }
       </div>
     </div>
   )

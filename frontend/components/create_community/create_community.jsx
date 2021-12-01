@@ -13,7 +13,9 @@ class CreateCommunityForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const community = Object.assign({}, this.state);
-    this.props.processForm(community).then(this.props.closeModal());
+    this.props.processForm(community)
+      .then(() => this.props.closeModal())
+      .fail(() => console.log('Oh no'))
   }
   
   update(field) {
@@ -24,25 +26,32 @@ class CreateCommunityForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <span onClick={() => this.props.closeModal()}>&times;</span>
-        <h1>Create a community</h1>
-        <h2>Name</h2>
-        <p>Community names including capitalization cannot be changed.</p>
-        
-        <form onSubmit={this.handleSubmit}>
-          <div className='input-group'>
-            <input type='text' onChange={this.update('sub')} maxLength="21" required />
-            <span className='highlight'></span>
-            <span className='bar'></span>
-            <label>Community</label>
+      <div className='create-community-content'>
+        <div>
+          <h1>
+            Create a community
+            <span onClick={() => this.props.closeModal()}>&times;</span>
+          </h1>
+          <div className='create-community-name-input'>
+            <div className='create-community-name-sec'>
+              <h2>Name</h2>
+              <p>Community names including capitalization cannot be changed.</p>
+            </div>
+
+            <div className='create-community-input-sec'>
+              <h2>p/</h2>
+              <input type='text' onChange={this.update('sub')} maxLength="21" required />
+              <p>{21 - this.state.sub.length} Characters remaining</p>
+            </div>
           </div>
-
-          <p>{21 - this.state.sub.length} Characters remaining</p>
-
-          <button className='bubble-button'>Cancel</button>
-          <button className='bubble-button filled-blue' type='submit'>Create Community</button>
-        </form>
+          <div className='create-community-errors'>
+            <span>{this.props.errors ? this.props.errors : null}</span>
+          </div>
+          <div className='create-community-footer'>
+            <button className='bubble-button' onClick={() => this.props.closeModal()}>Cancel</button>
+            <button className='bubble-button filled-blue' onClick={this.handleSubmit}>Create Community</button>
+          </div>
+        </div>
       </div>
     )
   }
