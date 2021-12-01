@@ -1480,3 +1480,167 @@ p {
   line-height: 18px;
   margin-top: 8px;
 }
+
+.post-container {
+  background-color: #2b2c2c;
+  top: 50px;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  position: fixed;
+  backface-visibility: hidden;
+  right: 0;
+  width: 100%;
+  z-index: 50;
+}
+
+.post-container > div {
+  height: 100%;
+  overflow-y: auto;
+  position: relative;
+  width: 100%;
+  will-change: transform;
+  contain: layout style size;
+}
+
+.post-sticky-header {
+  background-color: black;
+  color: white;
+  box-sizing: border-box;
+  height: 48px;
+  left: 0;
+  margin: 0 auto;
+  max-width: 1280px;
+  position: -webkit-sticky;
+  position: sticky;
+  right: 0;
+  top: 0;
+  transition: top .3s ease;
+  width: calc(100% - 160px);
+  z-index: 70;
+}
+
+.post-sticky-header-content {
+  padding: 0 32px;
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  margin: auto;
+  max-width: 1128px;
+  width: 100%;
+}
+
+.post-sticky-header-title {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  max-width: calc(100% - 324px);
+  width: 100%;
+}
+
+.post-sticky-header-title > div:first-child {
+  color: #d7dadc;
+}
+
+.post-sticky-header-title > div:last-child > p {
+  color: #d7dadc;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  letter-spacing: .4px;
+}
+
+.post-sticky-header-title > div:first-child > svg {
+  width: 10.5px;
+  height: 14px;
+  margin-top: 1.5px;
+  margin-right: 10px;
+}
+
+.post-sticky-header-content > div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  margin-left: 12px;
+  width: 312px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+}
+
+.post-sticky-header-content > div:last-child > button {
+  color: #d7dadc;
+  position: relative;
+  border: 1px solid transparent;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: unset;
+  line-height: 16px;
+  text-transform: unset;
+  min-height: 24px;
+  min-width: 24px;
+  padding: 4px 8px;
+  align-items: center;
+  border-radius: 9999px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+}
+
+.post-sticky-header-content > div:last-child > button > p:first-child {
+  display: inline-block;
+  height: 16px;
+  width: 16px;
+  line-height: 17px;
+  padding: 0 4px 0 0;
+  font-size: 22px;
+}
+
+.post-sticky-header-content > div:last-child > button > p:last-child {
+  font-size: 12px;
+}
+
+.post-body-content {
+  background-color: #dae0e6;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1280px;
+  padding-bottom: 32px;
+  position: relative;
+  width: calc(100% - 160px);
+}
+
+.post-body-main {
+  max-width: 740px;
+  flex: 1;
+  margin: 32px 12px 32px 32px;
+  min-height: 100vh;
+  min-width: 0;
+  padding-bottom: 1px;
+  width: 100%;
+  word-break: break-word;
+}
+
+.post-body-main > div {
+  padding: 8px 0 0 40px;
+  position: relative;
+  transition: color .5s,fill .5s;
+}
+
+.post-body-main-view {
+  
+}
+
+.post-body-aside {
+  display: block;
+  margin: 32px 32px 32px 0;
+  padding: 0;
+  right: 0;
+  top: 0;
+  width: 312px;
+}

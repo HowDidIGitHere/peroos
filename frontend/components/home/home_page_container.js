@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomePage from "./home_page";
-import { getPersonalFeed } from "../actions/post_actions";
+import { getPersonalFeed } from "../../actions/post_actions";
 
 const mapStateToProps = state => ({
   currentUserId: state.session.currentUserId,

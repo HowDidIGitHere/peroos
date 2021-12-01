@@ -1,8 +1,8 @@
 import React from "react";
-import HomeDescContainer from "../components/home_description/home_desc_container";
-import FooterCard from "../components/sidebar/footer_card";
-import CreatePostCardContainer from "../components/create_post/create_post_card_container";
-import PostCard from "../components/post_card/post_card";
+import HomeDescContainer from "../home_description/home_desc_container";
+import FooterCard from "../sidebar/footer_card";
+import CreatePostCardContainer from "../create_post/create_post_card_container";
+import PostCard from "../post_card/post_card";
 
 class HomePage extends React.Component {
   constructor(props) {

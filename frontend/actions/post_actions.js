@@ -1,6 +1,7 @@
 import * as PostAPIutil from '../util/post_api_util';
 
 // action types
+export const RECEIVE_CURRENT_POST = 'RECEIVE_CURRENT_POST';
 export const RECEIVE_EVEN_MOVE_POSTS = 'RECEIVE_EVEN_MOVE_POSTS';
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
 export const RECEIVE_POST = 'RECEIVE_POST';
@@ -8,6 +9,11 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
 // actions
+export const receiveCurrentPost = post => ({
+  type: RECEIVE_CURRENT_POST,
+  post
+});
+
 export const receiveMorePosts = posts => ({
   type: RECEIVE_EVEN_MOVE_POSTS,
   posts
@@ -34,6 +40,12 @@ export const receiveErrors = errors => ({
 });
 
 // thunk action creators
+export const getCurrentPost = postId => dispatch => (
+  PostAPIutil.getPost(postId)
+    .then(post => dispatch(receiveCurrentPost(post)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+);
+
 export const getPersonalFeed = page => dispatch => (
   PostAPIutil.getPersonalFeed(page)
     .then(posts => dispatch(receiveMorePosts(posts)))
