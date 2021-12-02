@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getCommunity } from "../../actions/community_actions";
-import { getCurrentPost } from "../../actions/post_actions";
+import { getCurrentPost, removeCurrentPost} from "../../actions/post_actions";
 import Post from "./post";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -14,6 +14,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle)),
   getCurrentPost: () => dispatch(getCurrentPost(ownProps.match.params.postId)),
+  removeCurrentPost: () => dispatch(removeCurrentPost(ownProps.match.params.postId)),
   // getAllComments: () => dispatch(getAllComments(ownProps.match.params.postId))
 });
 

@@ -26,6 +26,11 @@ class User < ApplicationRecord
     foreign_key: :poster_id,
     class_name: :Post
 
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :commenter_id,
+    class_name: :Comment
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     if user && user.is_valid_password?(password)

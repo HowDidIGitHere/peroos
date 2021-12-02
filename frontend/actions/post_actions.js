@@ -1,6 +1,7 @@
 import * as PostAPIutil from '../util/post_api_util';
 
 // action types
+export const REMOVE_CURRENT_POST = 'REMOVE_CURRENT_POST';
 export const RECEIVE_CURRENT_POST = 'RECEIVE_CURRENT_POST';
 export const RECEIVE_EVEN_MOVE_POSTS = 'RECEIVE_EVEN_MOVE_POSTS';
 export const RECEIVE_ALL_POSTS = 'RECEIVE_ALL_POSTS';
@@ -9,6 +10,10 @@ export const REMOVE_POST = 'REMOVE_POST';
 export const RECEIVE_POST_ERRORS = 'RECEIVE_POST_ERRORS';
 
 // actions
+export const removeCurrentPost = () => ({
+  type: REMOVE_CURRENT_POST
+});
+
 export const receiveCurrentPost = post => ({
   type: RECEIVE_CURRENT_POST,
   post

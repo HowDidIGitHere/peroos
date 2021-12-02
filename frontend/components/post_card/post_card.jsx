@@ -39,13 +39,13 @@ class PostCard extends React.Component {
               <div className='posted-by'>
                 <div>
                   <div>
-                    <p><Link className='please-underline' to={`/${this.props.community}`}>p/{this.props.community}</Link> • Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.post.poster}</Link> {this.props.post.created_at}</p>
+                    <p><Link className='please-underline' to={`/${this.props.community}`}>p/{this.props.community}</Link> • Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.post.poster}</Link> {this.props.post.post_date}</p>
                   </div>
                 </div>
               </div>
               <div className='post-title-sec'>
                 <div>
-                  <Link to={`/`}>
+                  <Link to={`/${this.props.community}/comments/${this.props.post.id}`}>
                     <h1>{this.props.post.title}</h1>
                   </Link>
                 </div>
@@ -63,7 +63,7 @@ class PostCard extends React.Component {
               }
               <div className='post-footer-sec'>
                 <div>
-                  <Link to={`/`}>
+                  <Link to={`/${this.props.community}/comments/${this.props.post.id}`}>
                     <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment-alt" className="svg-inline--fa fa-comment-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                       <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"></path>
                     </svg>

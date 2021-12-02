@@ -12,6 +12,9 @@ class Post < ApplicationRecord
     foreign_key: :community_id,
     class_name: :Community
 
-  
+  has_many :comments,
+    primary_key: :id,
+    foreign_key: :post_id,
+    class_name: :Comment
 
 end

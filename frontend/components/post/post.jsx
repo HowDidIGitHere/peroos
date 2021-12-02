@@ -13,6 +13,10 @@ class Post extends React.Component {
     this.props.getCurrentPost();
   }
 
+  componentWillUnmount() {
+    this.props.removeCurrentPost();
+  }
+
   render() {
     if (!this.props.community || !this.props.currentPost) {
       return '...loading'
@@ -32,7 +36,7 @@ class Post extends React.Component {
                 </div>
                 <div>
                   <p>
-                    title mctitleface
+                    {this.props.currentPost.title}
                   </p>
                 </div>
               </div>
@@ -76,7 +80,7 @@ class Post extends React.Component {
                     <span>•</span>
                     <div>
                       <div>
-                        <p>Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.currentPost.poster}</Link> {this.props.currentPost.created_at}</p>
+                        <p>Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.currentPost.poster}</Link> {this.props.currentPost.post_date}</p>
                       </div>
                     </div>
                   </div>
