@@ -12,7 +12,11 @@ Rails.application.routes.draw do
     get '/posts', to: 'posts#feed'
 
     resources :follows, only: [:create, :destroy]
-    resources :posts, except: [:index, :edit, :new]
+    resources :posts, except: [:index, :edit, :new] do
+      resources :comments, only: [:index]
+    end
+
+    resources :comments, only: [:create, :update, :delete]
   end
 
   root to: 'static_pages#root'
