@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import HomePage from "./home_page";
-import { getPersonalFeed } from "../../actions/post_actions";
+import { getEvenMoreFeedPosts, getPersonalFeed } from "../../actions/post_actions";
 import { withRouter } from "react-router";
 
 const mapStateToProps = state => ({
@@ -9,7 +9,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getPersonalFeed: page => dispatch(getPersonalFeed(page))
+  getPersonalFeed: page => dispatch(getPersonalFeed(page)),
+  getEvenMoreFeedPosts: page => dispatch(getEvenMoreFeedPosts(page))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(HomePage));

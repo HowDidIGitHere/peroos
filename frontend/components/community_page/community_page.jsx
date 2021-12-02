@@ -15,10 +15,10 @@ class CommunityPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCommunity().then(() => !this.props.posts ? this.props.getAllPosts(this.props.community.id) : console.log('oof'))
+    this.props.getCommunity().then(() =>  this.props.getAllPosts(this.props.community.id));
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.setState({ page: this.state.page + 1 }, () => this.props.getAllPosts(this.props.community.id, this.state.page))
+        this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreComPosts(this.props.community.id, this.state.page))
       }
     }
   }
@@ -64,7 +64,7 @@ class CommunityPage extends React.Component {
                 this.props.posts ? (
                   <ul>
                     {
-                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} history={this.props.history} community={this.props.community.sub} post={post} />)
+                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} history={this.props.history} post={post} />)
                     }
                   </ul>
                 ) : null

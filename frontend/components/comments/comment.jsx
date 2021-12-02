@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -11,9 +12,10 @@ class Comment extends React.Component {
         <div className='comment-list-item'>
           <div className='comment-list-item-commenter'>
             <div>
-              <p>{this.props.comment.commenter}</p>
-              {this.props.op ? <p className='op'>OP</p> : null}
-              <p>{this.props.comment.comment_date}</p>
+              <span><Link to='#'>{this.props.comment.commenter}</Link></span>
+              {this.props.op ? <span className='op'>OP</span> : null}
+              <span className='dot'><p>•</p></span>
+              <span>{this.props.comment.comment_date}</span>
             </div>
           </div>
           <div className='comment-list-item-content'>

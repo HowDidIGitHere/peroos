@@ -3,29 +3,37 @@ import { Link } from "react-router-dom";
 import Comment from "../comments/comment";
 import CreateCommentFormContainer from "../comment_form/create_comment_form_container";
 import CommunityAbout from "../community_page/community_about";
+import PleaseSignInToCommentContainer from "../login_prompt_comment/please_sigin_to_comment_container";
 import FooterCard from "../sidebar/footer_card";
 
 class Post extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      page: 0
+    }
   }
 
   componentDidMount() {
+    !this.props.comments ? this.props.getAllComments() : null;
     this.props.getCommunity();
     this.props.getCurrentPost();
-    this.props.getAllComments();
+    window.onscroll = (e) => {
+      if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+        this.setState({ page: this.state.page + 1 }, () => this.props.getAllComments(this.state.page).then(() => console.log(this.state.page)))
+      }
+    }
   }
 
   componentWillUnmount() {
     this.props.removeCurrentPost();
+    this.props.clearComments();
   }
 
   render() {
     if (!this.props.community || !this.props.currentPost) {
       return '...loading'
     }
-    const { body, media, list } = this.props.currentPost;
-    const postContent = body ? body : (media ? media : list);
     return (
       <div className='post-container'>
         <div>
@@ -134,14 +142,17 @@ class Post extends React.Component {
 
                 </div>
 
+                <a id='comments'></a>
                 <div className='post-comment-form'>
-                  <CreateCommentFormContainer />
+                  {
+                    this.props.currentUserId ? <CreateCommentFormContainer /> : <PleaseSignInToCommentContainer />
+                  }
                 </div>
                 <div className='post-comments-list'>
                   <ul>
                     {
                       this.props.comments ? this.props.comments.map((comment, idx) => (
-                        <Comment key={`post-${this.props.currentPost.id}-${idx}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} />
+                        <Comment key={`post-${this.props.currentPost.id}-${idx}-${comment.id}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} />
                       )) : null
                     }
                   </ul>

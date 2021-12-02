@@ -1,4 +1,5 @@
 import {
+  RECEIVE_FEED_POSTS,
   RECEIVE_EVEN_MOVE_POSTS,
   RECEIVE_ALL_POSTS,
   RECEIVE_POST,
@@ -12,8 +13,9 @@ const postsReducer = (state = null, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_POSTS:
-      nextState = state ? state.concat(action.posts) : action.posts;
-      return nextState;
+      return action.posts;
+    case RECEIVE_FEED_POSTS:
+      return action.posts;
     case RECEIVE_EVEN_MOVE_POSTS:
       nextState = state ? state.concat(action.posts) : action.posts;
       return nextState;

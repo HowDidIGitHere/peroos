@@ -1840,7 +1840,6 @@ p {
   display: flex;
   margin-left: -23px;
   position: relative;
-  transition: color .5s,fill .5s,background 1s;
   padding: 8px 0 0 8px;
   align-items: center;
 }
@@ -1854,4 +1853,35 @@ p {
   width: 100%;
   padding: 0;
   align-self: flex-start;
+}
+
+.comment-list-item-commenter > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* justify-content: space-between;
+  width: 29.5%; */
+}
+
+.comment-list-item-commenter > div > span {
+  font-size: 12px;
+  margin-right: 3px;
+}
+
+.comment-list-item-commenter > div > span:first-child > a:hover {
+  text-decoration: underline;
+}
+
+.op {
+  color: rgb(0, 121, 211);
+  font-weight: 700;
+}
+
+.dot > p {
+  font-size: 7px;
+  color: #7c7c7c;
+}
+
+.comment-list-item-commenter > div > span:last-child {
+  color: #7c7c7c;
 }

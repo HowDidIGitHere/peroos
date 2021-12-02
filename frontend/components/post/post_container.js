@@ -16,7 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle)),
   getCurrentPost: () => dispatch(getCurrentPost(ownProps.match.params.postId)),
   removeCurrentPost: () => dispatch(removeCurrentPost(ownProps.match.params.postId)),
-  getAllComments: () => dispatch(getAllComments(ownProps.match.params.postId))
+  getAllComments: page => dispatch(getAllComments(ownProps.match.params.postId, page))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));
