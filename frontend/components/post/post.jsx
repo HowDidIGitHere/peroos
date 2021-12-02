@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Comment from "../comments/comment";
+import CreateCommentFormContainer from "../comment_form/create_comment_form_container";
 import CommunityAbout from "../community_page/community_about";
 import FooterCard from "../sidebar/footer_card";
 
@@ -11,6 +13,7 @@ class Post extends React.Component {
   componentDidMount() {
     this.props.getCommunity();
     this.props.getCurrentPost();
+    this.props.getAllComments();
   }
 
   componentWillUnmount() {
@@ -131,9 +134,18 @@ class Post extends React.Component {
 
                 </div>
 
-              <div className='post-comment-form'>
-
-              </div>
+                <div className='post-comment-form'>
+                  <CreateCommentFormContainer />
+                </div>
+                <div className='post-comments-list'>
+                  <ul>
+                    {
+                      this.props.comments ? this.props.comments.map((comment, idx) => (
+                        <Comment key={`post-${this.props.currentPost.id}-${idx}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} />
+                      )) : null
+                    }
+                  </ul>
+                </div>
               </div>
             </div>
             <div className='post-body-aside'>

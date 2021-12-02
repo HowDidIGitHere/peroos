@@ -484,7 +484,7 @@ p {
   font-size: 10px;
   font-weight: 700;
   line-height: 12px;
-  background-color: #0079d3;
+  background-color: #1a6dcd;
   color: white;
   padding: 0 12px 12px;
   border-radius: 4px 4px 0 0;
@@ -1082,7 +1082,6 @@ p {
   height: 40px;
   padding-right: 10px;
   overflow-y: visible;
-  cursor: pointer;
   color: #878a8c;
 }
 
@@ -1096,7 +1095,6 @@ p {
   overflow: hidden;
   padding: 0 8px 0 4px;
   flex-grow: 1;
-  cursor: pointer;
 }
 
 .post-footer-sec > div > a {
@@ -1110,6 +1108,7 @@ p {
   font-weight: 700;
   line-height: 16px;
   box-sizing: border-box;
+  cursor: pointer;
 }
 
 .vote-counter > div > button:hover,
@@ -1132,6 +1131,7 @@ p {
   word-break: normal;
   align-items: center;
   display: flex;
+  cursor: pointer;
 }
 
 .post-share-button > button {
@@ -1158,6 +1158,7 @@ p {
 .post-save-button {
   align-items: center;
   display: flex;
+  cursor: pointer;
 }
 
 .post-save-button > button {
@@ -1179,6 +1180,7 @@ p {
   justify-content: center;
   flex-direction: column;
   display: flex;
+  cursor: pointer;
 }
 
 .post-ellipses-button > button {
@@ -1755,4 +1757,101 @@ p {
 
 .please-underline:hover {
   text-decoration: underline;
+}
+
+.post-comment-form {
+  margin: 24px 40px 24px 8px;
+}
+
+.comment-text-box {
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  /* height: 160px; */
+  padding: 8px 16px;
+  /* border: 1px solid #edeff1; */
+  background-color: transparent;
+  /* min-height: 160px; */
+  resize: vertical;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  outline: none;
+  border-radius: 4px 4px 0 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  height: 138px;
+  min-height: 138px;
+}
+
+.highlight-box {
+  border: 1px solid #edeff1;
+  border-radius: 4px;
+}
+
+.highlight-box:focus-within {
+  border: 1px solid black;
+}
+
+.markdown-footer {
+  background-color: #f6f7f8;
+  border-radius: 0 0 4px 4px;
+  bottom: 0;
+  opacity: 1;
+  /* position: sticky; */
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 50px;
+}
+
+.markdown-footer > button {
+  padding: 4px;
+  width: 84px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.user-link-container {
+  margin-bottom: 5px;
+}
+
+.user-link {
+  color: #1a6dcd;
+}
+
+.user-link:hover {
+  text-decoration: underline;
+}
+
+.post-comment-list {
+  box-sizing: border-box;
+  padding-right: 16px;
+  margin: 16px 16px 0 10px;
+  padding-bottom: 16px;
+}
+
+.comment-list-item-container {
+  margin-top: 16px;
+  background: transparent;
+  border-radius: 4px;
+  display: flex;
+  margin-left: -23px;
+  position: relative;
+  transition: color .5s,fill .5s,background 1s;
+  padding: 8px 0 0 8px;
+  align-items: center;
+}
+
+.comment-list-item {
+  margin-left: 8px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  max-width: 800px;
+  width: 100%;
+  padding: 0;
+  align-self: flex-start;
 }
