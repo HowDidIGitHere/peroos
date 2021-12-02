@@ -1,11 +1,18 @@
 import * as CommentAPIutil from '../util/comment_api_util';
 
+// action types
+export const RECEIVE_EVEN_MORE_COMMENTS = 'RECEIVE_EVEN_MORE_COMMENTS';
 export const RECEIVE_ALL_COMMENTS = 'RECEIVE_ALL_COMMENTS';
 export const RECEIVE_COMMENT = 'RECEIVE_COMMENT';
 export const REMOVE_COMMENT = 'REMOVE_COMMENT';
 export const RECEIVE_COMMENT_ERRORS = 'RECEIVE_COMMENT_ERRORS';
 
 // actions
+export const receiveEvenMoreComments = comments => ({
+  type: RECEIVE_EVEN_MORE_COMMENTS,
+  comments
+});
+
 export const receiveAllComments = comments => ({
   type: RECEIVE_ALL_COMMENTS,
   comments
@@ -27,6 +34,12 @@ export const receiveErrors = errors => ({
 });
 
 // thunk action creators
+export const getEvenMoreComments = (postId, page) => dispatch => (
+  CommentAPIutil.getAllComments(postId, page)
+    .then(comments => dispatch(receiveEvenMoreComments(comments)))
+    .fail(errors => dispatch(receiveErrors(errors)))
+);
+
 export const getAllComments = (postId, page) => dispatch => (
   CommentAPIutil.getAllComments(postId, page)
     .then(comments => dispatch(receiveAllComments(comments)))

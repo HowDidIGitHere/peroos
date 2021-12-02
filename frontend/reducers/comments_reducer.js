@@ -1,4 +1,5 @@
 import {
+  RECEIVE_EVEN_MORE_COMMENTS,
   RECEIVE_ALL_COMMENTS,
   RECEIVE_COMMENT,
   REMOVE_COMMENT
@@ -9,6 +10,8 @@ const commentsReducer = (state = null, action) => {
 
   switch (action.type) {
     case RECEIVE_ALL_COMMENTS:
+      return action.comments;
+    case RECEIVE_EVEN_MORE_COMMENTS:
       nextState = state ? state.concat(action.comments) : action.comments;
       return nextState;
     case RECEIVE_COMMENT:
