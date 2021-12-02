@@ -1544,12 +1544,24 @@ p {
   color: #d7dadc;
 }
 
+.post-sticky-header-title > div:last-child {
+  width: 100%;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
 .post-sticky-header-title > div:last-child > p {
   color: #d7dadc;
   font-size: 14px;
   font-weight: 500;
   line-height: 18px;
   letter-spacing: .4px;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .post-sticky-header-title > div:first-child > svg {
