@@ -1734,7 +1734,7 @@ p {
   top: 0;
   width: 312px; */
   margin-top: 16px;
-  margin-right: auto;
+  margin-right: 32px;
 }
 
 .post-body-aside .bubble-button {
