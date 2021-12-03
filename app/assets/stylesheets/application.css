@@ -650,6 +650,14 @@ p {
   margin-bottom: 3px;
 }
 
+.footer-card-content > div > a > h1 {
+  color: #1a6dcd;
+}
+
+.footer-card-content > div > a > h1:hover {
+  text-decoration: underline;
+}
+
 .reserved-rights {
   display: flex;
   padding: 12px;

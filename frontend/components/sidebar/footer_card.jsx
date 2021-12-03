@@ -5,21 +5,18 @@ const FooterCard = props => {
     <div className='card aside-card'>
       <div className='footer-card-content'>
         <div>
-          <a href='#'>Help</a>
-          <a href='#'>Peroos Coins</a>
-          <a href='#'>Peroos Premium</a>
-          <a href='#'>Peroos Gifts</a>
+          <a href='https://github.com/HowDidIGitHere/peroos'><h1>Github</h1></a>
+          <a href='https://www.linkedin.com/in/jamie-an-6b9b41114/'><h1>LinkedIn</h1></a>
         </div>
         <div>
-          <a href='#'>About</a>
-          <a href='#'>Careers</a>
-          <a href='#'>Press</a>
-          <a href='#'>Advertise</a>
-          <a href='#'>Blog</a>
-          <a href='#'>Terms</a>
-          <a href='#'>Content Policy</a>
-          <a href='#'>Privacy Policy</a>
-          <a href='#'>Mod Policy</a>
+          <a>Javascript</a>
+          <a>React</a>
+          <a>Redux</a>
+          <a>jQuery</a>
+          <a>Ruby on Rails</a>
+          <a>PostgreSQL</a>
+          <a>HTML</a>
+          <a>CSS</a>
         </div>
       </div>
       <div className='reserved-rights'>
