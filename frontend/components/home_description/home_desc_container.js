@@ -3,7 +3,8 @@ import HomeDesc from "./home_desc";
 import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mapStateToProps = ({ session, entities }) => ({
-  currentUser: entities.users[session.currentUserId]
+  currentUserId: session.currentUserId,
+  // currentUser: entities.users[session.currentUserId]
 });
 
 const mapDispatchToProps = dispatch => ({

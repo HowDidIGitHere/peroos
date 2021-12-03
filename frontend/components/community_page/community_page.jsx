@@ -5,6 +5,7 @@ import NotFoundPage from "../not_found/not_found";
 import PostCard from "../post_card/post_card";
 import FooterCard from "../sidebar/footer_card";
 import CommunityAbout from "./community_about";
+import CommunityEditCardContainer from "./community_edit_card_container";
 
 class CommunityPage extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class CommunityPage extends React.Component {
               }
             </div>
             <div className='sidebar-community-page'>
+              <CommunityEditCardContainer />
               <CommunityAbout match={this.props.match} community={this.props.community} currentUserId={this.props.currentUserId} />
               {/* <ModeratorsCard community={this.props.community} /> */}
               <FooterCard />

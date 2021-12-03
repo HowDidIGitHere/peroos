@@ -41,7 +41,8 @@ class HomePage extends React.Component {
         <div className='sidebar-community-page'>
           {/* <CommunityAbout community={this.props.community}/> */}
           {/* <ModeratorsCard community={this.props.community} /> */}
-          {this.props.currentUserId ? <HomeDescContainer /> : null}
+          {/* {this.props.currentUserId ? <HomeDescContainer /> : null} */}
+          <HomeDescContainer /> 
           <FooterCard />
         </div>
       </div>

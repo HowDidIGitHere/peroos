@@ -211,7 +211,9 @@ p {
   flex-direction: column;
   padding: 0 12px 12px;
   /* width: 285px; */
-  height: 228px;
+
+  /* height: 228px; */
+  
   /* background-color: white;
   border: 1px solid #ccc;
   border-radius: 4px; */
@@ -219,12 +221,18 @@ p {
   font-weight: 400;
 }
 
+.home-description > p {
+  letter-spacing: .1px;
+  font-size: 13px;
+}
+
 .home-description > h2 {
   /* text-align: left; */
-  font-size: 16px;
+  font-size: 22px;
   /* line-height: 20px; */
   font-weight: lighter;
   padding: 10px;
+  margin-top: 6px;
 }
 
 .home-description > a,
@@ -318,7 +326,15 @@ p {
   width: 220px;
 }
 
-.header-user-dropdown > button {
+.header-user-dropdown > div {
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px 0;
+  min-height: 32px;
+  width: 195px;
+}
+
+.header-user-dropdown > div > button {
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -326,14 +342,17 @@ p {
   width: 100%;
   border: 1px solid transparent;
   border-radius: 4px;
-  padding: 2px 0;
+  /* padding: 2px 0;
   min-height: 32px;
   margin-left: 8px;
-  width: 195px;
+  width: 195px; */
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
-.header-user-dropdown > button:active,
-.header-user-dropdown > button:hover {
+/* .header-user-dropdown > div > button:active, */
+/* .header-user-dropdown > div > button:hover { */
+.header-user-dropdown > div > button {
   border: 1px solid #edeff1;
 }
 
@@ -367,6 +386,41 @@ p {
   padding-top: 6px;
   width: 195px;
   z-index: 10;
+}
+
+.user-dropdown-menu > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-dropdown-menu > div > hr {
+  margin: 0;
+  height: 1px;
+  width: 90%;
+  border: none;
+  background-color: #edeff1;
+}
+
+.logout-button-cont {
+  width: 100%;
+  padding: 6px;
+  display: flex;
+}
+
+.logout-button-cont > svg {
+  height: 20px;
+  margin: 0 6px 2px 8px;
+}
+
+.logout-button-cont > p {
+  font-size: 16px;
+  padding-top: 2px;
+}
+
+.logout-button-cont:hover {
+  color: white;
+  background-color: #0079d3;
 }
 
 .communities-list-header {
@@ -2011,4 +2065,36 @@ p {
 
 .width-fix {
   width: 100%;
+}
+
+.post-edit-button,
+.post-delete-button {
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+}
+
+.post-edit-button > button,
+.post-delete-button > button {
+  margin-left: 6px;
+  border-radius: 2px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.post-edit-button > button:hover,
+.post-delete-button > button:hover {
+  background-color: #e8e8e8;
+}
+
+.post-edit-button > button > svg,
+.post-delete-button > button > svg {
+  height: 20px;
+  margin-right: 4px;
+}
+
+.post-edit-width-fix {
+  width: 99%;
 }
