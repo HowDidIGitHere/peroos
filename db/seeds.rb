@@ -33,8 +33,8 @@ post3 = Post.create(title: 'Do we actually only have 1 week for the MERN Stack p
 Comment.create(content: "That's exactly right", commenter_id: user6.id, post_id: post3.id)
 post4 = Post.create(title: 'Yall ever heard about the recursion joke?', poster_id: user5.id, community_id: com2.id, body: '')
 
+Comment.create(content: "BUT I'm having a great time!", commenter_id: user2.id, post_id: post1.id)
 Comment.create(content: 'This latest cohort is crushing it', commenter_id: user3.id, post_id: post1.id)
-Comment.create(content: "I'm having a great time!", commenter_id: user2.id, post_id: post1.id)
 Comment.create(content: "It changed my life!", commenter_id: user8.id, post_id: post1.id)
 
 Follow.create(user_id: user3.id, community_id: com2.id)
