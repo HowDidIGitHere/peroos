@@ -4,7 +4,7 @@ class Community < ApplicationRecord
 
   validates :sub, :creator_id, presence: true
   validates :sub, uniqueness: true
-  validates :sub, length: { minimum: 3, maximum: 21 }, format: { with: /\w/, message: 'only allows letters and numbers' }
+  validates :sub, length: { minimum: 2, maximum: 21 }, format: { with: /\w/, message: 'only allows letters and numbers' }
 
   belongs_to :creator,
     primary_key: :id,
