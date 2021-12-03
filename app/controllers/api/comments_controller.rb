@@ -1,5 +1,7 @@
 class Api::CommentsController < ApplicationController
 
+  before_action :set_page, only: [:index]
+
   def index
     @comments = Comment.where(post_id: params[:post_id]).limit(10).offset(@page.to_i * 10).order(created_at: :desc)
     if @comments

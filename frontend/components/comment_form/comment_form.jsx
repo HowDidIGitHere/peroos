@@ -12,7 +12,8 @@ class CommentForm extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     console.log(this.state)
-    this.props.processForm(this.state);
+    this.props.processForm(this.state)
+      .then(() => this.setState({ content: '' }));
   }
 
   handleChange(type) {
@@ -23,7 +24,7 @@ class CommentForm extends React.Component {
     return (
       <div>
         <div>
-          <div className='user-link-container'>
+          <div id='sad' className='user-link-container'>
             <p>Comment as <Link to='#' className='user-link'>{this.props.currentUser.username}</Link></p>
           </div>
           <div className='highlight-box'>

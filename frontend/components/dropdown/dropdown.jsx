@@ -29,22 +29,18 @@ export default class DropdownDOM extends React.Component {
 
   render() {
     return (
-      <div
-        className='dropdown-outer'
-        onClick={this.handleClick}
-        ref={this.dropdownDiv}
-      >
-        <button> DOM Dropdown </button>
-        { this.state.show ? (
-          <div
-            className='dropdown-inner'
-          >
-            <ul>
-              <li><Link to='blue'>Go To Blue (Link component)</Link></li>
-              <li><Link to='red'>Go To Red (Link component)</Link></li>
-            </ul>
-          </div>
-        ) : null}
+      <div className='dropdown-outer' onClick={this.handleClick} ref={this.dropdownDiv}>
+        <button>DOM Dropdown</button>
+        {
+          this.state.show ? (
+            <div className='dropdown-inner'>
+              <ul>
+                <li><Link to='blue'>Go To Blue (Link component)</Link></li>
+                <li><Link to='red'>Go To Red (Link component)</Link></li>
+              </ul>
+            </div>
+          ) : null
+        }
       </div>
     )
   }
