@@ -10,7 +10,8 @@ const mapStateToProps = (state, ownProps) => ({
     post_id: ownProps.match.params.postId,
     // parent_comment_id: 1
   },
-  currentUser: state.entities.users[state.session.currentUserId]
+  currentUser: state.entities.users[state.session.currentUserId],
+  formType: 'create'
 });
 
 const mapDispatchToProps = dispatch => ({

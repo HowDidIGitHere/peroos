@@ -1994,3 +1994,21 @@ p {
 .comment-buttons > .post-footer-sec > div > .post-delete-button {
   margin: 0;
 }
+
+.comment-edit-cont {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: flex-start;
+  align-content: center;
+}
+
+.comment-line {
+  height: inherit;
+  border-left: 3px solid #f6f7f8;
+  margin-right: 23px;
+}
+
+.width-fix {
+  width: 100%;
+}

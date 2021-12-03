@@ -13,7 +13,8 @@ class CommentForm extends React.Component {
     e.stopPropagation();
     console.log(this.state)
     this.props.processForm(this.state)
-      .then(() => this.setState({ content: '' }));
+      .then(() => this.setState({ content: '' }))
+      .then(() => this.props.handleToggle ? this.props.handleToggle() : this.props.handleCountInc());
   }
 
   handleChange(type) {
@@ -22,16 +23,25 @@ class CommentForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className='width-fix'>
         <div>
           <div id='sad' className='user-link-container'>
             <p>Comment as <Link to='#' className='user-link'>{this.props.currentUser.username}</Link></p>
           </div>
           <div className='highlight-box'>
             <textarea className='comment-text-box' onChange={this.handleChange('content')} maxLength='40000' value={this.state.content} placeholder='What are your thoughts?' rows="10" ></textarea>
-            <div className='markdown-footer'>
-              <button onClick={this.handleSubmit} className='bubble-button filled-blue'>Comment</button>
-            </div>
+              {
+                this.props.formType === 'create' ? (
+                  <div className='markdown-footer'>
+                    <button onClick={this.handleSubmit} className='bubble-button filled-blue'>Comment</button>
+                  </div>
+                ) : (
+                  <div className='markdown-footer'>
+                    <button onClick={this.props.handleToggle} className='bubble-button'>Cancel</button>
+                    <button onClick={this.handleSubmit} className='bubble-button filled-blue'>Save Edits</button>
+                  </div>
+                )
+              }
           </div>
         </div>
       </div>
