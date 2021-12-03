@@ -4,6 +4,19 @@ import { Link } from "react-router-dom";
 class Comment extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      editToggle: false
+    }
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
+  }
+
+  handleEdit(e) {
+
+  }
+
+  handleDelete(e) {
+    this.props.deleteComment(this.props.comment.id);
   }
 
   render() {
@@ -86,7 +99,7 @@ class Comment extends React.Component {
                         {
                           this.props.comment.commenter_id === this.props.currentUserId ? (
                             <div className='post-edit-button'>
-                              <button>
+                              <button onClick={this.handleEdit}>
                                 <p>Edit</p>
                               </button>
                             </div>
@@ -95,7 +108,7 @@ class Comment extends React.Component {
                         {
                           this.props.comment.commenter_id === this.props.currentUserId ? (
                             <div className='post-delete-button'>
-                              <button>
+                              <button onClick={this.handleDelete}>
                                 <p>Delete</p>
                               </button>
                             </div>

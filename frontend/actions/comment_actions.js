@@ -60,5 +60,5 @@ export const editComment = comment => dispatch => (
 
 export const deleteComment = commentId => dispatch => (
   CommentAPIutil.deleteComment(commentId)
-    .then(commentId => dispatch(removeComment(commentId)))
+    .then(comment => dispatch(removeComment(comment.id)))
 );

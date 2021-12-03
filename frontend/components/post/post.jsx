@@ -73,7 +73,7 @@ class Post extends React.Component {
                         </svg>
                       </button>
                       <div>
-                        <p>0</p>
+                        <p>1</p>
                       </div>
                       <button>
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" xmlns="http://www.w3.org/1999/xlink" enableBackground="new 0 0 512 512">

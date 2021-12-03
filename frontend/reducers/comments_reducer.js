@@ -16,8 +16,14 @@ const commentsReducer = (state = null, action) => {
       return nextState;
     case RECEIVE_COMMENT:
       return state ? [action.comment].concat(state) : action.comment 
-    // case REMOVE_COMMENT:
-
+    case REMOVE_COMMENT:
+      const newState = [];
+      for (let i = 0; i < state.length; i++) {
+        if (state[i].id !== action.commentId) {
+          newState.push(state[i]);
+        }
+      }
+      return newState;
     default:
       return state;
   }
