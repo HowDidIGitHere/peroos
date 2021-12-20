@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     get '/posts', to: 'posts#feed'
 
+    get '/search', to: 'search#index'
+
     resources :follows, only: [:create, :destroy]
     resources :posts, except: [:index, :edit, :new] do
       resources :comments, only: [:index]
