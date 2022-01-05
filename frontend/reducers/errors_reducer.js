@@ -10,7 +10,7 @@ const errorsReducer = combineReducers({
   postForm: postsErrorsReducer,
   commentForm: commentsErrorsReducer,
   communityForm: communitiesErrorsReducer,
-  search: searchErrorsReducer
+  // search: searchErrorsReducer
 });
 
 export default errorsReducer;
