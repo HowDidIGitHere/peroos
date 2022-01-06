@@ -1033,23 +1033,29 @@ p {
   position: relative;
 }
 
-.vote-counter > div > button {
-  height: 24px;
-  width: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+/* .vote-counter > div > button {
+  height: 20px;
+  width: 20px;
+} */
 
 .vote-counter > div > button:hover {
   color: red;
 }
 
-.vote-counter > div > button > svg {
+.vote-counter > div > button {
   border-radius: 2px;
+  height: 25px;
+  width: 25px;
+  color: #878a8c;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vote-counter > div > button > svg {
   height: 20px;
   width: 20px;
-  color: #878a8c;
 }
 
 .post-content-body {
@@ -1162,7 +1168,7 @@ p {
 .post-footer-sec > div > a {
   padding: 8px;
   word-break: normal;
-  margin-right: 4px;
+  /* margin-right: 4px; */
   align-items: center;
   display: flex;
   border-radius: 2px;
@@ -1188,7 +1194,7 @@ p {
 }
 
 .post-share-button {
-  margin: 0 4px 0 0;
+  /* margin: 0 4px 0 0; */
   width: auto;
   word-break: normal;
   align-items: center;
@@ -1198,7 +1204,7 @@ p {
 
 .post-share-button > button {
   border-radius: 2px;
-  margin-right: 4px;
+  /* margin-right: 4px; */
   padding: 8px;
   white-space: nowrap;
   width: auto;
@@ -1505,7 +1511,7 @@ p {
 }
 
 .session-modal > p {
-  margin-bottom: 48px;
+  margin-bottom: 12px;
   font-size: 12px;
   font-weight: 400;
   line-height: 18px;
@@ -2001,7 +2007,7 @@ p {
 }
 
 .comment-vote-counter {
-  margin: 3px 4px 4px -4px;
+  /* margin: 3px 4px 4px -4px; */
   padding: 0;
   align-items: center;
   display: flex;
@@ -2019,10 +2025,27 @@ p {
 
 .comment-vote-counter svg {
   width: 20px;
-  height: 20px;
+  height: 20px; 
+}
+
+.comment-vote-counter > button {
+  width: 25px;
+  height: 25px;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #878a8c;
+  border-radius: 2px;
+}
+
+.comment-vote-counter > button:hover {
+  color: red;
+  background-color: #e8e8e8;
 }
 
 .comment-list-item-footer {
+  margin-left: -4px;
   align-items: baseline;
   display: flex;
   flex-flow: row nowrap;
@@ -2084,7 +2107,7 @@ p {
 
 .post-edit-button > button,
 .post-delete-button > button {
-  margin-left: 6px;
+  /* margin-left: 6px; */
   border-radius: 2px;
   padding: 8px;
   display: flex;
