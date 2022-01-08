@@ -1,4 +1,4 @@
-json.extract! post, :id, :title, :body, :media, :link, :poster_id, :community_id
+json.extract! post, :id, :title, :body, :media, :link, :poster_id, :community_id #, :vote_count
 json.comments_count post.comments.length
 json.poster post.poster.username
 json.community post.community.sub
