@@ -1,4 +1,5 @@
 import * as PostAPIutil from '../util/post_api_util';
+import * as VoteAPIutil from '../util/vote_api_util';
 
 // action types
 export const RECEIVE_EDITED_POST = 'RECEIVE_EDITED_POST';
@@ -110,3 +111,13 @@ export const deletePost = postId => dispatch => (
     .then(post => dispatch(removePost(post.id)))
 );
 
+// Voting on posts
+export const voteOnPost = vote => dispatch => (
+  VoteAPIutil.vote(vote)
+    .then(post => dispatch(receivePost(post)))
+);
+
+export const removeVoteOnPost = vote => dispatch => (
+  VoteAPIutil.removeVote(vote)
+    .then(post => dispatch(receivePost(post)))
+);
