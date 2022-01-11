@@ -18,6 +18,8 @@ Rails.application.routes.draw do
       resources :comments, only: [:index]
     end
 
+    resources :votes, only: [:create, :destroy]
+
     resources :comments, only: [:create, :update, :destroy]
   end
 
