@@ -1,4 +1,5 @@
 import * as CommentAPIutil from '../util/comment_api_util';
+import * as VoteAPIutil from '../util/vote_api_util';
 
 // action types
 export const RECEIVE_EDITED_COMMENT = 'RECEIVE_EDITED_COMMENT';
@@ -67,4 +68,15 @@ export const editComment = comment => dispatch => (
 export const deleteComment = commentId => dispatch => (
   CommentAPIutil.deleteComment(commentId)
     .then(comment => dispatch(removeComment(comment.id)))
+);
+
+// Voting on comments
+export const voteOnComment = vote => dispatch => (
+  VoteAPIutil.vote(vote)
+    .then(comment => dispatch(receiveComment(comment)))
+);
+
+export const removeVoteOnComment = vote => dispatch => (
+  VoteAPIutil.removeVote(vote)
+    .then(comment => dispatch(receiveComment(comment)))
 );
