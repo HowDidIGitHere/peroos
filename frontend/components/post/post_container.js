@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getAllComments, getEvenMoreComments } from "../../actions/comment_actions";
 import { getCommunity } from "../../actions/community_actions";
-import { deletePost, editPost, getCurrentPost, removeCurrentPost} from "../../actions/post_actions";
+import { deletePost, editPost, getCurrentPost, removeCurrentPost, removeVoteOnCurrentPost, voteOnCurrentPost} from "../../actions/post_actions";
 import Post from "./post";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -19,7 +19,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   getAllComments: page => dispatch(getAllComments(ownProps.match.params.postId, page)),
   getEvenMoreComments: page => dispatch(getEvenMoreComments(ownProps.match.params.postId, page)),
   editPost: post => dispatch(editPost(post)),
-  deletePost: () => dispatch(deletePost(ownProps.match.params.postId))
+  deletePost: () => dispatch(deletePost(ownProps.match.params.postId)),
+  voteOnCurrentPost: vote => dispatch(voteOnCurrentPost(vote)),
+  removeVoteOnCurrentPost: vote => dispatch(removeVoteOnCurrentPost(vote))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));
