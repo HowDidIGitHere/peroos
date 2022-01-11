@@ -985,7 +985,7 @@ p {
   border-radius: 4px;
   padding-left: 40px;
   cursor: pointer;
-  transition: color .5s,fill .5s,box-shadow .5s;
+  transition: color .5s, fill .5s, box-shadow .5s;
   overflow: hidden;
   color: #6c6e70;
   position: relative;
@@ -994,7 +994,7 @@ p {
 
 .vote-counter {
   width: 40px;
-  border-left: 4px solid transparent;
+  border-left: 10px solid transparent;
   align-items: center;
   box-sizing: border-box;
   display: flex;
