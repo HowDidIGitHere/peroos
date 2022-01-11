@@ -121,3 +121,14 @@ export const removeVoteOnPost = vote => dispatch => (
   VoteAPIutil.removeVote(vote)
     .then(post => dispatch(receivePost(post)))
 );
+
+// Voting on current post
+export const voteOnCurrentPost = vote => dispatch => (
+  VoteAPIutil.vote(vote)
+    .then(post => dispatch(receiveCurrentPost(post)))
+);
+
+export const removeVoteOnCurrentPost = vote => dispatch => (
+  VoteAPIutil.removeVote(vote)
+    .then(post => dispatch(receiveCurrentPost(post)))
+);
