@@ -1,1 +1,1 @@
-json.extract! vote, :upvote, :parent_id, :parent_type
+json.extract! vote, :upvote
