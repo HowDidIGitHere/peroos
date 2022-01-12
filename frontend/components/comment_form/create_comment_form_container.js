@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
-import { createComment } from "../../actions/comment_actions";
+import { createComment, voteOnComment } from "../../actions/comment_actions";
 import CommentForm from "./comment_form";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  processForm: comment => dispatch(createComment(comment))
+  processForm: comment => dispatch(createComment(comment)),
+  voteOnComment: vote => dispatch(voteOnComment(vote))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
