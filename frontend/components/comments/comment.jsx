@@ -61,7 +61,7 @@ class Comment extends React.Component {
                   <div className='comment-list-item-footer'>
                     <div>
                       <div className='comment-vote-counter'>
-                        <button className="upvote" onClick={}>
+                        <button className="upvote" onClick={() => this.props.voteOnComment({ upvote: true, parent_id: this.props.comment.id, parent_type: 'comment'})}>
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" className="svg-inline--fa fa-arrow-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
                           </svg>
@@ -69,7 +69,7 @@ class Comment extends React.Component {
                         <div>
                           <p>Vote</p> {/* vote counter needs to be implemented */}
                         </div>
-                        <button className="upvote" onClick={}>
+                        <button className="upvote" onClick={() => this.props.voteOnComment({ upvote: false, parent_id: this.props.comment.id, parent_type: 'comment'})}>
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" className="svg-inline--fa fa-arrow-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path fill="currentColor" d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"></path>
                           </svg>
@@ -79,25 +79,25 @@ class Comment extends React.Component {
                     <div className='comment-buttons'>
                       <div className='post-footer-sec'>
                         <div>
-                          <Link to={`/`}>
+                          {/* <Link to={`/`}>
                             <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment-alt" className="svg-inline--fa fa-comment-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                               <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"></path>
                             </svg>
                             <p>Reply</p>
-                          </Link>
+                          </Link> */}
                           {/* <div className='post-share-button'>
                             <button>
                               <p>Share</p>
                             </button>
                           </div> */}
-                          <div className='post-save-button'>
+                          {/* <div className='post-save-button'>
                             <button>
                               <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="bookmark" className="svg-inline--fa fa-bookmark fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
                                 <path fill="currentColor" d="M336 0H48C21.49 0 0 21.49 0 48v464l192-112 192 112V48c0-26.51-21.49-48-48-48zm0 428.43l-144-84-144 84V54a6 6 0 0 1 6-6h276c3.314 0 6 2.683 6 5.996V428.43z"></path>
                               </svg>
                               <p>Save</p>
                             </button>
-                          </div>
+                          </div> */}
                             {
                               this.props.comment.commenter_id === this.props.currentUserId ? (
                                 <div className='post-edit-button'>
