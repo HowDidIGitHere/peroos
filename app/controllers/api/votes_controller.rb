@@ -1,5 +1,11 @@
 class Api::FollowsController < ApplicationController
 
+  # Need to work on
+  def index
+    @votes = Vote.where(user_id: current_user.id)
+    render :index
+  end
+
   def create
     @vote = Vote.new(vote_params)
     @vote.user_id = current_user.id
@@ -19,7 +25,7 @@ class Api::FollowsController < ApplicationController
   def destroy
     @vote = Vote.find_by(user_id: current_user.id, parent_id: params[:vote][:parent_id], parent_type: params[:vote][:parent_type])
     @vote.delete
-    currPage = params[:vote][:parenttype] # Will say 'api/posts/show' or 'api/comments/show'
+    currPage = params[:vote][:parent_type] # Will say 'api/posts/show' or 'api/comments/show'
     if currPage == 'post'
       # @post = 
     elsif currPage == 'comment'
