@@ -11,9 +11,12 @@ class CommentForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(this.state)
     this.props.processForm(this.state)
-      .then(() => this.setState({ content: '' }))
+      .then(res => this.setState({ content: '' }, () => {
+        if (this.props.formType === 'create') {
+          this.props.voteOnComment({ upvote: true, parent_id: res.comment.id, parent_type: 'Comment' })
+        }
+      }))
       .then(() => this.props.handleToggle ? this.props.handleToggle() : this.props.handleCountInc());
   }
 
