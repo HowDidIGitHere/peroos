@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps)=> ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getCommunity: () => dispatch(getCommunity(ownProps.match.params.communityTitle)),
   createPost: post => dispatch(createPost(post)),
-  voteOnPost: vote => dispatch(voteOnPost(vote))
+  // voteOnPost: vote => dispatch(voteOnPost(vote))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));

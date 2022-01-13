@@ -38,7 +38,6 @@ class CreatePost extends React.Component {
     // let tempPost = Object.assign({}, this.state.post);
     // tempPost[community_id] = this.props.community.id;
     this.props.createPost(this.state.post)
-      .then(res => this.props.voteOnPost({ upvote: true, parent_id: res.post.id, parent_type: 'Post' }))
       .then(() => this.props.history.push(`/${this.props.match.params.communityTitle}`));
   }
 
