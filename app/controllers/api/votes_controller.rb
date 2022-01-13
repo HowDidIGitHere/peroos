@@ -14,9 +14,19 @@ class Api::VotesController < ApplicationController
       if currPage == 'Post'
         currPage = 'post'
         @post = Post.find(params[:vote][:parent_id])
+        if params[:vote][:upvote]
+          @post.vote_count += 1
+        else
+          @post.vote_count -= 1
+        end
       elsif currPage == 'Comment'
         currPage = 'comment'
         @comment = Comment.find(params[:vote][:parent_id])
+        if params[:vote][:upvote]
+          @comment.vote_count += 1
+        else
+          @comment.vote_count -= 1
+        end
       end
       render 'api/' + currPage + 's/show'
     else
@@ -30,8 +40,20 @@ class Api::VotesController < ApplicationController
     currPage = params[:vote][:parent_type] # Will say 'api/posts/show' or 'api/comments/show'
     if currPage == 'Post'
       currPage = 'post'
+      @post = Post.find(@vote.parent_id)
+      if @vote.upvote
+        @post.vote_count -= 1;
+      else
+        @post.vote_count += 1;
+      end
     elsif currPage == 'Comment'
       currPage = 'comment'
+      @comment = Comment.find(@vote.parent_id)
+      if @vote.upvote
+        @comment.vote_count += 1;
+      else
+        @comment.vote_count -= 1;
+      end
     end
     render 'api/' + currPage + 's/show'
   end
