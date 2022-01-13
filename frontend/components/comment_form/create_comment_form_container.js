@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   processForm: comment => dispatch(createComment(comment)),
-  voteOnComment: vote => dispatch(voteOnComment(vote))
+  // voteOnComment: vote => dispatch(voteOnComment(vote))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CommentForm));
