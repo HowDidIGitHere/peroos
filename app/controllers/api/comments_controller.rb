@@ -14,7 +14,10 @@ class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter_id = current_user.id
+    @comment.vote_count = 1
     if @comment.save
+      vote = Vote.new(user_id: current_user.id, upvote: true, parent_id: @comment.id, parent_type: 'Comment')
+      vote.save
       render :show
     else
       render json: @comment.errors.full_messages, status: 400

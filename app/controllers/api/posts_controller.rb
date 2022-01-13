@@ -32,7 +32,10 @@ class Api::PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     @post.poster_id = current_user.id
+    @post.vote_count = 1
     if @post.save
+      vote = Vote.new(user_id: current_user.id, upvote: true, parent_id: @post.id, parent_type: 'Post')
+      vote.save
       render :show
     else
       render json: @post.errors.full_messages, status: 400
