@@ -64,7 +64,6 @@ class Comment extends React.Component {
                         <button 
                           className="upvote" 
                           onClick={() => {
-                            
                             this.props.voteOnComment({ upvote: true, parent_id: this.props.comment.id, parent_type: 'Comment'})
                           }}>
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" className="svg-inline--fa fa-arrow-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
@@ -72,7 +71,8 @@ class Comment extends React.Component {
                           </svg>
                         </button>
                         <div>
-                          <p>Vote</p> {/* vote counter needs to be implemented */}
+                          {/* <p>Vote</p> */}
+                          <p>{this.props.comment.vote_count}</p>
                         </div>
                         <button className="upvote" onClick={() => this.props.voteOnComment({ upvote: false, parent_id: this.props.comment.id, parent_type: 'Comment'})}>
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" className="svg-inline--fa fa-arrow-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">

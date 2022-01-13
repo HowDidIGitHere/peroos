@@ -22,7 +22,7 @@ class PostCard extends React.Component {
                   </svg>
                 </button>
                 <div>
-                  <p>1</p> {/* vote counter needs to be implemented */}
+                  <p>{this.props.post.vote_count}</p>
                 </div>
                 <button className="downvote" onClick={() => this.props.voteOnPost({ upvote: false, parent_id: this.props.post.id, parent_type: 'Post' })}>
                   <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" className="svg-inline--fa fa-arrow-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
