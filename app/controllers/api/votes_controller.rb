@@ -14,21 +14,26 @@ class Api::VotesController < ApplicationController
       if currPage == 'Post'
         currPage = 'post'
         @post = Post.find(params[:vote][:parent_id])
-        if params[:vote][:upvote]
+        if @vote.upvote == true
           @post.vote_count += 1
         else
           @post.vote_count -= 1
         end
+        if @post.save
+          render 'api/' + currPage + 's/show'
+        end
       elsif currPage == 'Comment'
         currPage = 'comment'
         @comment = Comment.find(params[:vote][:parent_id])
-        if params[:vote][:upvote]
+        if @vote.upvote == true
           @comment.vote_count += 1
         else
           @comment.vote_count -= 1
         end
+        if @comment.save
+          render 'api/' + currPage + 's/show'
+        end
       end
-      render 'api/' + currPage + 's/show'
     else
       render json: @vote.errors.full_messages, status:401
     end

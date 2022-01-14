@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
 
-  validates :upvote, :user_id, :parent_id, :parent_type, presence: true
+  validates :user_id, :parent_id, :parent_type, presence: true
 
   belongs_to :parent,
     polymorphic: true
