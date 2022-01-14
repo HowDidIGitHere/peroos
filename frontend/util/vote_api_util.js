@@ -1,3 +1,10 @@
+export const getAllVotes = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/votes'
+  })
+)
+
 export const vote = vote => (
   $.ajax({
     method: 'POST',
