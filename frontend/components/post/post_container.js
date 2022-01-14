@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
   currentUserId: state.session.currentUserId,
   community: state.entities.communities[ownProps.match.params.communityTitle],
   currentPost: state.entities.currentPost,
-  comments: state.entities.comments
+  comments: state.entities.comments,
+  currentUserVotes: state.entities.currentUserVotes
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
