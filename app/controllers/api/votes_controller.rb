@@ -51,6 +51,7 @@ class Api::VotesController < ApplicationController
       else
         @post.vote_count += 1;
       end
+      @post.save
     elsif currPage == 'Comment'
       currPage = 'comment'
       @comment = Comment.find(@vote.parent_id)
@@ -59,6 +60,7 @@ class Api::VotesController < ApplicationController
       else
         @comment.vote_count -= 1;
       end
+      @comment.save
     end
     render 'api/' + currPage + 's/show'
   end
