@@ -3,6 +3,7 @@ import { withRouter } from "react-router";
 import { getAllComments, getEvenMoreComments } from "../../actions/comment_actions";
 import { getCommunity } from "../../actions/community_actions";
 import { deletePost, editPost, getCurrentPost, removeCurrentPost, removeVoteOnCurrentPost, voteOnCurrentPost} from "../../actions/post_actions";
+import { getCurrentUserVotes } from "../../actions/vote_actions";
 import Post from "./post";
 
 const mapStateToProps = (state, ownProps) => ({
@@ -22,7 +23,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   editPost: post => dispatch(editPost(post)),
   deletePost: () => dispatch(deletePost(ownProps.match.params.postId)),
   voteOnCurrentPost: vote => dispatch(voteOnCurrentPost(vote)),
-  removeVoteOnCurrentPost: vote => dispatch(removeVoteOnCurrentPost(vote))
+  removeVoteOnCurrentPost: vote => dispatch(removeVoteOnCurrentPost(vote)),
+  getCurrentUserVotes: () => dispatch(getCurrentUserVotes())
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));
