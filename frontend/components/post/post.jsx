@@ -13,7 +13,11 @@ class Post extends React.Component {
     this.state = {
       page: 0,
       count: 0,
-      editToggle: false
+      editToggle: false,
+      upvotes: 0,
+      downvotes: 0,
+      upvoteActive: false,
+      downvoteActive: false
     }
     this.handleCountInc = this.handleCountInc.bind(this);
     this.handleCountDec = this.handleCountDec.bind(this);
@@ -43,18 +47,19 @@ class Post extends React.Component {
     this.props.getAllComments();
     this.props.getCommunity();
     this.props.getCurrentPost();
-    this.props.getCurrentUserVotes();
+    this.props.getCurrentUserVotes()
+    //   .then(() => {
+    //     if (this.props.currentUserVotes[''])
+    //   })
+
+    // if (this.props.currentUserVotes)
+
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
         this.props.getEvenMoreComments(this.state.page + 1)
           .then(() => this.setState({ page: this.state.page + 1 }))
       }
     }
-    // window.onscroll = (e) => {
-    //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
-    //     this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreComments(this.state.page).then(() => this.setState({ count: this.props.count + 1 })))
-    //   }
-    // }
   }
 
   // componentDidUpdate(prevProps, prevState) {
@@ -63,6 +68,40 @@ class Post extends React.Component {
   //     this.props.getCurrentUserVotes();
   //   }
   // }
+
+  setUpvote() {
+    this.setState({
+      upvoteActive: !this.state.upvoteActive,
+      upvotes: this.state.upvoteActive
+        ? this.state.upvotes - 1
+        : this.state.upvotes + 1
+    });
+  }
+
+  setDownvote() {
+    this.setState({
+      downvoteActive: !this.state.downvoteActive,
+      downvotes: this.state.downvoteActive
+        ? this.state.downvotes - 1
+        : this.state.downvotes + 1
+    });
+  }
+
+  handleUpvote() {
+    if (this.state.downvoteActive) {
+      this.setUpvote();
+      this.setDownvote();
+    }
+    this.setUpvote();
+  }
+
+  handleDownvote() {
+    if (this.state.upvoteActive) {
+      this.setDownvote();
+      this.setUpvote();
+    }
+    this.setDownvote();
+  }
 
   componentWillUnmount() {
     this.props.removeCurrentPost();
@@ -105,6 +144,18 @@ class Post extends React.Component {
                   <div className='vote-counter'>
                     <div>
                       {
+                        <button
+                          className={this.state.upvoteActive ? "upvote red_vote_button" : "upvote"} 
+                          onClick={() => this.handleUpvote()}
+                        >
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" className="svg-inline--fa fa-arrow-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
+                          </svg>
+                        </button>
+                      }
+
+
+                      {/* {
                         this.props.currentUserVotes[`Post${this.props.currentPost.id}`] ? (this.props.currentUserVotes[`Post${this.props.currentPost.id}`]['upvote'] ? (
                           // red button with onClick that removes upvote
                           <button className="upvote red_vote_button" onClick={() => this.props.removeVoteOnCurrentPost({ upvote: true, parent_id: this.props.currentPost.id, parent_type: 'Post'})}>
@@ -136,11 +187,34 @@ class Post extends React.Component {
                             </svg>
                           </button>
                         )
-                      }
+                      } */}
                       <div>
-                        <p>{this.props.currentPost.vote_count}</p>
+                        {/* <p>{this.props.currentPost.upvotes - this.props.currentPost.downvotes}</p> */}
+                        {
+                          <p
+                            className={this.state.upvoteActive 
+                              ? "vote-count red_vote_button" 
+                              : (this.state.downvoteActive 
+                                ? "vote-count blue_vote_button"
+                                : "vote-count")}
+                          >
+                            {this.state.upvotes - this.state.downvotes}
+                          </p>
+                        }
                       </div>
+
                       {
+                        <button
+                          className={this.state.downvoteActive ? "downvote blue_vote_button" : "downvote"} 
+                          onClick={() => this.handleDownvote()}
+                        >
+                          <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" className="svg-inline--fa fa-arrow-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path fill="currentColor" d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"></path>
+                          </svg>
+                        </button>
+                      }
+
+                      {/* {
                         this.props.currentUserVotes[`Post${this.props.currentPost.id}`] ? (!this.props.currentUserVotes[`Post${this.props.currentPost.id}`]['upvote'] ? (
                           // blue button with onClick that removes downvote
                           <button className="downvote blue_vote_button" onClick={() => this.props.removeVoteOnCurrentPost({ upvote: false, parent_id: this.props.currentPost.id, parent_type: 'Post'})}>
@@ -168,7 +242,7 @@ class Post extends React.Component {
                             </svg>
                           </button>
                         )
-                      }
+                      } */}
                     </div>
                   </div>
                   <div className='post-content-posted-by'>
