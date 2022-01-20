@@ -1,4 +1,4 @@
-json.extract! post, :id, :title, :body, :media, :link, :poster_id, :community_id, :vote_count
+json.extract! post, :id, :title, :body, :media, :link, :poster_id, :community_id, :upvotes, :downvotes
 json.comments_count post.comments.length
 # json.vote_count post.votes.length - (post.votes.select {|v| !v}.length * 2)
 json.poster post.poster.username
