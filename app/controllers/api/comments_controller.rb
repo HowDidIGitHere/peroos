@@ -15,7 +15,8 @@ class Api::CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     @comment.commenter_id = current_user.id
-    @comment.vote_count = 1
+    @comment.upvotes = 1
+    @comment.downvotes = 0
     if @comment.save
       vote = Vote.new(user_id: current_user.id, upvote: true, parent_id: @comment.id, parent_type: 'Comment')
       vote.save
