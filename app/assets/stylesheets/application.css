@@ -2139,12 +2139,17 @@ p {
   width: 99%;
 }
 
-.vote-counter > div > .red_vote_button {
+.vote-counter div > .red_vote_button {
   color: #ff4500;
 }
 
-.vote-counter > div > .blue_vote_button {
+.vote-counter div > .blue_vote_button {
   color: #7193ff;
+}
+
+.vote-count {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* BREAK THIS FILE UP AND CHANGE INFINITE SCROLL TO NOT AJAX CALL IF REACHED END */
