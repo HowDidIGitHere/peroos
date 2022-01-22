@@ -69,14 +69,3 @@ export const deleteComment = commentId => dispatch => (
   CommentAPIutil.deleteComment(commentId)
     .then(comment => dispatch(removeComment(comment.id)))
 );
-
-// Voting on comments
-export const voteOnComment = vote => dispatch => (
-  VoteAPIutil.vote(vote)
-    .then(comment => dispatch(receiveComment(comment)))
-);
-
-export const removeVoteOnComment = vote => dispatch => (
-  VoteAPIutil.removeVote(vote)
-    .then(comment => dispatch(receiveComment(comment)))
-);
