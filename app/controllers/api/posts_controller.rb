@@ -65,8 +65,12 @@ class Api::PostsController < ApplicationController
 
   private
   def post_params
-    params.require(:post).permit(:title, :body, :media, :link, :community_id)
+    params.require(:post).permit(:title, :body, :media, :link, :community_id, :upvotes, :downvotes)
   end
+
+  # def vote_post_params
+  #   params.require(:post).permit(:upvotes, :downvotes)
+  # end
 
   def set_page
     @page = params[:page] || 0
