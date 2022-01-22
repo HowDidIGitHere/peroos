@@ -4,6 +4,19 @@ import { Link } from "react-router-dom";
 class PostCard extends React.Component {
   constructor(props) {
     super(props);
+    this.handleCommunityRedirect = this.handleCommunityRedirect.bind(this);
+  }
+
+  handleCommunityRedirect(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.props.history.push(`/${this.props.post.community}`);
+  }
+
+  handleUserRedirect(e) {
+    e.stopPropagation();
+    e.preventDefault();
+    this.props.history.push(`#`);
   }
 
   render() {
@@ -35,15 +48,16 @@ class PostCard extends React.Component {
               <div className='posted-by'>
                 <div>
                   <div>
-                    <p><Link className='please-underline' to={`/${this.props.post.community}`}>p/{this.props.post.community}</Link> • Posted by <Link to={`/`} className='username-link-highlight'>u/{this.props.post.poster}</Link> {this.props.post.post_date}</p>
+                    <p><span className='please-underline' onClick={this.handleCommunityRedirect}>p/{this.props.post.community}</span> • Posted by u/{this.props.post.poster} {this.props.post.post_date}</p>
+                    {/* <span onClick={this.handleUserRedirect} className='username-link-highlight'>u/{this.props.post.poster}</span> {this.props.post.post_date}*/}
                   </div>
                 </div>
               </div>
               <div className='post-title-sec'>
                 <div>
-                  <Link to={`/${this.props.post.community}/comments/${this.props.post.id}`}>
+                  {/* <Link to={`/${this.props.post.community}/comments/${this.props.post.id}`}> */}
                     <h1>{this.props.post.title}</h1>
-                  </Link>
+                  {/* </Link> */}
                 </div>
               </div>
               {
@@ -59,12 +73,14 @@ class PostCard extends React.Component {
               }
               <div className='post-footer-sec'>
                 <div>
-                  <Link to={`/${this.props.post.community}/comments/${this.props.post.id}`}>
+                  {/* <Link to={`/${this.props.post.community}/comments/${this.props.post.id}`}> */}
+                  <div className='post-comment-count-button'>
                     <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="comment-alt" className="svg-inline--fa fa-comment-alt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                       <path fill="currentColor" d="M448 0H64C28.7 0 0 28.7 0 64v288c0 35.3 28.7 64 64 64h96v84c0 7.1 5.8 12 12 12 2.4 0 4.9-.7 7.1-2.4L304 416h144c35.3 0 64-28.7 64-64V64c0-35.3-28.7-64-64-64zm16 352c0 8.8-7.2 16-16 16H288l-12.8 9.6L208 428v-60H64c-8.8 0-16-7.2-16-16V64c0-8.8 7.2-16 16-16h384c8.8 0 16 7.2 16 16v288z"></path>
                     </svg>
                     <p>{this.props.post.comments_count} Comments</p>
-                  </Link>
+                  </div>
+                  {/* </Link> */}
                   <div className='post-share-button'>
                     <button>
                       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="share" className="svg-inline--fa fa-share fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

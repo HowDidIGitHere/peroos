@@ -1116,7 +1116,7 @@ p {
   word-break: break-word;
 }
 
-.post-title-sec > div > a > h1 {
+.post-title-sec > div > h1 {
   font-size: 18px;
   font-weight: 700;
   line-height: 22px;
@@ -1169,7 +1169,8 @@ p {
   flex-grow: 1;
 }
 
-.post-footer-sec > div > a {
+.post-footer-sec > div > a,
+.post-footer-sec > div > .post-comment-count-button {
   padding: 8px;
   word-break: normal;
   /* margin-right: 4px; */
@@ -1185,13 +1186,15 @@ p {
 
 .vote-counter > div > button:hover,
 .post-footer-sec > div > a:hover,
+.post-footer-sec > div > .post-comment-count-button:hover,
 .post-share-button > button:hover,
 .post-save-button > button:hover,
 .post-ellipses-button > button:hover {
   background-color: #e8e8e8;
 }
 
-.post-footer-sec > div > a > svg {
+.post-footer-sec > div > a > svg,
+.post-footer-sec > div > .post-comment-count-button > svg {
   width: 20px;
   height: 20px;
   margin-right: 6px;
@@ -2082,6 +2085,7 @@ p {
 }
 
 .comment-buttons > .post-footer-sec > div > a,
+.comment-buttons > .post-footer-sec > div > .post-comment-count-button,
 .comment-buttons > .post-footer-sec > div > .post-share-button,
 .comment-buttons > .post-footer-sec > div > .post-share-button > button,
 .comment-buttons > .post-footer-sec > div > .post-edit-button,

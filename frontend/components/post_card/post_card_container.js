@@ -1,14 +1,19 @@
 import { connect } from "react-redux";
-import { removeVoteOnPost, voteOnPost } from "../../actions/post_actions";
+import { withRouter } from "react-router-dom";
+import { editPost } from "../../actions/post_actions";
+import { getCurrentUserVotes, removeVote, updateVote, vote } from "../../actions/vote_actions";
 import PostCard from "./post_card";
 
 // const mapStateToProps = state => ({
 
 // });
 
-const mapDispatchToProps = dispatch => ({
-  voteOnPost: vote => dispatch(voteOnPost(vote)),
-  removeVoteOnPost: vote => dispatch(removeVoteOnPost(vote))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  vote: v => dispatch(vote(v)),
+  updateVote: v => dispatch(updateVote(v)),
+  removeVote: v => dispatch(removeVote(v)),
+  editPost: post => dispatch(editPost(post)),
+  getCurrentUserVotes: () => dispatch(getCurrentUserVotes())
 });
 
-export default connect(null, mapDispatchToProps)(PostCard);
+export default withRouter(connect(null, mapDispatchToProps)(PostCard));
