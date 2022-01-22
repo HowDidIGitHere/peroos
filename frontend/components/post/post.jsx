@@ -87,8 +87,6 @@ class Post extends React.Component {
       })
     }
 
-    // if (this.props.currentUserVotes)
-
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 20) {
         this.props.getEvenMoreComments(this.state.page + 1)
@@ -96,48 +94,7 @@ class Post extends React.Component {
       }
     }
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.currentPost !== this.props.currentPost) {
-  //     this.props.getCurrentPost();
-  //     this.props.getCurrentUserVotes();
-  //   }
-  // }
-
-  setUpvote() {
-    this.setState({
-      upvoteActive: !this.state.upvoteActive,
-      upvotes: this.state.upvoteActive
-        ? this.state.upvotes - 1
-        : this.state.upvotes + 1
-    });
-  }
-
-  setDownvote() {
-    this.setState({
-      downvoteActive: !this.state.downvoteActive,
-      downvotes: this.state.downvoteActive
-        ? this.state.downvotes - 1
-        : this.state.downvotes + 1
-    });
-  }
-
-  handleUpvote() {
-    if (this.state.downvoteActive) {
-      this.setUpvote();
-      this.setDownvote();
-    }
-    this.setUpvote();
-  }
-
-  handleDownvote() {
-    if (this.state.upvoteActive) {
-      this.setDownvote();
-      this.setUpvote();
-    }
-    this.setDownvote();
-  }
-
+  
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUserId !== this.props.currentUserId) {
       if (this.props.currentUserId !== null) {
@@ -173,11 +130,6 @@ class Post extends React.Component {
         })
       }
     }
-    // if (this.props.currentUserId && prevProps.currentUserId !== this.props.currentUserId) {
-
-    // } else if (this.props.currentUserId === null) {
-
-    // }
   }
 
   componentWillUnmount() {
@@ -185,11 +137,87 @@ class Post extends React.Component {
     // .then(() => this.setState({ count: this.props.count - 1 }))
   }
 
+  handleUpvote() {
+    if (this.state.downvoteActive) {
+      // this.setUpvote();
+      // this.setDownvote();
+      this.setState({
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1,
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1
+      }, () => {
+        // downvote -> upvote
+        this.props.updateVote({ id: this.props.currentUserVotes[`Post${this.props.match.params.postId}`].id, upvote: true, parent_type: 'Post', parent_id: this.props.match.params.postId })
+          .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })))
+      });
+    } else {
+      this.setState({
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1
+      }, () => {
+        if (this.state.upvoteActive) {
+          // no vote -> upvote
+          this.props.vote({ upvote: true, parent_type: 'Post', parent_id: this.props.match.params.postId })
+            .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        } else {
+          // upvote -> no vote
+          this.props.removeVote({ id: this.props.currentUserVotes[`Post${this.props.match.params.postId}`].id, parent_type: 'Post', parent_id: this.props.match.params.postId })
+            .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        }
+      });
+    }
+  }
+
+  handleDownvote() {
+    if (this.state.upvoteActive) {
+      // this.setDownvote();
+      // this.setUpvote();
+      this.setState({
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1,
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1
+      }, () => {
+        // upvote -> downvote
+        this.props.updateVote({ id: this.props.currentUserVotes[`Post${this.props.match.params.postId}`].id, upvote: false, parent_type: 'Post', parent_id: this.props.match.params.postId })
+          .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+      }); 
+    } else {
+      this.setState({
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1
+      }, () => {
+        // no vote -> downvote
+        if (this.state.downvoteActive) {
+          // no vote -> downvote
+          this.props.vote({ upvote: false, parent_type: 'Post', parent_id: this.props.match.params.postId })
+            .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        } else {
+          // downvote -> no vote
+          this.props.removeVote({ id: this.props.currentUserVotes[`Post${this.props.match.params.postId}`].id, parent_type: 'Post', parent_id: this.props.match.params.postId })
+            .then(() => this.props.editPost(Object.assign({}, this.props.currentPost, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        }
+      });
+    }
+  }
+
   render() {
     if (!this.props.community || !this.props.currentPost) {
       return '...loading'
     }
-    console.log(this.state)
     return (
       <div className='post-con'>
         <div>
