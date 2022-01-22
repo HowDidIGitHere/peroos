@@ -3,7 +3,7 @@ export const getAllVotes = () => (
     method: 'GET',
     url: '/api/votes'
   })
-)
+);
 
 export const vote = vote => (
   $.ajax({
@@ -12,6 +12,14 @@ export const vote = vote => (
     data: { vote }
   })
 );
+
+export const updateVote = vote => {
+  return $.ajax({
+    method: 'PATCH',
+    url: `/api/votes/${vote.id}`,
+    data: { vote }
+  })
+};
 
 export const removeVote = vote => (
   $.ajax({
