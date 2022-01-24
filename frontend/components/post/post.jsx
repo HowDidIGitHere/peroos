@@ -18,7 +18,8 @@ class Post extends React.Component {
       downvotes: 0,
       upvoteActive: false,
       downvoteActive: false,
-      signedOut: false
+      signedOut: false,
+
     }
     this.handleCountInc = this.handleCountInc.bind(this);
     this.handleCountDec = this.handleCountDec.bind(this);
@@ -404,8 +405,7 @@ class Post extends React.Component {
                             downvoteActive = true;
                           }
                         }
-                        console.log(upvoteActive, downvoteActive)
-                        return <CommentContainer key={`post-${this.props.currentPost.id}-${idx}-${comment.id}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} currentUserId={this.props.currentUserId} isSignedOut={this.state.signedOut} upvoteActive={upvoteActive} downvoteActive={downvoteActive} currentUserVotes={this.props.currentUserVotes} handleCountDec={this.handleCountDec} />
+                        return <CommentContainer key={`post-${this.props.currentPost.id}-${idx}-${comment.id}`} getCurrentUserVotes={this.props.getCurrentUserVotes} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} currentUserId={this.props.currentUserId} isSignedOut={this.state.signedOut} upvoteActive={upvoteActive} downvoteActive={downvoteActive} currentUserVotes={this.props.currentUserVotes} handleCountDec={this.handleCountDec} />
                       }) : null
                     }
                     <div id='end'></div>
