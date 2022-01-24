@@ -16,7 +16,15 @@ class CommunityPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getCommunity().then(() =>  this.props.getAllPosts(this.props.community.id));
+    this.props.getCommunity()
+      .then(() => (
+        this.props.getAllPosts(this.props.community.id)
+          .then(() => {
+            if (this.props.currentUserId !== null) {
+              this.props.getCurrentUserVotes();
+            }
+          })
+      ));
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreComPosts(this.props.community.id, this.state.page))
@@ -24,9 +32,17 @@ class CommunityPage extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUserId !== this.props.currentUserId) {
+      if (this.props.currentUserId !== null) {
+        this.props.getCurrentUserVotes();
+      }
+    }
+  }
+
   render() {
     {
-      return this.props.community ? (
+      return this.props.community && this.props.currentUserVotes ? (
         <div>
           <div className='community-header'>
             {/* <img>BANNER</img> */}
@@ -65,7 +81,7 @@ class CommunityPage extends React.Component {
                 this.props.posts ? (
                   <ul>
                     {
-                      this.props.posts.map((post, idx) => <PostCard key={`post-${this.props.community.id}-${idx}`} history={this.props.history} post={post} />)
+                      this.props.posts.map((post, idx) => <PostCard openModal={this.props.openModal} key={`post-${this.props.community.id}-${idx}`} history={this.props.history} post={post} currentUserId={this.props.currentUserId} isSignedOut={this.props.currentUserId ? false : true} currentUserVotes={this.props.currentUserVotes} vote={this.props.vote} updateVote={this.props.updateVote} removeVote={this.props.removeVote} editPost={this.props.editPost} />)
                     }
                   </ul>
                 ) : null
