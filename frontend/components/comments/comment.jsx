@@ -7,14 +7,39 @@ class Comment extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      editToggle: false
+      editToggle: false,
+      upvotes: this.props.comment.upvotes,
+      downvotes: this.props.comment.downvotes,
+      upvoteActive: this.props.upvoteActive,
+      downvoteActive: this.props.downvoteActive,
+      signedOut: this.props.isSignedOut
     }
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
+    this.handleUpvote = this.handleUpvote.bind(this);
+    this.handleDownvote = this.handleDownvote.bind(this);
   }
 
+  componentDidMount() {
+    console.log('hello')
+  }
+
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.currentUserId !== this.props.currentUserId) {
+  //     if (this.props.currentUserId !== null) {
+  //       this.props.
+  //     } else {
+  //       this.setState({
+  //         upvoteActive: false,
+  //         downvoteActive: false,
+  //         signedOut: true
+  //       })
+  //     }
+  //   }
+  // }
+
   handleEdit(e) {
-    console.log(!this.state.editToggle);
+    // console.log(!this.state.editToggle);
     this.setState({ editToggle: !this.state.editToggle })
   }
 
@@ -22,7 +47,85 @@ class Comment extends React.Component {
     this.props.deleteComment(this.props.comment.id).then(() => this.props.handleCountDec());
   }
 
+  handleUpvote() {
+    if (this.state.downvoteActive) {
+      // this.setUpvote();
+      // this.setDownvote();
+      this.setState({
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1,
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1
+      }, () => {
+        // downvote -> upvote
+        this.props.updateVote({ id: this.props.currentUserVotes[`Comment${this.props.comment.id}`].id, upvote: true, parent_type: 'Comment', parent_id: this.props.comment.id })
+          .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })))
+      });
+    } else {
+      this.setState({
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1
+      }, () => {
+        if (this.state.upvoteActive) {
+          // no vote -> upvote
+          this.props.vote({ upvote: true, parent_type: 'Comment', parent_id: this.props.comment.id })
+            .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        } else {
+          // upvote -> no vote
+          this.props.removeVote({ id: this.props.currentUserVotes[`Comment${this.props.comment.id}`].id, parent_type: 'Comment', parent_id: this.props.comment.id })
+            .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        }
+      });
+    }
+  }
+
+  handleDownvote() {
+    if (this.state.upvoteActive) {
+      // this.setDownvote();
+      // this.setUpvote();
+      this.setState({
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1,
+        upvoteActive: !this.state.upvoteActive,
+        upvotes: this.state.upvoteActive
+          ? this.state.upvotes - 1
+          : this.state.upvotes + 1
+      }, () => {
+        // upvote -> downvote
+        this.props.updateVote({ id: this.props.currentUserVotes[`Comment${this.props.comment.id}`].id, upvote: false, parent_type: 'Comment', parent_id: this.props.comment.id })
+          .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+      }); 
+    } else {
+      this.setState({
+        downvoteActive: !this.state.downvoteActive,
+        downvotes: this.state.downvoteActive
+          ? this.state.downvotes - 1
+          : this.state.downvotes + 1
+      }, () => {
+        // no vote -> downvote
+        if (this.state.downvoteActive) {
+          // no vote -> downvote
+          this.props.vote({ upvote: false, parent_type: 'Comment', parent_id: this.props.comment.id })
+            .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        } else {
+          // downvote -> no vote
+          this.props.removeVote({ id: this.props.currentUserVotes[`Comment${this.props.comment.id}`].id, parent_type: 'Comment', parent_id: this.props.comment.id })
+            .then(() => this.props.editComment(Object.assign({}, this.props.comment, { upvotes: this.state.upvotes, downvotes: this.state.downvotes })));
+        }
+      });
+    }
+  }
+
   render() {
+    console.log(this.state)
     return (
       <div>
         <div className='comment-thread'>
@@ -39,7 +142,7 @@ class Comment extends React.Component {
           <div className='comment-list-item'>
             <div className='comment-list-item-commenter'>
               <div>
-                <span><Link to='#'>{this.props.comment.commenter}</Link></span>
+                <span>u/{this.props.comment.commenter}</span>
                 {this.props.op ? <span className='op'>OP</span> : null}
                 <span className='dot'><p>•</p></span>
                 <span>{this.props.comment.comment_date}</span>
@@ -62,9 +165,13 @@ class Comment extends React.Component {
                     <div>
                       <div className='comment-vote-counter'>
                         <button 
-                          className="upvote" 
+                          className={this.state.upvoteActive ? "upvote red_vote_button" : "upvote"} 
                           onClick={() => {
-                            this.props.voteOnComment({ upvote: true, parent_id: this.props.comment.id, parent_type: 'Comment'})
+                            if (this.state.signedOut) {
+                              return this.props.openModal('login');
+                            } else {
+                              return this.handleUpvote();
+                            }
                           }}>
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-up" className="svg-inline--fa fa-arrow-up fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path>
@@ -72,9 +179,26 @@ class Comment extends React.Component {
                         </button>
                         <div>
                           {/* <p>Vote</p> */}
-                          <p>{this.props.comment.vote_count}</p>
+                          <p
+                            className={this.state.upvoteActive 
+                              ? "vote-count red_vote_button" 
+                              : (this.state.downvoteActive 
+                                ? "vote-count blue_vote_button"
+                                : "vote-count")}
+                          >
+                            {this.state.upvotes - this.state.downvotes}
+                          </p>
                         </div>
-                        <button className="downvote" onClick={() => this.props.voteOnComment({ upvote: false, parent_id: this.props.comment.id, parent_type: 'Comment'})}>
+                        <button 
+                          className={this.state.downvoteActive ? "downvote blue_vote_button" : "downvote"} 
+                          onClick={() => {
+                            if (this.state.signedOut) {
+                              return this.props.openModal('login');
+                            } else {
+                              return this.handleDownvote();
+                            }
+                          }}
+                        >
                           <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="arrow-down" className="svg-inline--fa fa-arrow-down fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                             <path fill="currentColor" d="M413.1 222.5l22.2 22.2c9.4 9.4 9.4 24.6 0 33.9L241 473c-9.4 9.4-24.6 9.4-33.9 0L12.7 278.6c-9.4-9.4-9.4-24.6 0-33.9l22.2-22.2c9.5-9.5 25-9.3 34.3.4L184 343.4V56c0-13.3 10.7-24 24-24h32c13.3 0 24 10.7 24 24v287.4l114.8-120.5c9.3-9.8 24.8-10 34.3-.4z"></path>
                           </svg>
