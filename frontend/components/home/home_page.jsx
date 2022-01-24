@@ -13,10 +13,23 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getPersonalFeed();
+    this.props.getPersonalFeed()
+      .then(() => {
+        if (this.props.currentUserId !== null) {
+          this.props.getCurrentUserVotes();
+        }
+      });
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreFeedPosts(this.state.page).then(() => console.log(this.state.page)))
+      }
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUserId !== this.props.currentUserId) {
+      if (this.props.currentUserId !== null) {
+        this.props.getCurrentUserVotes();
       }
     }
   }
@@ -31,7 +44,19 @@ class HomePage extends React.Component {
               <ul>
                 {
                   this.props.personalFeed.map((post, idx) => (
-                    <PostCard key={`post-personal-${idx}`} history={this.props.history} community={post.community} post={post} />
+                    <PostCard 
+                      key={`post-personal-${idx}`} 
+                      history={this.props.history} 
+                      post={post} 
+                      currentUserId={this.props.currentUserId} 
+                      isSignedOut={this.props.currentUserId ? false : true} 
+                      openModal={this.props.openModal} 
+                      currentUserVotes={this.props.currentUserVotes} 
+                      vote={this.props.vote} 
+                      updateVote={this.props.updateVote} 
+                      removeVote={this.props.removeVote} 
+                      editPost={this.props.editPost} 
+                    />
                   ))
                 }
               </ul>

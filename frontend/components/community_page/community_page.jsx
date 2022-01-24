@@ -81,7 +81,21 @@ class CommunityPage extends React.Component {
                 this.props.posts ? (
                   <ul>
                     {
-                      this.props.posts.map((post, idx) => <PostCard openModal={this.props.openModal} key={`post-${this.props.community.id}-${idx}`} history={this.props.history} post={post} currentUserId={this.props.currentUserId} isSignedOut={this.props.currentUserId ? false : true} currentUserVotes={this.props.currentUserVotes} vote={this.props.vote} updateVote={this.props.updateVote} removeVote={this.props.removeVote} editPost={this.props.editPost} />)
+                      this.props.posts.map((post, idx) => (
+                        <PostCard 
+                          key={`post-${this.props.community.id}-${idx}`} 
+                          history={this.props.history} 
+                          post={post} 
+                          currentUserId={this.props.currentUserId} 
+                          isSignedOut={this.props.currentUserId ? false : true} 
+                          openModal={this.props.openModal} 
+                          currentUserVotes={this.props.currentUserVotes} 
+                          vote={this.props.vote} 
+                          updateVote={this.props.updateVote} 
+                          removeVote={this.props.removeVote} 
+                          editPost={this.props.editPost} 
+                        />
+                      ))
                     }
                   </ul>
                 ) : null
