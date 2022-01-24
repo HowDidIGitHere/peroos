@@ -238,8 +238,12 @@ class Post extends React.Component {
                   </p>
                 </div>
               </div>
-              <div>
-                <Link to={`/${this.props.community.sub}`}>
+              <div> 
+                <Link to={`#`} onClick={e => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  this.props.history.goBack();
+                }}>
                   <p>&times;</p>
                   <p>Close</p>
                 </Link>
