@@ -21,25 +21,78 @@ class Comment extends React.Component {
   }
 
   componentDidMount() {
-    console.log('hello')
+    if (this.props.currentUserId !== null) {
+      this.props.getCurrentUserVotes()
+        .then(() => {
+          if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
+            if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
+              this.setState({ 
+                upvoteActive: true,
+                downvoteActive: false,
+                signedOut: false
+              });
+            } else {
+              this.setState({ 
+                upvoteActive: false,
+                downvoteActive: true,
+                signedOut: false
+              });
+            }
+          } else {
+            this.setState({
+              upvoteActive: false,
+              downvoteActive: false,
+              signedOut: false
+            })
+          }
+        });
+    } else {
+      this.setState({
+        upvoteActive: false,
+        downvoteActive: false,
+        signedOut: true
+      })
+    }
   }
 
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (prevProps.currentUserId !== this.props.currentUserId) {
-  //     if (this.props.currentUserId !== null) {
-  //       this.props.
-  //     } else {
-  //       this.setState({
-  //         upvoteActive: false,
-  //         downvoteActive: false,
-  //         signedOut: true
-  //       })
-  //     }
-  //   }
-  // }
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUserId !== this.props.currentUserId) {
+      if (this.props.currentUserId !== null) {
+        this.props.getCurrentUserVotes()
+        .then(() => {
+          if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
+            if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
+              this.setState({ 
+                upvoteActive: true,
+                downvoteActive: false,
+                signedOut: false
+              });
+            } else {
+              this.setState({ 
+                upvoteActive: false,
+                downvoteActive: true,
+                signedOut: false
+              });
+            }
+          } else {
+            this.setState({
+              upvoteActive: false,
+              downvoteActive: false,
+              signedOut: false
+            })
+          }
+        });
+      } else {
+        this.setState({
+          upvoteActive: false,
+          downvoteActive: false,
+          signedOut: true
+        })
+      }
+    }
+  }
 
   handleEdit(e) {
-    // console.log(!this.state.editToggle);
     this.setState({ editToggle: !this.state.editToggle })
   }
 
@@ -125,7 +178,6 @@ class Comment extends React.Component {
   }
 
   render() {
-    console.log(this.state)
     return (
       <div>
         <div className='comment-thread'>
