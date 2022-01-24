@@ -5,8 +5,8 @@ const FooterCard = props => {
     <div className='card aside-card'>
       <div className='footer-card-content'>
         <div>
-          <a href='https://github.com/HowDidIGitHere/peroos'><h1>Github</h1></a>
-          <a href='https://www.linkedin.com/in/jamie-an-6b9b41114/'><h1>LinkedIn</h1></a>
+          <a href='https://github.com/HowDidIGitHere/peroos' target='_blank'><h1>Github</h1></a>
+          <a href='https://www.linkedin.com/in/jamie-an-6b9b41114/' target='_blank'><h1>LinkedIn</h1></a>
         </div>
         <div>
           <a>Javascript</a>
