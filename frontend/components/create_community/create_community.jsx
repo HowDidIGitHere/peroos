@@ -14,7 +14,11 @@ class CreateCommunityForm extends React.Component {
     e.preventDefault();
     const community = Object.assign({}, this.state);
     this.props.processForm(community)
-      .then(() => this.props.closeModal())
+      .then(res => {
+        this.props.follow({ community_id: res.community.id })
+          .then(res => this.props.history.push(`/${res.community.sub}`));
+        this.props.closeModal();
+      })
       .fail(() => console.log('Oh no'));
   }
   
@@ -48,8 +52,8 @@ class CreateCommunityForm extends React.Component {
             <ul>
               {
                 this.props.errors 
-                ? this.props.errors.map(error => {
-                  return <li>{error}</li>
+                ? this.props.errors.map((error, idx) => {
+                  return <li key={`community-creation-error-${idx}`} >{error}</li>
                 }) 
                 : null
               }

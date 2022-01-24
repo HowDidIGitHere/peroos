@@ -1,7 +1,8 @@
 import { connect } from "react-redux";
 import CreateCommunityForm from "./create_community";
-import { createCommunity } from '../../actions/community_actions';
+import { createCommunity, followCommunity } from '../../actions/community_actions';
 import { closeModal } from '../../actions/modal_actions';
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = ({ errors, session }) => ({
   errors: errors.communityForm,
@@ -10,7 +11,8 @@ const mapStateToProps = ({ errors, session }) => ({
 
 const mapDispatchToProps = () => ({
   processForm: community => dispatch(createCommunity(community)),
-  closeModal: () => dispatch(closeModal())
+  closeModal: () => dispatch(closeModal()),
+  follow: follow => dispatch(followCommunity(follow))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateCommunityForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreateCommunityForm));

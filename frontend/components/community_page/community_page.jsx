@@ -69,9 +69,9 @@ class CommunityPage extends React.Component {
                   
                 </div>
               </div>
-              <div>
+              {/* <div>
                 <Link to='#'>Posts</Link>
-              </div>
+              </div> */}
             </div>
           </div>
           <div className='community-content'>
