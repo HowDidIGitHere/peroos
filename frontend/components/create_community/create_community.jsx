@@ -45,7 +45,16 @@ class CreateCommunityForm extends React.Component {
             </div>
           </div>
           <div className='create-community-errors'>
-            <span>{this.props.errors ? this.props.errors[0] : null}</span>
+            <ul>
+              {
+                this.props.errors 
+                ? this.props.errors.map(error => {
+                  return <li>{error}</li>
+                }) 
+                : null
+              }
+            </ul>
+            {/* <span>{this.props.errors ? this.props.errors : null}</span> */}
           </div>
           <div className='create-community-footer'>
             <button className='bubble-button' onClick={() => this.props.closeModal()}>Cancel</button>

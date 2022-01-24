@@ -1489,7 +1489,7 @@ p {
   line-height: 16px;
   color: red;
   padding-top: 4px;
-  text-align: right;
+  /* text-align: right; */
   display: flex;
 }
 
@@ -1831,6 +1831,11 @@ p {
 
 .post-body-aside .bubble-button {
   height: 34px;
+}
+
+.please-underline {
+  font-weight: 700;
+  color: #1c1c1c;
 }
 
 .please-underline:hover {
