@@ -2143,10 +2143,12 @@ p {
   width: 99%;
 }
 
+.comment-vote-counter .red_vote_button,
 .vote-counter div > .red_vote_button {
   color: #ff4500;
 }
 
+.comment-vote-counter .blue_vote_button,
 .vote-counter div > .blue_vote_button {
   color: #7193ff;
 }
