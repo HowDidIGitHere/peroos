@@ -96,6 +96,8 @@ class Post extends React.Component {
   }
   
   componentDidUpdate(prevProps, prevState) {
+    // if (prevProps.)
+
     if (prevProps.currentUserId !== this.props.currentUserId) {
       if (this.props.currentUserId !== null) {
         this.props.getCurrentUserVotes()
@@ -392,9 +394,19 @@ class Post extends React.Component {
                 <div className='post-comments-list'>
                   <ul>
                     {
-                      this.props.comments ? this.props.comments.map((comment, idx) => (
-                        <CommentContainer key={`post-${this.props.currentPost.id}-${idx}-${comment.id}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} currentUserId={this.props.currentUserId} handleCountDec={this.handleCountDec} />
-                      )) : null
+                      this.props.comments ? this.props.comments.map((comment, idx) => {
+                        let upvoteActive = false;
+                        let downvoteActive = false;
+                        if (this.props.currentUserVotes[`Comment${comment.id}`]) {
+                          if (this.props.currentUserVotes[`Comment${comment.id}`].upvote) {
+                            upvoteActive = true;
+                          } else {
+                            downvoteActive = true;
+                          }
+                        }
+                        console.log(upvoteActive, downvoteActive)
+                        return <CommentContainer key={`post-${this.props.currentPost.id}-${idx}-${comment.id}`} comment={comment} op={comment.commenter_id === this.props.currentPost.poster_id} currentUserId={this.props.currentUserId} isSignedOut={this.state.signedOut} upvoteActive={upvoteActive} downvoteActive={downvoteActive} currentUserVotes={this.props.currentUserVotes} handleCountDec={this.handleCountDec} />
+                      }) : null
                     }
                     <div id='end'></div>
                   </ul>
