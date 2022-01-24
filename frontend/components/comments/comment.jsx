@@ -20,76 +20,107 @@ class Comment extends React.Component {
     this.handleDownvote = this.handleDownvote.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.currentUserId !== null) {
-      this.props.getCurrentUserVotes()
-        .then(() => {
-          if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
-            if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
-              this.setState({ 
-                upvoteActive: true,
-                downvoteActive: false,
-                signedOut: false
-              });
-            } else {
-              this.setState({ 
-                upvoteActive: false,
-                downvoteActive: true,
-                signedOut: false
-              });
-            }
-          } else {
-            this.setState({
-              upvoteActive: false,
-              downvoteActive: false,
-              signedOut: false
-            })
-          }
-        });
-    } else {
+  // componentDidMount() {
+  //   if (this.props.currentUserId !== null) {
+  //     this.props.getCurrentUserVotes()
+  //       .then(() => {
+  //         if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
+  //           if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
+  //             this.setState({ 
+  //               upvoteActive: true,
+  //               downvoteActive: false,
+  //               signedOut: false
+  //             });
+  //           } else {
+  //             this.setState({ 
+  //               upvoteActive: false,
+  //               downvoteActive: true,
+  //               signedOut: false
+  //             });
+  //           }
+  //         } else {
+  //           this.setState({
+  //             upvoteActive: false,
+  //             downvoteActive: false,
+  //             signedOut: false
+  //           })
+  //         }
+  //       });
+  //   } else {
+  //     this.setState({
+  //       upvoteActive: false,
+  //       downvoteActive: false,
+  //       signedOut: true
+  //     })
+  //   }
+  // }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUserVotes !== this.props.currentUserVotes) {
+      if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
+        if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
+          this.setState({ 
+            upvoteActive: true,
+            downvoteActive: false,
+            signedOut: false
+          });
+        } else {
+          this.setState({ 
+            upvoteActive: false,
+            downvoteActive: true,
+            signedOut: false
+          });
+        }
+      } else {
+        this.setState({
+          upvoteActive: false,
+          downvoteActive: false,
+          signedOut: false
+        })
+      }
+    }
+    if (prevProps.currentUserId !== this.props.currentUserId) {
       this.setState({
         upvoteActive: false,
         downvoteActive: false,
         signedOut: true
       })
     }
-  }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.currentUserId !== this.props.currentUserId) {
-      if (this.props.currentUserId !== null) {
-        this.props.getCurrentUserVotes()
-        .then(() => {
-          if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
-            if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
-              this.setState({ 
-                upvoteActive: true,
-                downvoteActive: false,
-                signedOut: false
-              });
-            } else {
-              this.setState({ 
-                upvoteActive: false,
-                downvoteActive: true,
-                signedOut: false
-              });
-            }
-          } else {
-            this.setState({
-              upvoteActive: false,
-              downvoteActive: false,
-              signedOut: false
-            })
-          }
-        });
-      } else {
-        this.setState({
-          upvoteActive: false,
-          downvoteActive: false,
-          signedOut: true
-        })
-      }
-    }
+    // if (prevProps.currentUserId !== this.props.currentUserId ) {
+    //   if (this.props.currentUserId !== null) {
+    //     this.props.getCurrentUserVotes()
+    //     .then(() => {
+    //       if (this.props.currentUserVotes[`Comment${this.props.comment.id}`]) {
+    //         if (this.props.currentUserVotes[`Comment${this.props.comment.id}`].upvote) {
+    //           this.setState({ 
+    //             upvoteActive: true,
+    //             downvoteActive: false,
+    //             signedOut: false
+    //           });
+    //         } else {
+    //           this.setState({ 
+    //             upvoteActive: false,
+    //             downvoteActive: true,
+    //             signedOut: false
+    //           });
+    //         }
+    //       } else {
+    //         this.setState({
+    //           upvoteActive: false,
+    //           downvoteActive: false,
+    //           signedOut: false
+    //         })
+    //       }
+    //     });
+    //   } else {
+    //     this.setState({
+    //       upvoteActive: false,
+    //       downvoteActive: false,
+    //       signedOut: true
+    //     })
+    //   }
+    // }
   }
 
   handleEdit(e) {
