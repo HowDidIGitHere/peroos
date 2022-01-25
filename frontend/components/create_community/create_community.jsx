@@ -3,9 +3,14 @@ import React from "react";
 class CreateCommunityForm extends React.Component {
   constructor(props) {
     super(props)
+    const randBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+    const r = randBetween(0, 255);
+    const g = randBetween(0, 255);
+    const b = randBetween(0, 255);
     this.state = {
       sub: '',
-      creator_id: this.props.sessionId
+      creator_id: this.props.sessionId,
+      color: `rgb(${r},${g},${b})`
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }

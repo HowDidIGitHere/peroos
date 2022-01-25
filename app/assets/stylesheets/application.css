@@ -553,6 +553,17 @@ p {
   /* justify-content: space-evenly; */
 }
 
+.community-list-item-follow {
+  display: flex;
+  align-items: baseline;
+}
+
+.community-list-item-follow > button {
+  margin-right: 20px;
+  padding: 0 16px;
+  width: auto;
+}
+
 .sub-list-icon {
   margin-right: 4px;
 }
@@ -1130,6 +1141,12 @@ p {
   overflow: hidden;
 }
 
+.posted-by > div > svg {
+  width: 22px;
+  height: 22px;
+  margin-right: 4px;
+}
+
 .posted-by > div > div {
   /* display: inline;
   font-size: 12px;
@@ -1423,8 +1440,8 @@ p {
 
 .community-header-sub-icon {
   background: white;
-  width: 72px;
-  height: 72px;
+  width: 71px;
+  height: 71px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1825,10 +1842,18 @@ p {
   font-weight: 400;
   line-height: 16px;
   display: flex;
+  align-items: center;
   flex-flow: row nowrap;
-  align-items: start;
   margin: 0 8px 8px;
   position: relative;
+}
+
+
+.post-content-posted-by > .sub-list-icon,
+.post-content-posted-by > .sub-list-icon > svg {
+  margin-left: 0;
+  width: 22px;
+  height: 22px;
 }
 
 .post-content-posted-by > div:first-child > a {
