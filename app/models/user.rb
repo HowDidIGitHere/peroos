@@ -36,6 +36,14 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: :Vote
 
+  has_many :post_karma,
+    through: :posts,
+    source: :votes
+
+  has_many :comment_karma,
+    through: :comments,
+    source: :votes
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     if user && user.is_valid_password?(password)
