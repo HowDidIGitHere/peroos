@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { withRouter } from "react-router";
 import { getAllComments, getEvenMoreComments } from "../../actions/comment_actions";
-import { getCommunity } from "../../actions/community_actions";
+import { followCommunity, getCommunity, unfollowCommunity } from "../../actions/community_actions";
 import { openModal } from "../../actions/modal_actions";
 import { deletePost, editPost, getCurrentPost, removeCurrentPost} from "../../actions/post_actions";
 import { getCurrentUserVotes, removeVote, updateVote, vote } from "../../actions/vote_actions";
@@ -27,7 +27,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   updateVote: v => dispatch(updateVote(v)),
   removeVote: v => dispatch(removeVote(v)),
   getCurrentUserVotes: () => dispatch(getCurrentUserVotes()),
-  openModal: type => dispatch(openModal(type))
+  openModal: type => dispatch(openModal(type)),
+  follow: follow => dispatch(followCommunity(follow)),
+  unfollow: follow => dispatch(unfollowCommunity(follow))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Post));
