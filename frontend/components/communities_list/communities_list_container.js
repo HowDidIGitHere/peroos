@@ -3,10 +3,17 @@ import CommunitiesList from "./communities_list";
 import { followCommunity, getAllCommunities, unfollowCommunity } from "../../actions/community_actions";
 import { openModal } from "../../actions/modal_actions";
 
-const mapStateToProps = state => ({
-  allCommunities: Object.values(state.entities.communities),
-  currentUserId: state.session.currentUserId
-});
+const mapStateToProps = state => {
+  let tempComs = Object.values(state.entities.communities);
+  tempComs.sort((a, b) => {
+    return b.follower_count - a.follower_count
+  });
+
+  return {
+    allCommunities: tempComs,
+    currentUserId: state.session.currentUserId
+  }
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   getAllCommunities: () => dispatch(getAllCommunities()),

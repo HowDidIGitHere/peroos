@@ -1,7 +1,8 @@
 class Api::CommunitiesController < ApplicationController
 
   def index
-    @communities = Community.all
+    @communities = Community.joins('LEFT OUTER JOIN follows ON follows.community_id = communities.id').group('communities.id').order('COUNT(follows.id) DESC')
+    # @communities = Community.all
     render :index
   end
 
