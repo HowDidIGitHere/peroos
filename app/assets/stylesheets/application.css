@@ -549,7 +549,18 @@ p {
 .community-list-item {
   display: flex;
   flex-direction: row;
+  align-items: center;
   /* justify-content: space-evenly; */
+}
+
+.sub-list-icon {
+  margin-right: 4px;
+}
+
+.sub-list-icon,
+.sub-list-icon > svg {
+  width: 38px;
+  height: 38px
 }
 
 .community-list-item > h1 {
