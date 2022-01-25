@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_25_022444) do
+ActiveRecord::Schema.define(version: 2022_01_25_190845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 2022_01_25_022444) do
     t.integer "creator_id", null: false
     t.string "about"
     t.string "banner"
+    t.string "color"
     t.index ["creator_id"], name: "index_communities_on_creator_id"
     t.index ["sub"], name: "index_communities_on_sub", unique: true
   end
