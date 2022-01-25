@@ -11,6 +11,12 @@ class CommunitiesList extends React.Component {
     this.props.getAllCommunities();
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.currentUserId !== this.props.currentUserId) {
+      this.props.getAllCommunities();
+    }
+  }
+
   render() {
 
     return (
@@ -34,7 +40,7 @@ class CommunitiesList extends React.Component {
                   this.props.allCommunities ? this.props.allCommunities.map((community, idx) => {
                     const communityColor = {
                       color: community.color ? community.color : '#1a6dcd'
-                    }
+                    };
 
                     return (
                       <li key={`com-${idx}`}>
@@ -48,8 +54,44 @@ class CommunitiesList extends React.Component {
                             </span>
                             <h1>p/{community.sub}</h1>
                           </span>
-                          <span>
-  
+                          <span className='community-list-item-follow'>
+                            {
+                              this.props.currentUserId ? 
+                              (community.followed_by_current_user ? (
+                                <button 
+                                  className='bubble-button' 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    this.props.unfollow({ community_id: community.id })
+                                  }}
+                                >
+                                  Joined
+                                </button>
+                              ) : (
+                                <button 
+                                  className='bubble-button filled-blue' 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    this.props.follow({ community_id: community.id })
+                                  }}
+                                >
+                                  Join
+                                </button>
+                              )) : (
+                                <button 
+                                  className='bubble-button filled-blue' 
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    this.props.openModal('login')
+                                  }}
+                                >
+                                  Join
+                                </button>
+                              )
+                            }
                             <p>{community.follower_count}</p>
                           </span>
                         </Link>
