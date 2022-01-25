@@ -148,6 +148,12 @@ class PostCard extends React.Component {
   render() {
     const { body, media, list } = this.props.post;
     const postContent = body ? body : (media ? media : list);
+
+    const communityColor = this.props.community ? {
+      display: 'none'
+    } : {
+      color: this.props.post.community_color ? this.props.post.community_color : '#1a6dcd'
+    }
   
     return (
       <Link to={`/${this.props.post.community}/comments/${this.props.post.id}`}>
@@ -205,6 +211,9 @@ class PostCard extends React.Component {
             <div className='post-content-body'>
               <div className='posted-by'>
                 <div>
+                  <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="product-hunt" style={communityColor} style={communityColor} className="sub-icon svg-inline--fa fa-product-hunt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                    <path fill="currentColor" d="M326.3 218.8c0 20.5-16.7 37.2-37.2 37.2h-70.3v-74.4h70.3c20.5 0 37.2 16.7 37.2 37.2zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-128.1-37.2c0-47.9-38.9-86.8-86.8-86.8H169.2v248h49.6v-74.4h70.3c47.9 0 86.8-38.9 86.8-86.8z"></path>
+                  </svg>
                   <div>
                     <p><span className='please-underline' onClick={this.handleCommunityRedirect}>p/{this.props.post.community}</span> • Posted by u/{this.props.post.poster} {this.props.post.post_date}</p>
                     {/* <span onClick={this.handleUserRedirect} className='username-link-highlight'>u/{this.props.post.poster}</span> {this.props.post.post_date}*/}
