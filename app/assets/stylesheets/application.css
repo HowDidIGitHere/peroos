@@ -120,6 +120,10 @@ p {
   align-items: center;
 }
 
+.right-nav > button:last-child {
+  margin-right: 16px;
+}
+
 .setting-button {
   height: 30px;
   padding: 2px 15px;
@@ -324,6 +328,7 @@ p {
   position: relative;
   display: inline-block;
   width: 220px;
+  margin-left: 16px;
 }
 
 .header-user-dropdown > div {
@@ -369,6 +374,21 @@ p {
   margin-left: 8px;
   text-align: left;
   width: 175px
+}
+
+.left-side-user-info {
+  display: flex;
+  align-items: center;
+}
+
+.left-side-user-info > span:first-child {
+  margin-right: 5px;
+}
+
+.left-side-user-info > span:first-child,
+.left-side-user-info > span > svg {
+  width: 25px;
+  height: 25px;
 }
 
 .user-dropdown-menu {
@@ -1284,7 +1304,7 @@ p {
   position: relative;
   flex-grow: 1;
   margin-left: 16px;
-  margin-right: 16px;
+  /* margin-right: 16px; */
   width: auto;
   height: auto;
   border: 1px solid transparent;
@@ -1358,6 +1378,13 @@ p {
   width: 100%;
 }
 
+.hidden-create-post-button > div > a {
+  margin-left: 0;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  width: 100%;
+}
+
 .added-space-for-post-about-header {
   height: 30px;
 }
@@ -1376,9 +1403,9 @@ p {
 }
 
 .about-community-sub-name .sub-icon {
-  color: black;
-  width: 20px;
-  height: 20px;
+  color: #1a6dcd;
+  width: 54px;
+  height: 54px;
   margin: 6px;
 }
 

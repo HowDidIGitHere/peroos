@@ -13,7 +13,7 @@ const CommunityAbout = (props) => {
           props.community.about ? (
             <p>{props.community.about}</p>
           ) : (
-            <p>Nothing Here</p>
+            <p>Nothing Here...</p>
           )
         }
         <div className='user-tracker'>
