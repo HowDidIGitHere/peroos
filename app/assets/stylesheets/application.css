@@ -157,6 +157,14 @@ p {
   text-align: center;
   font-size: 25px;
   margin-left: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.logo > svg {
+  width: 30px;
+  height: 30px;
+  color: rgb(255, 69, 0);
 }
 
 .input-group {
@@ -1402,11 +1410,27 @@ p {
   margin-right: 7px;
 }
 
+.community-header-sub-icon {
+  background: white;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.community-sub-icon {
+  height: 65px;
+  width: 65px;
+  color: #1a6dcd;
+}
+
 .about-community-sub-name .sub-icon {
   color: #1a6dcd;
   width: 54px;
   height: 54px;
-  margin: 6px;
+  margin-right: 6px;
 }
 
 .about-community-sub-name {
