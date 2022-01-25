@@ -3,7 +3,7 @@ import { withRouter } from "react-router";
 import CreatePostCard from "./create_post_card";
 
 const mapStateToProps = (state, ownProps) => ({
-
+  currentUser: state.entities.users[state.session.currentUserId]
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -564,6 +564,10 @@ p {
   width: auto;
 }
 
+.community-list-item-follow > p {
+  font-size: 14px;
+}
+
 .sub-list-icon {
   margin-right: 4px;
 }
@@ -577,6 +581,10 @@ p {
 .community-list-item > h1 {
   margin-right: 10px;
 }
+
+.community-list-item > h1:last-child {
+  font-size: 18px;
+} 
 
 .about-community {
   background-color: white;
@@ -911,6 +919,20 @@ p {
   display: flex;
   align-items: center;
   padding: 8px;
+}
+
+.create-post-card-content > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+  width: 38px;
+  height: 38px;
+}
+
+.create-post-card-content > span > svg {
+  width: 38px;
+  height: 38px;
 }
 
 .create-post-card-input-container {
@@ -1361,6 +1383,12 @@ p {
 .search-bar-nav > form:hover,
 .search-bar-nav > form:focus {
   border: 1px solid #0079d3;
+  background-color: white;
+}
+
+.search-bar-nav > form > input:hover,
+.search-bar-nav > form > input:focus {
+  background-color: white;
 }
 
 .search-bar-nav > form > label {
