@@ -19,7 +19,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    let user;
+    if (this.props.formType === 'Sign up') {
+      const randBetween = (min, max) => min + Math.floor(Math.random() * (max - min + 1));
+      const r = randBetween(0, 255);
+      const g = randBetween(0, 255);
+      const b = randBetween(0, 255);
+      user = Object.assign({}, this.state, { color: `rgb(${r},${g},${b})` });
+    } else {
+      user = Object.assign({}, this.state);
+    }
     this.props.processForm(user)
       .then(() => this.props.closeModal())
       .fail(() => console.log('Oh no'));
