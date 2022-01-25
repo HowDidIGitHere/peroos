@@ -1,8 +1,9 @@
 import { connect } from "react-redux";
 import HomePage from "./home_page";
-import { getEvenMoreFeedPosts, getPersonalFeed } from "../../actions/post_actions";
+import { editPost, getEvenMoreFeedPosts, getPersonalFeed } from "../../actions/post_actions";
 import { withRouter } from "react-router";
-import { getCurrentUserVotes } from "../../actions/vote_actions";
+import { getCurrentUserVotes, removeVote, updateVote, vote } from "../../actions/vote_actions";
+import { openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = state => ({
   currentUserId: state.session.currentUserId,
