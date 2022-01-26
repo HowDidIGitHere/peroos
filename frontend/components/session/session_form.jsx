@@ -89,14 +89,14 @@ class SessionForm extends React.Component {
           </div>
         </form>
         {/* {this.renderErrors()} */}
-        {
+        {/* {
           this.props.formType === 'Login' ? (
           <div className='forgor'>
             <p>
               Forgot your <button>username</button> or <button>password</button>?
             </p>
           </div>) : null
-        }
+        } */}
         {
           this.props.formType === 'Login' ?
             (
@@ -108,6 +108,7 @@ class SessionForm extends React.Component {
             (
               <div>
                 <p>Already a Perooser? {this.props.otherForm}</p>
+                <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
               </div>
             )
         }
