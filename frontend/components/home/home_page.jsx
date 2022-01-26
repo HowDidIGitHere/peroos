@@ -8,7 +8,8 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 0
+      page: 0,
+      loadedRightInfo: false
     }
   }
 
@@ -16,7 +17,8 @@ class HomePage extends React.Component {
     this.props.getPersonalFeed()
       .then(() => {
         if (this.props.currentUserId !== null) {
-          this.props.getCurrentUserVotes();
+          this.props.getCurrentUserVotes()
+            .then(() => this.setState({ loadedRightInfo: true }));
         }
       });
     window.onscroll = (e) => {
@@ -40,7 +42,7 @@ class HomePage extends React.Component {
         <div className='main-community-page'>
           {this.props.currentUserId ? <CreatePostCardContainer /> : null}
           {
-            this.props.personalFeed ? (
+            this.props.personalFeed && this.state.loadedRightInfo ? (
               <ul>
                 {
                   this.props.personalFeed.map((post, idx) => (

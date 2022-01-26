@@ -20,7 +20,7 @@ class Post extends React.Component {
       upvoteActive: false,
       downvoteActive: false,
       signedOut: false,
-
+      loadedRightInfo: false
     }
     this.handleCountInc = this.handleCountInc.bind(this);
     this.handleCountDec = this.handleCountDec.bind(this);
@@ -53,7 +53,8 @@ class Post extends React.Component {
       .then(() => {
         this.setState({
           upvotes: this.props.currentPost.upvotes,
-          downvotes: this.props.currentPost.downvotes
+          downvotes: this.props.currentPost.downvotes,
+          loadedRightInfo: true
         });
       });
     if (this.props.currentUserId !== null) {
@@ -219,7 +220,7 @@ class Post extends React.Component {
   }
 
   render() {
-    if (this.props.community && this.props.currentPost) {
+    if (this.props.community && this.props.currentPost && this.state.loadedRightInfo) {
       const communityColor = {
         color: this.props.community.color ? this.props.community.color : '#1a6dcd'
       };

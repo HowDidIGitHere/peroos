@@ -11,7 +11,8 @@ class CommunityPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 0
+      page: 0,
+      loadedRightInfo: false
     }
   }
 
@@ -21,7 +22,8 @@ class CommunityPage extends React.Component {
         this.props.getAllPosts(this.props.community.id)
           .then(() => {
             if (this.props.currentUserId !== null) {
-              this.props.getCurrentUserVotes();
+              this.props.getCurrentUserVotes()
+                .then(() => this.setState({ loadedRightInfo: true }));
             }
           })
       ));
@@ -43,6 +45,7 @@ class CommunityPage extends React.Component {
   render() {
 
     if (this.props.community && this.props.currentUserVotes) {
+    // if (this.state.loadedRightInfo) {
       const communityColor = {
         color: this.props.community.color ? this.props.community.color : '#1a6dcd'
       };
@@ -87,7 +90,7 @@ class CommunityPage extends React.Component {
             <div className='main-community-page'>
               {this.props.currentUserId ? <CreatePostCardContainer /> : null}
               {
-                this.props.posts ? (
+                this.props.posts && this.state.loadedRightInfo ? (
                   <ul>
                     {
                       this.props.posts.map((post, idx) => (
@@ -121,7 +124,7 @@ class CommunityPage extends React.Component {
         </div>
       )
     } else {
-      return <NotFoundPage />
+      return "...loading"
     }
   }
 }
