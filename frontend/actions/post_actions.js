@@ -1,5 +1,4 @@
 import * as PostAPIutil from '../util/post_api_util';
-import * as VoteAPIutil from '../util/vote_api_util';
 
 // action types
 export const RECEIVE_EDITED_POST = 'RECEIVE_EDITED_POST';

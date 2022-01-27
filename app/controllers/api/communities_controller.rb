@@ -6,6 +6,11 @@ class Api::CommunitiesController < ApplicationController
     render :index
   end
 
+  def followed
+    @communities = Community.joins(:follows).where('follows.user_id = :currentUserId', { currentUserId: current_user.id })
+    render :index
+  end
+
   def show
     @community = Community.find_by(sub: params[:id])
     if @community

@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     get '/posts', to: 'posts#feed'
 
+    get '/followed_communities', to: 'communities#followed'
+
     get '/search', to: 'search#index'
 
     resources :follows, only: [:create, :destroy]
