@@ -12,7 +12,7 @@ class CommunityPage extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      loadedRightInfo: false
+      // loadedRightInfo: false
     }
   }
 
@@ -23,7 +23,7 @@ class CommunityPage extends React.Component {
           .then(() => {
             if (this.props.currentUserId !== null) {
               this.props.getCurrentUserVotes()
-                .then(() => this.setState({ loadedRightInfo: true }));
+                // .then(() => this.setState({ loadedRightInfo: true }));
             }
           })
       ));
@@ -90,7 +90,7 @@ class CommunityPage extends React.Component {
             <div className='main-community-page'>
               {this.props.currentUserId ? <CreatePostCardContainer /> : null}
               {
-                this.props.posts && this.state.loadedRightInfo ? (
+                this.props.posts /* && this.state.loadedRightInfo */ ? (
                   <ul>
                     {
                       this.props.posts.map((post, idx) => (
