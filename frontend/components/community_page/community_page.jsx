@@ -29,7 +29,9 @@ class CommunityPage extends React.Component {
       ));
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreComPosts(this.props.community.id, this.state.page))
+        this.props.getEvenMoreComPosts(this.props.community.id, this.state.page + 1)
+          .then(this.setState({ page: this.state.page + 1 }))
+        // this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreComPosts(this.props.community.id, this.state.page))
       }
     }
   }

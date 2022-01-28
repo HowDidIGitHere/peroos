@@ -23,7 +23,9 @@ class HomePage extends React.Component {
       });
     window.onscroll = (e) => {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreFeedPosts(this.state.page).then(() => console.log(this.state.page)))
+        this.props.getEvenMoreFeedPosts(this.state.page + 1)
+          .then(() => this.setState({ page: this.state.page + 1 }))
+        // this.setState({ page: this.state.page + 1 }, () => this.props.getEvenMoreFeedPosts(this.state.page).then(() => console.log(this.state.page)))
       }
     }
   }
