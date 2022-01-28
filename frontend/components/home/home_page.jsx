@@ -9,7 +9,7 @@ class HomePage extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      // loadedRightInfo: false
+      loadedRightInfo: false
     }
   }
 
@@ -18,7 +18,9 @@ class HomePage extends React.Component {
       .then(() => {
         if (this.props.currentUserId !== null) {
           this.props.getCurrentUserVotes()
-            // .then(() => this.setState({ loadedRightInfo: true }));
+            .then(() => this.setState({ loadedRightInfo: true }));
+        } else {
+          this.setState({ loadedRightInfo: true })
         }
       });
     window.onscroll = (e) => {
@@ -44,7 +46,7 @@ class HomePage extends React.Component {
         <div className='main-community-page'>
           {this.props.currentUserId ? <CreatePostCardContainer /> : null}
           {
-            this.props.personalFeed /* && this.state.loadedRightInfo */ ? (
+            this.props.personalFeed && this.state.loadedRightInfo ? (
               <ul>
                 {
                   this.props.personalFeed.map((post, idx) => (
@@ -64,7 +66,9 @@ class HomePage extends React.Component {
                   ))
                 }
               </ul>
-            ) : null
+            ) : (
+              <div className="loader"></div>
+            )
           }
         </div>
         <div className='sidebar-community-page'>

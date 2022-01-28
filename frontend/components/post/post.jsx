@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CommentContainer from "../comments/comment_container";
 import CreateCommentFormContainer from "../comment_form/create_comment_form_container";
-import CommunityAbout from "../community_page/community_about";
 import CommunityPostAbout from "../community_page/community_post_about";
 import PleaseSignInToCommentContainer from "../login_prompt_comment/please_sigin_to_comment_container";
 import PostEditFormContainer from "../post_edit_form/post_edit_form_container";

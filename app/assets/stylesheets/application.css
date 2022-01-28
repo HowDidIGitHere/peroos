@@ -658,10 +658,104 @@ p {
   padding: 12px;
 }
 
-.about-community-description > p {
+.community-edit-form {
+  background: #f6f7f8;
+  padding: 5px;
   margin-bottom: 8px;
-  font-size: 14px;
-  line-height: 21px;
+  border: 1px solid #0079d3;
+  border-radius: 4px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  margin: 80px auto;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.community-edit-form > textarea {
+  width: 96%;
+  height: 16px;
+  padding: 5px;
+  max-height: 200px;
+  resize: none;
+  overflow: hidden;
+  min-height: 10px;
+}
+
+.community-edit-text-box-footer {
+  padding: 3px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.community-edit-text-box-count {
+  color: grey;
+}
+
+.community-edit-text-box-leave {
+  display: flex;
+}
+
+.community-edit-text-box-leave > p:first-child {
+  margin-right: 5px;
+  color: tomato;
+}
+
+.community-edit-text-box-leave > p:first-child:hover,
+.community-edit-text-box-leave > p:last-child:hover {
+  cursor: pointer;
+}
+
+.community-edit-text-box-leave > p:last-child {
+  color: #0079d3;
+}
+
+.owner {
+  transition: all .1s linear 0s;
+  display: flex;
+  border: 0px solid transparent;
+  border-radius: 5px;
+}
+
+.owner:hover {
+  cursor: pointer;
+  padding: 7px 3px 3px 9px;
+  border: 1px solid #0079d3;
+  border-radius: 5px;
+}
+
+.edit-icon-about {
+  width: 21px;
+  height: 21px;
+  margin-left: 6px;
+}
+
+.edit-icon-about > svg {
+  width: 22px;
+  height: 22px;
+  color: #0079d3;
+}
+
+.about-community-description-about > p {
+  overflow: hidden;
+  margin-bottom: 8px;
+  font-size: 16px;
+  line-height: 24px;
   font-weight: 400;
   word-wrap: break-word;
 }

@@ -12,7 +12,7 @@ class CommunityPage extends React.Component {
     super(props);
     this.state = {
       page: 0,
-      // loadedRightInfo: false
+      loadedRightInfo: false
     }
   }
 
@@ -23,7 +23,9 @@ class CommunityPage extends React.Component {
           .then(() => {
             if (this.props.currentUserId !== null) {
               this.props.getCurrentUserVotes()
-                // .then(() => this.setState({ loadedRightInfo: true }));
+                .then(() => this.setState({ loadedRightInfo: true }));
+            } else {
+              this.setState({ loadedRightInfo: true })
             }
           })
       ));
@@ -92,7 +94,7 @@ class CommunityPage extends React.Component {
             <div className='main-community-page'>
               {this.props.currentUserId ? <CreatePostCardContainer /> : null}
               {
-                this.props.posts /* && this.state.loadedRightInfo */ ? (
+                this.props.posts && this.state.loadedRightInfo ? (
                   <ul>
                     {
                       this.props.posts.map((post, idx) => (
@@ -113,12 +115,12 @@ class CommunityPage extends React.Component {
                       ))
                     }
                   </ul>
-                ) : null
+                ) : <div className="loader"></div>
               }
             </div>
             <div className='sidebar-community-page'>
               <CommunityEditCardContainer />
-              <CommunityAbout match={this.props.match} community={this.props.community} currentUserId={this.props.currentUserId} />
+              <CommunityAbout match={this.props.match} community={this.props.community} currentUserId={this.props.currentUserId} editCommunity={this.props.editCommunity} />
               {/* <ModeratorsCard community={this.props.community} /> */}
               <FooterCard />
             </div>
