@@ -34,6 +34,12 @@ class CreatePost extends React.Component {
       })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.match.params.communityTitle !== this.props.match.params.communityTitle) {
+      console.log("Changed match params")
+    }
+  }
+
   handleDropdown() {
     document.getElementById('community-selection-input').focus();
     this.setState({
@@ -43,9 +49,16 @@ class CreatePost extends React.Component {
 
   handleCommunityChoiceChange(e) {
     let tempCommunityChoice = e.target.value;
-    this.setState({
-      communityChoice: tempCommunityChoice
-    });
+    if (!this.state.toggleCommunityChoice) {
+      this.setState({
+        communityChoice: tempCommunityChoice,
+        toggleCommunityChoice: true
+      });
+    } else {
+      this.setState({
+        communityChoice: tempCommunityChoice
+      });
+    }
   }
 
   handleCommunityChoiceSubmit(sub) {
@@ -53,7 +66,8 @@ class CreatePost extends React.Component {
       e.stopPropagation();
       e.preventDefault();
       this.setState({
-        communityChoice: `p/${sub}`
+        communityChoice: `p/${sub}`,
+        toggleCommunityChoice: !this.state.toggleCommunityChoice
       });
       document.getElementById('community-selection-input').focus();
     }
@@ -92,7 +106,7 @@ class CreatePost extends React.Component {
               </div>
               <div className='community-selection-tab'>
                 <div>
-                  <form autocomplete="off" role='search'>
+                  <form autoComplete="off" role='search'>
                     <label>
                       <div>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
