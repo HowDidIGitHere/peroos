@@ -99,6 +99,19 @@ p {
   background-color: rgb(208, 228, 246);
 }
 
+.grey-out {
+  color: #d1d1d1;
+  background-color: #878a8c;
+  border-color: #878a8c;
+}
+
+.grey-out:hover {
+  cursor: not-allowed;
+  color: #d1d1d1;
+  background-color: #878a8c;
+  border-color: #878a8c;
+}
+
 .filled-blue {
   color: white;
   background-color: rgb(26, 109, 205);

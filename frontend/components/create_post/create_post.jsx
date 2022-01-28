@@ -7,7 +7,7 @@ import PostingToCard from "./posting_to_peroos_card";
 class CreatePost extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = this.props.location.state ? this.props.location.state : {
       post: {
         title: '',
         body: '',
@@ -68,8 +68,11 @@ class CreatePost extends React.Component {
       this.setState({
         communityChoice: `p/${sub}`,
         toggleCommunityChoice: !this.state.toggleCommunityChoice
+      }, () => {
+        document.getElementById('community-selection-input').focus();
+        this.props.history.push({ pathname: `/${this.state.communityChoice.split('').slice(2).join('')}/submit`, state: this.state});
+        // this.props.history.replace({ pathname: `/${this.state.communityChoice.split('').slice(2).join('')}/submit` }, Object.assign({}, this.state));
       });
-      document.getElementById('community-selection-input').focus();
     }
   }
 
@@ -169,9 +172,6 @@ class CreatePost extends React.Component {
                           </div>
                         )
                       }
-                      <div>
-
-                      </div>
                     </div>
                   </div>
                 ) : null
@@ -214,7 +214,13 @@ class CreatePost extends React.Component {
                   <div className='create-post-form-send-buttons'>
                     <div>
                       <Link to='/'><button className='bubble-button'>CANCEL</button></Link>
-                      <button onClick={this.handleSubmit} className='bubble-button filled-blue'>POST</button>
+                      {
+                        this.props.match.params.communityTitle ? (
+                          <button onClick={this.handleSubmit} className='bubble-button filled-blue'>POST</button>
+                        ) : (
+                          <button /* onClick={this.handleSubmit} */ title='Please Choose a Community for Your Post!' className='bubble-button grey-out'>POST</button>
+                        )
+                      }
                     </div>
                   </div>
                 </div>
