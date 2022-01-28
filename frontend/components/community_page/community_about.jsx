@@ -44,7 +44,7 @@ class CommunityAbout extends React.Component {
                     type='text' 
                     maxLength='500' 
                     id='community-edit-text-box' 
-                    placeholder='Add a description' 
+                    placeholder='Tell us about your community' 
                     value={this.state.community.about} 
                     onChange={this.handleChange} 
                     onInput={(e) => {
@@ -76,7 +76,7 @@ class CommunityAbout extends React.Component {
                     </span>
                   </span>
                 </form>
-              ) : (
+              ) : (this.props.community.about ? (
                 <div 
                   className='about-community-description-about owner' 
                   onClick={(e) => {
@@ -94,7 +94,20 @@ class CommunityAbout extends React.Component {
                     </svg>
                   </div>
                 </div>
-              )) : (
+              ) : (
+                <div
+                  className='about-community-description-about owner' 
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    this.setState({ toggleEdit: !this.state.toggleEdit }, () => {
+                      document.getElementById('community-edit-text-box').focus();
+                    });
+                  }}
+                >
+                  <p style={{color: '#0079d3', fontWeight: 700}}>Add a description</p>
+                </div>
+              ))) : (
               <div className='about-community-description-about'>
                 <p>{this.props.community.about}</p>
               </div>
