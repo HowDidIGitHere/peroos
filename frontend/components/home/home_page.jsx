@@ -3,6 +3,7 @@ import HomeDescContainer from "../home_description/home_desc_container";
 import FooterCard from "../sidebar/footer_card";
 import CreatePostCardContainer from "../create_post/create_post_card_container";
 import PostCard from "../post_card/post_card";
+import MyCommunitiesListContainer from "../sidebar/my_communities_list_container";
 
 class HomePage extends React.Component {
   constructor(props) {
@@ -76,6 +77,7 @@ class HomePage extends React.Component {
           {/* <ModeratorsCard community={this.props.community} /> */}
           {/* {this.props.currentUserId ? <HomeDescContainer /> : null} */}
           <HomeDescContainer /> 
+          {this.props.currentUserId ? <MyCommunitiesListContainer /> : null}
           <FooterCard />
         </div>
       </div>
