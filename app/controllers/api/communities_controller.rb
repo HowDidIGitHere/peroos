@@ -11,6 +11,11 @@ class Api::CommunitiesController < ApplicationController
     render :index
   end
 
+  def moderator
+    @communities = Community.where(creator_id: current_user.id)
+    render :index
+  end
+
   def show
     @community = Community.find_by(sub: params[:id])
     if @community

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get '/posts', to: 'posts#feed'
 
     get '/followed_communities', to: 'communities#followed'
+    
+    get '/mod_communities', to: 'communities#moderator'
 
     get '/search', to: 'search#index'
 
