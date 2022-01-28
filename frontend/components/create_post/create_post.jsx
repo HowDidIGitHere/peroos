@@ -125,7 +125,7 @@ class CreatePost extends React.Component {
                             <ul className='my-communities'>
                               {
                                 this.props.myCommunities.map((community, idx) => {
-                                  if (!this.props.match.params.communityTitle || community.sub !== this.props.match.params.communityTitle) {
+                                  if (!this.props.match.params.communityTitle || community.sub !== this.props.match.params.communityTitle || community.followed_by_current_user) {
                                     const communityColor = {
                                       color: community.color ? community.color : '#1a6dcd'
                                     };
