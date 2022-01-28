@@ -671,6 +671,26 @@ p {
   border-radius: 4px;
 }
 
+.mod-communities-card {
+  padding: 12px 0 12px 0;
+  background-color: rgb(26, 109, 205);
+  border-radius: 4px 4px 0 0;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+}
+
+.mod-communities-card-list {
+  padding: 8px 4px;
+}
+
+.ellipses,
+.ellipses > p:first-child {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
