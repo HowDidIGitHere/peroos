@@ -5,7 +5,8 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      errors: null
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.demoLogin = this.demoLogin.bind(this);
@@ -25,18 +26,30 @@ class SessionForm extends React.Component {
       const r = randBetween(0, 255);
       const g = randBetween(0, 255);
       const b = randBetween(0, 255);
-      user = Object.assign({}, this.state, { color: `rgb(${r},${g},${b})` });
+      user = Object.assign({}, { username: this.state.username, password: this.state.password }, { color: `rgb(${r},${g},${b})` });
     } else {
-      user = Object.assign({}, this.state);
+      user = Object.assign({}, { username: this.state.username, password: this.state.password });
     }
     this.props.processForm(user)
-      .then(() => this.props.closeModal())
-      .fail(() => console.log('Oh no'));
+      .then(() => {
+        this.setState({ errors: null }, this.props.closeModal())
+      })
+      .fail(res => {
+        const elementPass = document.getElementById('password');
+        if (this.props.formType !== 'Sign up' || res.responseJSON.includes('Username has already been taken')) {
+          const elementUser = document.getElementById('username');
+          elementUser.style.borderColor = 'red';
+        }
+        elementPass.style.borderColor = 'red';
+        this.setState({ errors: res.responseJSON })
+      });
   }
 
   demoLogin() {
     const demo = { username: 'thePerooser', password: 'justPeroosing' };
-    this.props.processForm(demo).then(this.props.closeModal());
+    this.props.processForm(demo).then(() => {
+      this.setState({ errors: null }, this.props.closeModal())
+    });
   }
 
   renderErrors() {
@@ -46,7 +59,7 @@ class SessionForm extends React.Component {
           Array.isArray(this.props.errors) ?
             this.props.errors.map((error, i) => (
               <li key={`error-${i}`}>
-                {error}
+                <p style={{color: 'red'}}>{error}</p>
               </li>
             )) :
             ''
@@ -64,22 +77,24 @@ class SessionForm extends React.Component {
         <h4>{this.props.formType}</h4>
         {
           this.props.formType === 'Login' ?
-            (<p>By continuing, you agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>) :
-            (<p>By continuing, you are setting up a Peroos account and agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>)
+            // (<p>By continuing, you agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>) :
+            (<p>By continuing, you agree to have a wonderful time and be a pleasant human being.</p>) :
+            (<p>By continuing, you are setting up a Peroos account and agree to smile and spread cheer to those around you.</p>)
+            // (<p>By continuing, you are setting up a Peroos account and agree to our <a className='std-link' href='#'>User Agreement</a> and <a className='std-link' href='#'>Privacy Policy</a>.</p>)
         }
         {/* Google OAuth and Apple Auth */}
         <form onSubmit={this.handleSubmit}>
           <div>
 
             <div className='input-group'>
-              <input type='text' onChange={this.update('username')} required />
+              <input id='username' type='text' onChange={this.update('username')} onFocus={(e) => e.target.style.borderColor = 'rgba(0, 0, 0, 0.2)'} required />
               <span className='highlight'></span>
               <span className='bar'></span>
               <label>Username</label>
             </div>
 
             <div className='input-group'>
-              <input type='password' onChange={this.update('password')} required />
+              <input id='password' type='password' onChange={this.update('password')} onFocus={(e) => e.target.style.borderColor = 'rgba(0, 0, 0, 0.2)'} required />
               <span className='highlight'></span>
               <span className='bar'></span>
               <label>Password</label>
@@ -88,7 +103,7 @@ class SessionForm extends React.Component {
             <button className='bubble-button filled-blue' type='submit'>{this.props.formType}</button>
           </div>
         </form>
-        {/* {this.renderErrors()} */}
+        {this.renderErrors()}
         {/* {
           this.props.formType === 'Login' ? (
           <div className='forgor'>
