@@ -16,19 +16,22 @@ class CreatePost extends React.Component {
         community_id: undefined
       },
       toggleCommunityChoice: false,
-      communityChoice: ''
+      communityChoice: this.props.match.params.communityTitle || ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
+    this.handleCommunityChoiceChange = this.handleCommunityChoiceChange.bind(this);
   }
 
   componentDidMount() {
-    this.props.getFollowedCommunities();
-    if (this.props.match.params.communityTitle) {
-      this.props.getCommunity()
-        .then(response => this.setState({ post: Object.assign({}, this.state.post, { community_id: response.community.id }) }))
-        .fail(res => console.log(res));
-    }
+    this.props.getFollowedCommunities()
+      .then(() => {
+        if (this.props.match.params.communityTitle) {
+          this.props.getCommunity()
+            .then(response => this.setState({ post: Object.assign({}, this.state.post, { community_id: response.community.id }) }))
+            .fail(res => console.log(res));
+        }
+      })
   }
 
   handleDropdown() {
@@ -36,6 +39,24 @@ class CreatePost extends React.Component {
     this.setState({
       toggleCommunityChoice: !this.state.toggleCommunityChoice
     });
+  }
+
+  handleCommunityChoiceChange(e) {
+    let tempCommunityChoice = e.target.value;
+    this.setState({
+      communityChoice: tempCommunityChoice
+    });
+  }
+
+  handleCommunityChoiceSubmit(sub) {
+    return e => {
+      e.stopPropagation();
+      e.preventDefault();
+      this.setState({
+        communityChoice: sub
+      });
+      document.getElementById('community-selection-input').focus();
+    }
   }
 
   handleChange(type) {
@@ -79,7 +100,7 @@ class CreatePost extends React.Component {
                         </svg>
                       </div>
                     </label>
-                    <input id='community-selection-input' type='text' placeholder='Choose a community' onClick={this.handleDropdown}/>
+                    <input id='community-selection-input' type='text' placeholder='Choose a community' onClick={this.handleDropdown} onChange={this.handleCommunityChoiceChange} value={this.state.communityChoice}/>
                     <div onClick={this.handleDropdown}>
                       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-down" className="svg-inline--fa fa-chevron-down fa-w-14 chevron" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
                         <path fill="currentColor" d="M207.029 381.476L12.686 187.132c-9.373-9.373-9.373-24.569 0-33.941l22.667-22.667c9.357-9.357 24.522-9.375 33.901-.04L224 284.505l154.745-154.021c9.379-9.335 24.544-9.317 33.901.04l22.667 22.667c9.373 9.373 9.373 24.569 0 33.941L240.971 381.476c-9.373 9.372-24.569 9.372-33.942 0z"></path>
@@ -104,7 +125,30 @@ class CreatePost extends React.Component {
                             <ul className='my-communities'>
                               {
                                 this.props.myCommunities.map((community, idx) => {
-                                  return <li key={`followed-community-${idx}`}>{community.sub}</li>
+                                  if (!this.props.match.params.communityTitle || community.sub !== this.props.match.params.communityTitle) {
+                                    const communityColor = {
+                                      color: community.color ? community.color : '#1a6dcd'
+                                    };
+                                    return (
+                                      <li key={`followed-community-${idx}`} className='my-community-choice-list-item'>
+                                        <Link to='#' onClick={this.handleCommunityChoiceSubmit(community.sub)}>
+                                          <span className='my-community-choice-list-item-icon'>
+                                            <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="product-hunt" style={communityColor} className="community-sub-icon svg-inline--fa fa-product-hunt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                              <path fill="currentColor" d="M326.3 218.8c0 20.5-16.7 37.2-37.2 37.2h-70.3v-74.4h70.3c20.5 0 37.2 16.7 37.2 37.2zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-128.1-37.2c0-47.9-38.9-86.8-86.8-86.8H169.2v248h49.6v-74.4h70.3c47.9 0 86.8-38.9 86.8-86.8z"></path>
+                                            </svg>
+                                          </span>
+                                          <span className='my-community-choice-list-item-info'>
+                                            <p>
+                                              p/{community.sub}
+                                            </p>
+                                            <p>
+                                              {community.follower_count} follower{community.follower_count !== 1 ? 's' : ''}
+                                            </p>
+                                          </span>
+                                        </Link>
+                                      </li>
+                                    );
+                                  }
                                 })
                               }
                             </ul>
