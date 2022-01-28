@@ -15,11 +15,13 @@ const mapStateToProps = (state, ownProps)=> {
   if (ownProps.match.params.communityTitle) {
     return {
       community: state.entities.communities[ownProps.match.params.communityTitle],
-      myCommunities: Object.values(state.entities.communities)
+      myCommunities: Object.values(state.entities.communities),
+      errors: state.errors.postForm
     };
   } else {
     return {
-      myCommunities: Object.values(state.entities.communities)
+      myCommunities: Object.values(state.entities.communities),
+      errors: state.errors.postForm
     };
   }
 

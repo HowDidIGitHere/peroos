@@ -16,7 +16,8 @@ class CreatePost extends React.Component {
         community_id: undefined
       },
       toggleCommunityChoice: false,
-      communityChoice: this.props.match.params.communityTitle ? `p/${this.props.match.params.communityTitle}` : ''
+      communityChoice: this.props.match.params.communityTitle ? `p/${this.props.match.params.communityTitle}` : '',
+      errors: null
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
@@ -92,7 +93,26 @@ class CreatePost extends React.Component {
     // let tempPost = Object.assign({}, this.state.post);
     // tempPost[community_id] = this.props.community.id;
     this.props.createPost(this.state.post)
-      .then(() => this.props.history.push(`/${this.props.match.params.communityTitle}`));
+      .then(() => this.props.history.push(`/${this.props.match.params.communityTitle}`))
+      .fail(res => {
+        this.setState({ errors: res.responseJSON });
+      });
+  }
+  
+  renderErrors() {
+    return (
+      <ul>
+        {
+          Array.isArray(this.props.errors) ?
+            this.props.errors.map((error, i) => (
+              <li key={`error-${i}`}>
+                <p style={{color: 'red'}}>{error}</p>
+              </li>
+            )) :
+            ''
+        }
+      </ul>
+    );
   }
 
   render() {
@@ -194,6 +214,7 @@ class CreatePost extends React.Component {
                 <div className='create-post-form-input'>
                   <div className='create-post-form-input-title'>
                     <div>
+                      {/* {this.renderErrors()} */}
                       <textarea onChange={this.handleChange('title')} maxLength='300' value={this.state.post.title} placeholder='Title' rows='1'></textarea>
                       <div>
                         {this.state.post.title.length}/300
