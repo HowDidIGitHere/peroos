@@ -21,7 +21,7 @@ const CreatePostCard = props => {
           </svg>
         </span>
         <Link to={props.match.params.communityTitle ? `/${props.match.params.communityTitle}/submit` : '/submit'} className='create-post-card-input-container'>
-          <input className='create-post-card-input' name='createPost' type='text' placeholder='Create Post' />
+          <input autocomplete="off" className='create-post-card-input' name='createPost' type='text' placeholder='Create Post' />
         </Link>
         <Link to={props.match.params.communityTitle ? `/${props.match.params.communityTitle}/submit` : '/submit'} className="image-icon">
           <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="image" className="svg-inline--fa fa-image fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

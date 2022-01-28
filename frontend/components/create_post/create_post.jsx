@@ -16,7 +16,7 @@ class CreatePost extends React.Component {
         community_id: undefined
       },
       toggleCommunityChoice: false,
-      communityChoice: this.props.match.params.communityTitle || ''
+      communityChoice: this.props.match.params.communityTitle ? `p/${this.props.match.params.communityTitle}` : ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
@@ -53,7 +53,7 @@ class CreatePost extends React.Component {
       e.stopPropagation();
       e.preventDefault();
       this.setState({
-        communityChoice: sub
+        communityChoice: `p/${sub}`
       });
       document.getElementById('community-selection-input').focus();
     }
@@ -92,7 +92,7 @@ class CreatePost extends React.Component {
               </div>
               <div className='community-selection-tab'>
                 <div>
-                  <form role='search'>
+                  <form autocomplete="off" role='search'>
                     <label>
                       <div>
                         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
