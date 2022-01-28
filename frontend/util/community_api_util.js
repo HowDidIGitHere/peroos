@@ -5,6 +5,13 @@ export const getAllCommunities = () => (
   })
 );
 
+export const getModCommunities = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/api/mod_communities'
+  })
+);
+
 export const getFollowedCommunities = () => (
   $.ajax({
     method: 'GET',

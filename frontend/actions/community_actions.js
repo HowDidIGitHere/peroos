@@ -29,6 +29,11 @@ export const receiveErrors = errors => ({
 });
 
 // thunk action creators
+export const getModCommunities = () => dispatch => (
+  CommunityAPIutil.getModCommunities()
+    .then(communities => dispatch(receiveAllCommunities(communities)))
+);
+
 export const getFollowedCommunities = () => dispatch => (
   CommunityAPIutil.getFollowedCommunities()
     .then(communities => dispatch(receiveAllCommunities(communities)))
