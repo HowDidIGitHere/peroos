@@ -219,7 +219,7 @@ class Post extends React.Component {
   }
 
   render() {
-    if (this.props.community && this.props.currentPost && this.state.loadedRightInfo) {
+    if (this.props.community && this.props.currentPost) {
       const communityColor = {
         color: this.props.community.color ? this.props.community.color : '#1a6dcd'
       };
@@ -434,7 +434,7 @@ class Post extends React.Component {
         </div>
       );
     } else {
-      return 'Loading...'
+      return <div className='loader'></div>
     }
   }
 }

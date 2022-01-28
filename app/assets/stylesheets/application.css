@@ -658,6 +658,11 @@ p {
   padding: 12px;
 }
 
+.about-community-description > p {
+  font-size: 16px;
+  margin-bottom: 6px;
+}
+
 .community-edit-form {
   background: #f6f7f8;
   padding: 5px;
@@ -753,7 +758,7 @@ p {
 
 .about-community-description-about > p {
   overflow: hidden;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
