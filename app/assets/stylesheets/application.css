@@ -859,7 +859,7 @@ p {
 }
 
 .community-selection-dropdown {
-  position: fixed;
+  position: absolute;
   background-color: white;
   border-radius: 0 0 4px 4px;
   border: 1px solid #ccc;
