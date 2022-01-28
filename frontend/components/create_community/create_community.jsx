@@ -17,7 +17,7 @@ class CreateCommunityForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const community = Object.assign({}, this.state);
+    const community = Object.assign({}, this.state, { about: `Welcome to ${this.state.sub}` });
     this.props.processForm(community)
       .then(res => {
         this.props.follow({ community_id: res.community.id })
