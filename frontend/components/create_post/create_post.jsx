@@ -36,11 +36,11 @@ class CreatePost extends React.Component {
       })
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    if (prevProps.match.params.communityTitle !== this.props.match.params.communityTitle) {
-      // console.log("Changed match params")
-    }
-  }
+  // componentDidUpdate(prevProps, prevState) {
+  //   if (prevProps.match.params.communityTitle !== this.props.match.params.communityTitle) {
+  //     // console.log("Changed match params")
+  //   }
+  // }
 
   handleSearch(e) {
     this.setState({ searchQuery: e.target.value }, () => this.props.getSearchResults(this.state));
@@ -214,7 +214,7 @@ class CreatePost extends React.Component {
                           </div>
                         ) : (
                           <div>
-                            <h1>MY COMMUNITIES</h1>
+                            <h1>FOLLOWED COMMUNITIES</h1>
                             <ul className='my-communities'>
                               {
                                 this.props.myCommunities.map((community, idx) => {
