@@ -1647,6 +1647,63 @@ p {
   border: 1px solid transparent;
   border-radius: 4px;
   box-sizing: border-box;
+  max-width: 670px;
+}
+
+.search-dropdown {
+  top: 40px;
+  display: none;
+  position: absolute;
+  width: 100%;
+  background-color: white;
+  z-index: 10;
+  border: 1px solid #ccc;
+  max-height: 308px;
+  overflow: auto;
+  /* height: 174px; */
+  margin-top: 5px;
+  padding-bottom: 16px;
+  border-radius: 0 0 4px 4px;
+}
+
+.empty-search-bar {
+  padding: 12px 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.empty-search-bar > div,
+.empty-search-bar > div > svg {
+  width: 20px;
+  height: 20px;
+  color: #8b8b8b;
+  margin-right: 6px;
+}
+
+.empty-search-bar > p {
+  font-size: 15px;
+  color: #5e5e5e;
+}
+
+.my-community-choice-list-item > .search-background-highlight {
+  padding: 12px 16px 6px;
+}
+
+.my-community-choice-list-item > .search-background-highlight > span:first-child {
+  margin-right: 10px;
+}
+
+.my-community-choice-list-item > .search-background-highlight > span:last-child > p:first-child {
+  font-size: 16px;
+}
+
+.search-background-highlight > span:first-child {
+  width: 20px;
+  height: 20px;
+}
+
+.search-background-highlight:hover {
+  background-color: #f6f7f8;
 }
 
 .search-bar-nav > form {
