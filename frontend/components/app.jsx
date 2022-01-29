@@ -41,7 +41,8 @@ const App = () => (
         <Route path='/' component={props => <HomePageContainer {...props}/>} />
       </Switch>
     </main>
-
+    
+    <div id='quick-toast'></div>
   </div>
 )
 

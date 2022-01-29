@@ -25,16 +25,16 @@ class Post extends React.Component {
     this.handleCountDec = this.handleCountDec.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleEdit = this.handleEdit.bind(this);
-    this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);
+    // this.copyLinkToClipboard = this.copyLinkToClipboard.bind(this);
   }
 
-  async copyLinkToClipboard(link) {
-    if ('clipboard' in navigator) {
-      return await navigator.clipboard.writeText(link);
-    } else {
-      return document.execCommand('copy', true, link);
-    }
-  }
+  // async copyLinkToClipboard(link) {
+  //   if ('clipboard' in navigator) {
+  //     return await navigator.clipboard.writeText(link);
+  //   } else {
+  //     return document.execCommand('copy', true, link);
+  //   }
+  // }
 
   handleEdit(e) {
     // console.log(!this.state.editToggle);
@@ -361,8 +361,17 @@ class Post extends React.Component {
                         <div className='post-share-button'>
                           <button 
                             onClick={() => {
-                              this.copyLinkToClipboard(window.location.href)
-                                .then(() => alert('worked'));
+                              navigator.clipboard.writeText(window.location.href)
+                              const quickToast = document.getElementById('quick-toast');
+                              const copyPasta = `
+                                <div class='quicker-toast'>
+                                  <h1>
+                                    Copied link to Clipboard!
+                                  </h1>
+                                </div>
+                              `
+                              quickToast.innerHTML = copyPasta;
+                              setTimeout((() => quickToast.innerHTML = ''), 3000);
                             }}
                           >
                             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="share" className="svg-inline--fa fa-share fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

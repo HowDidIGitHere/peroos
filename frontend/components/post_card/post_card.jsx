@@ -55,13 +55,13 @@ class PostCard extends React.Component {
     }
   }
   
-  async copyLinkToClipboard(link) {
-    if ('clipboard' in navigator) {
-      return await navigator.clipboard.writeText(link);
-    } else {
-      return document.execCommand('copy', true, link);
-    }
-  }
+  // async copyLinkToClipboard(link) {
+  //   if ('clipboard' in navigator) {
+  //     return await navigator.clipboard.writeText(link);
+  //   } else {
+  //     return document.execCommand('copy', true, link);
+  //   }
+  // }
 
   handleUpvote() {
     if (this.state.downvoteActive) {
@@ -257,9 +257,20 @@ class PostCard extends React.Component {
                   {/* </Link> */}
                   <div className='post-share-button'>
                     <button 
-                      onClick={() => {
-                        this.copyLinkToClipboard(window.location.href)
-                          .then(() => alert('worked'));
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        navigator.clipboard.writeText(`${window.location.href}${this.props.post.community}/comments/${this.props.post.id}`)
+                        const quickToast = document.getElementById('quick-toast');
+                        const copyPasta = `
+                          <div class='quicker-toast'>
+                            <h1>
+                              Copied link to Clipboard!
+                            </h1>
+                          </div>
+                        `
+                        quickToast.innerHTML = copyPasta;
+                        setTimeout((() => quickToast.innerHTML = ''), 3000);
                       }}
                     >
                       <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="share" className="svg-inline--fa fa-share fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

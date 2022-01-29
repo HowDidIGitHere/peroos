@@ -2646,4 +2646,14 @@ p {
   font-size: 14px;
 }
 
+.quicker-toast {
+  position: fixed;
+  left: 43%;
+  top: 95%;
+  padding: 15px;
+  border: 1px solid darkgray;
+  border-radius: 5px;
+  background-color: white;
+}
+
 /* BREAK THIS FILE UP AND CHANGE INFINITE SCROLL TO NOT AJAX CALL IF REACHED END */
