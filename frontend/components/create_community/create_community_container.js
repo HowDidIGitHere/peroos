@@ -9,7 +9,7 @@ const mapStateToProps = ({ errors, session }) => ({
   sessionId: session.currentUserId
 });
 
-const mapDispatchToProps = () => ({
+const mapDispatchToProps = (dispatch) => ({
   processForm: community => dispatch(createCommunity(community)),
   closeModal: () => dispatch(closeModal()),
   follow: follow => dispatch(followCommunity(follow))
