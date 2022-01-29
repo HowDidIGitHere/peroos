@@ -19,6 +19,7 @@ class CreatePost extends React.Component {
       communityChoice: this.props.match.params.communityTitle ? `p/${this.props.match.params.communityTitle}` : '',
       errors: null
     }
+    this.handleSearch = this.handleSearch.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
     this.handleCommunityChoiceChange = this.handleCommunityChoiceChange.bind(this);
@@ -41,6 +42,10 @@ class CreatePost extends React.Component {
     }
   }
 
+  handleSearch(e) {
+    this.setState({ searchQuery: e.target.value }, () => this.props.getSearchResults(this.state));
+  }
+
   handleDropdown() {
     document.getElementById('community-selection-input').focus();
     this.setState({
@@ -54,10 +59,26 @@ class CreatePost extends React.Component {
       this.setState({
         communityChoice: tempCommunityChoice,
         toggleCommunityChoice: true
+      }, () => {
+        let tempTemp;
+        if (tempCommunityChoice.split('').slice(0, 2).join('') === 'p/') {
+          tempTemp = tempCommunityChoice.split('').slice(2).join('')
+        } else {
+          tempTemp = tempCommunityChoice
+        }
+        this.props.getSearchResults({ searchQuery: tempTemp })
       });
     } else {
       this.setState({
         communityChoice: tempCommunityChoice
+      }, () => {
+        let tempTemp;
+        if (tempCommunityChoice.split('').slice(0, 2).join('') === 'p/') {
+          tempTemp = tempCommunityChoice.split('').slice(2).join('')
+        } else {
+          tempTemp = tempCommunityChoice
+        }
+        this.props.getSearchResults({ searchQuery: tempTemp })
       });
     }
   }
@@ -66,8 +87,14 @@ class CreatePost extends React.Component {
     return e => {
       e.stopPropagation();
       e.preventDefault();
+      let tempSub;
+      if (sub.split('').slice(0, 2).join('') === 'p/') {
+        tempSub = sub;
+      } else {
+        tempSub = `p/${sub}`;
+      }
       this.setState({
-        communityChoice: `p/${sub}`,
+        communityChoice: tempSub,
         toggleCommunityChoice: !this.state.toggleCommunityChoice
       }, () => {
         document.getElementById('community-selection-input').focus();
@@ -152,9 +179,38 @@ class CreatePost extends React.Component {
                   <div className='community-selection-dropdown'>
                     <div>
                       {
-                        this.state.communityChoice.length > 0 ? (
+                        // this.state.communityChoice.length > 0 ? (
+                        this.props.searchResults && this.state.communityChoice.length > 0 ? (
                           <div>
-                            IMPLEMENT SEARCH
+                            <h1>OTHERS</h1>
+                            <ul className='my-communities'>
+                              {
+                                Object.values(this.props.searchResults).map((res, idx) => {
+                                  const resColor = {
+                                    color: res.color ? res.color : '#1a6dcd'
+                                  };
+                                  return (
+                                    <li key={`followed-community-${idx}`} className='my-community-choice-list-item'>
+                                      <Link to='#' onClick={this.handleCommunityChoiceSubmit(res.sub)}>
+                                        <span className='my-community-choice-list-item-icon'>
+                                          <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="product-hunt" style={resColor} className="community-sub-icon svg-inline--fa fa-product-hunt fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                            <path fill="currentColor" d="M326.3 218.8c0 20.5-16.7 37.2-37.2 37.2h-70.3v-74.4h70.3c20.5 0 37.2 16.7 37.2 37.2zM504 256c0 137-111 248-248 248S8 393 8 256 119 8 256 8s248 111 248 248zm-128.1-37.2c0-47.9-38.9-86.8-86.8-86.8H169.2v248h49.6v-74.4h70.3c47.9 0 86.8-38.9 86.8-86.8z"></path>
+                                          </svg>
+                                        </span>
+                                        <span className='my-community-choice-list-item-info'>
+                                          <p>
+                                            p/{res.sub}
+                                          </p>
+                                          <p>
+                                            {res.follower_count} follower{res.follower_count !== 1 ? 's' : ''}
+                                          </p>
+                                        </span>
+                                      </Link>
+                                    </li>
+                                  );
+                                })
+                              }
+                            </ul>
                           </div>
                         ) : (
                           <div>

@@ -8,17 +8,9 @@ class SearchBar extends React.Component {
       searchQuery: ''
     }
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
   }
 
-  // debounce(func, wait) {
-  //   let cancel = null;
-  //   return (args) => {
-  //     clearTimeout(cancel);
-  //     cancel = setTimeout(() => func(...args), wait);
-  //   };
-  // }
 
   handleDropdown(toggle) {
     const dropdown = document.getElementsByClassName('search-dropdown')[0]
@@ -30,18 +22,13 @@ class SearchBar extends React.Component {
   }
 
   handleSearch(e) {
-    this.setState({ searchQuery: e.target.value }, /* this.debounce( */ () => this.props.getSearchResults(this.state) /*, 50000)*/ );
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-    // this.props.history.push(`/search/?q=${this.state.searchQuery}`)
+    this.setState({ searchQuery: e.target.value }, () => this.props.getSearchResults(this.state));
   }
 
   render() {
     return (
       <div className='search-bar-nav' >
-        <form autoComplete="off" onSubmit={this.handleSubmit} role='search'>
+        <form autoComplete="off" role='search'>
           <label>
             <div>
               <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" className="svg-inline--fa fa-search fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

@@ -4,24 +4,21 @@ import { followCommunity, getCommunity, getFollowedCommunities, unfollowCommunit
 import CreatePost from "./create_post";
 import { createPost } from '../../actions/post_actions'
 import { openModal } from "../../actions/modal_actions";
+import { getSearchResults } from "../../actions/search_actions";
 
 const mapStateToProps = (state, ownProps)=> {
-  // let myCommunities = Object.values(state.entities.communities).filter((community) => {
-  //   if (community.followed_by_current_user) {
-  //     return community;
-  //   }
-  // });
-
   if (ownProps.match.params.communityTitle) {
     return {
       community: state.entities.communities[ownProps.match.params.communityTitle],
       myCommunities: Object.values(state.entities.communities),
-      errors: state.errors.postForm
+      errors: state.errors.postForm,
+      searchResults: state.entities.searchResults
     };
   } else {
     return {
       myCommunities: Object.values(state.entities.communities),
-      errors: state.errors.postForm
+      errors: state.errors.postForm,
+      searchResults: state.entities.searchResults
     };
   }
 
@@ -33,7 +30,8 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   createPost: post => dispatch(createPost(post)),
   follow: f => dispatch(followCommunity(f)),
   unfollow: f => dispatch(unfollowCommunity(f)),
-  openModal: type => dispatch(openModal(type))
+  openModal: type => dispatch(openModal(type)),
+  getSearchResults: query => dispatch(getSearchResults(query))
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CreatePost));
