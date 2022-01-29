@@ -23,10 +23,11 @@ class CommunityPage extends React.Component {
           .then(() => {
             if (this.props.currentUserId !== null) {
               this.props.getCurrentUserVotes()
-                .then(() => this.setState({ loadedRightInfo: true }));
+                // .then(() => this.setState({ loadedRightInfo: true }));
             } else {
-              this.setState({ loadedRightInfo: true })
+              // this.setState({ loadedRightInfo: true })
             }
+            this.setState({ loadedRightInfo: true })
           })
       ));
     window.onscroll = (e) => {
