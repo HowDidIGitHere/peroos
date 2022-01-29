@@ -24,7 +24,7 @@ class CreateCommunityForm extends React.Component {
           .then(res => this.props.history.push(`/${res.community.sub}`));
         this.props.closeModal();
       })
-      .fail(() => console.log('Oh no'));
+      // .fail(() => console.log('Oh no'));
   }
   
   update(field) {

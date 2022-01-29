@@ -31,14 +31,14 @@ class CreatePost extends React.Component {
         if (this.props.match.params.communityTitle) {
           this.props.getCommunity()
             .then(response => this.setState({ post: Object.assign({}, this.state.post, { community_id: response.community.id }) }))
-            .fail(res => console.log(res));
+            // .fail(res => console.log(res));
         }
       })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.match.params.communityTitle !== this.props.match.params.communityTitle) {
-      console.log("Changed match params")
+      // console.log("Changed match params")
     }
   }
 
