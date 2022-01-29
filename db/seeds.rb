@@ -12,8 +12,8 @@ Follow.destroy_all
 Post.destroy_all
 Comment.destroy_all
 
-# user1 =User.create(username: 'thePerooser', password: 'justPeroosing')
-# user2 = User.create(username: 'AbeyBaby', password: '123456')
+user1 = User.create(username: 'thePerooser', password: 'justPeroosing')
+user2 = User.create(username: 'KushPatel', password: 'Password', color: '#d0021b')
 # user3 = User.create(username: 'BikeBadsen', password: 'theBikiest')
 # user4 = User.create(username: 'OurLordAndSaviourAlvin', password: 'literalGod')
 # user5 = User.create(username: 'HendrickRamos', password: 'dancingMaster')
@@ -21,7 +21,7 @@ Comment.destroy_all
 # user7 = User.create(username: 'Lorem', password: 'LoremIpsum')
 # user8 = User.create(username: 'PapiPaulo', password: 'bocanegra')
 
-# com1 = Community.create(sub: 'LoremIpsum', about: 'Lorem ipsum dolor sit amet', creator_id: user1.id)
+com1 = Community.create(sub: 'LoremIpsum', about: 'Lorem ipsum dolor sit amet', creator_id: user2.id, color: '#d0021b')
 
 # com2 = Community.create(sub: 'AA', about: 'Anything and Everything AppAcademy', creator_id: user4.id)
 
