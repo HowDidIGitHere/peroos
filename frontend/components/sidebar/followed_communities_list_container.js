@@ -4,10 +4,17 @@ import { withRouter } from 'react-router-dom';
 import { getFollowedCommunities, getModCommunities } from '../../actions/community_actions';
 import FollowedCommunitiesList from './followed_communities_list';
 
-const mapStateToProps = state => ({
-  followedCommunities: Object.values(state.entities.communities),
-  currentUserId: state.session.currentUserId
-});
+const mapStateToProps = state => {
+  const followedCommunities = Object.values(state.entities.communities).filter(com => {
+    if (com.creator_id !== state.session.currentUserId) {
+      return com;
+    }
+  });
+  return ({
+    followedCommunities,
+    currentUserId: state.session.currentUserId
+  })
+};
 
 const mapDispatchToProps = dispatch => ({
   // getModCommunities: () => dispatch(getModCommunities()),
