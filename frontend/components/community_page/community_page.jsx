@@ -42,7 +42,19 @@ class CommunityPage extends React.Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevProps.currentUserId !== this.props.currentUserId) {
       if (this.props.currentUserId !== null) {
-        this.props.getCurrentUserVotes();
+        this.props.getCommunity()
+          .then(() => (
+            this.props.getAllPosts(this.props.community.id)
+              .then(() => {
+                if (this.props.currentUserId !== null) {
+                  this.props.getCurrentUserVotes()
+                    // .then(() => this.setState({ loadedRightInfo: true }));
+                } else {
+                  // this.setState({ loadedRightInfo: true })
+                }
+                this.setState({ loadedRightInfo: true })
+              })
+          ));
       }
     }
   }
