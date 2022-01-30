@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 class MyCommunitiesList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loaded: false
+    }
   }
 
   componentDidMount() {
-    this.props.getModCommunities();
+    this.props.getModCommunities()
+      .then(() => this.setState({ loaded: true }));
   }
 
   render() {
-    if (this.props.modCommunities && this.props.modCommunities.length > 0) {
+    if (this.state.loaded && this.props.modCommunities && this.props.modCommunities.length > 0) {
       return (
         <div className='card aside-card'>
           <div className='mod-communities-card'>

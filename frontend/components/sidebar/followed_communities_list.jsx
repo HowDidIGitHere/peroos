@@ -4,14 +4,18 @@ import { Link } from "react-router-dom";
 class FollowedCommunitiesList extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      loaded: false
+    }
   }
 
   componentDidMount() {
-    this.props.getFollowedCommunities();
+    this.props.getFollowedCommunities()
+      .then(() => this.setState({ loaded: true }));
   }
 
   render() {
-    if (this.props.followedCommunities && this.props.followedCommunities.length > 0) {
+    if (this.state.loaded && this.props.followedCommunities && this.props.followedCommunities.length > 0) {
       return (
         <div className='card aside-card'>
           <div className='mod-communities-card'>
