@@ -12,7 +12,7 @@ class Api::CommunitiesController < ApplicationController
   end
 
   def moderator
-    @communities = Community.where(creator_id: current_user.id)
+    @communities = Community.joins(:follows).where('follows.user_id = :currentUserId or creator_id = :currentUserId', { currentUserId: current_user.id });
     render :index
   end
 
