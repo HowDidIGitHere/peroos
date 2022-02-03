@@ -56,8 +56,8 @@ class SessionForm extends React.Component {
     return (
       <ul>
         {
-          Array.isArray(this.props.errors) ?
-            this.props.errors.map((error, i) => (
+          Array.isArray(this.state.errors) ?
+            this.state.errors.map((error, i) => (
               <li key={`error-${i}`}>
                 <p style={{color: 'red'}}>{error}</p>
               </li>
@@ -123,7 +123,6 @@ class SessionForm extends React.Component {
             (
               <div>
                 <p>Already a Perooser? {this.props.otherForm}</p>
-                <p>Just looking around? <button className='std-link thick-font' onClick={this.demoLogin}>DEMO LOGIN</button></p>
               </div>
             )
         }
