@@ -36,7 +36,18 @@ class SearchBar extends React.Component {
               </svg>
             </div>
           </label>
-          <input type='search' placeholder='Search Peroos' onChange={this.handleSearch} onFocus={() => this.handleDropdown(false)} onBlur={() => this.handleDropdown(true)} value={this.state.searchQuery} />
+          <input 
+            type='search' 
+            placeholder='Search Peroos' 
+            onChange={this.handleSearch} 
+            onFocus={() => this.handleDropdown(false)} 
+            onBlur={(e) => {
+              if (!(e.relatedTarget && e.relatedTarget.classList[0] === 'search-background-highlight')) {
+                this.handleDropdown(true);
+              }
+            }} 
+            value={this.state.searchQuery} 
+          />
         </form>
         <div className='search-dropdown'>
           <ul>
@@ -72,6 +83,7 @@ class SearchBar extends React.Component {
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
+                          this.handleDropdown(true);
                           this.setState({ searchQuery: '' }, () => this.props.history.push(`/${res.sub}`))
                         }} 
                         className='search-background-highlight'
