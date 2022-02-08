@@ -2,7 +2,7 @@
 
 
 
-Peroos, a Reddit clone, is a social media application that allows its users to connect to each ofther based on shared interests
+Peroos, a Reddit clone, is a social media application that allows its users to connect with each other based on shared interests
 
 Try it out! [Peroos](https://peroos-jamie.herokuapp.com/#/)
 
