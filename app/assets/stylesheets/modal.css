@@ -1,0 +1,76 @@
+.modal-background {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+}
+
+.modal-child {
+  position: absolute;
+  background-color: white;
+  padding: 16px;
+  border-radius: 5px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: Noto Sans, Arial, sans-serif;
+  max-width: 408px;
+}
+
+.modal-child span {
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.modal-child  button {
+  margin-bottom: 10px;
+}
+
+.session-modal {
+  align-self: center;
+  padding: 24px;
+}
+
+.session-modal-x {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.session-modal > h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.session-modal > p {
+  margin-bottom: 12px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 8px;
+}
+
+.session-modal > form {
+  width: 280px;
+}
+
+.session-modal > form > div > div {
+  margin-top: 12px;
+}
+
+.session-modal > form > div > button {
+  margin-top: 12px;
+  margin-left: 0;
+  width: 96.5%;
+}
+
+.session-modal > div:last-child {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  margin-top: 8px;
+}

@@ -1,0 +1,44 @@
+
+.input-group {
+  position: relative;
+  margin: 20px 0 5px;
+}
+
+.input-group > input {
+  font-size: 14px;
+  padding: 22px 10px 12px 12px;
+  display: block;
+  height: 48;
+  width: 280px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  background-color: rgba(251, 251, 250, 0.7);
+}
+
+.input-group > input:hover,
+.input-group > input:focus {
+  outline: none;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.input-group > label {
+  font-size: 14px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 10px;
+  top: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2 ease all;
+}
+
+.input-group > input:hover ~ label,
+.input-group > input:focus ~ label,
+.input-group > input:valid ~ label {
+  top: 5px;
+  font-size: 12px;
+}
