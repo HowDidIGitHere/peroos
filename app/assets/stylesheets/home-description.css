@@ -1,0 +1,39 @@
+.home-description {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  /* align-items: center; */
+  flex-direction: column;
+  padding: 0 12px 12px;
+  /* width: 285px; */
+
+  /* height: 228px; */
+  
+  /* background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px; */
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.home-description > p {
+  letter-spacing: .1px;
+  font-size: 13px;
+}
+
+.home-description > h2 {
+  /* text-align: left; */
+  font-size: 22px;
+  /* line-height: 20px; */
+  font-weight: lighter;
+  padding: 10px;
+  margin-top: 6px;
+}
+
+.home-description > a,
+.home-description > button {
+  line-height: 1.6;
+  margin-top: 12px;
+  margin-left: 0px;
+  width: 90%;
+}
