@@ -7,7 +7,7 @@ class SearchBar extends React.Component {
     this.state = {
       searchQuery: ''
     }
-    this.handleSearch = this.handleSearch.bind(this);
+    this.handleuseInput = this.handleuseInput.bind(this);
     this.handleDropdown = this.handleDropdown.bind(this);
   }
 
@@ -35,14 +35,15 @@ class SearchBar extends React.Component {
     }
   }
 
-  searchDebounce = this.debounce(() => {
-    console.log(this.state.searchQuery);
-    this.props.getSearchResults(this.state);
+  searchDebounce = this.debounce((searchVal) => {
+    this.props.getSearchResults({searchQuery: searchVal});
   }, 300);
   // end of debounce for search
 
-  handleSearch(e) {
-    this.setState({ searchQuery: e.target.value });
+  handleuseInput(e) {
+    const searchVal = e.target.value;
+    this.setState({ searchQuery: searchVal });
+    this.searchDebounce(searchVal);
   }
 
   render() {
@@ -59,8 +60,7 @@ class SearchBar extends React.Component {
           <input 
             type='search' 
             placeholder='Search Peroos' 
-            onChange={this.handleSearch} 
-            onKeyUp={this.searchDebounce}
+            onChange={this.handleuseInput} 
             onFocus={() => this.handleDropdown(false)} 
             onBlur={(e) => {
               if (!(e.relatedTarget && e.relatedTarget.classList[0] === 'search-background-highlight')) {
