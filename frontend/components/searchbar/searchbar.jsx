@@ -21,8 +21,28 @@ class SearchBar extends React.Component {
     }
   }
 
+  // debounce implementation on search
+  debounce = function(callback, time) {
+    let timer;
+    return function() {
+      let context = this;
+      let args = arguments;
+
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        callback.apply(context, args);
+      }, time);
+    }
+  }
+
+  searchDebounce = this.debounce(() => {
+    console.log(this.state.searchQuery);
+    this.props.getSearchResults(this.state);
+  }, 300);
+  // end of debounce for search
+
   handleSearch(e) {
-    this.setState({ searchQuery: e.target.value }, () => this.props.getSearchResults(this.state));
+    this.setState({ searchQuery: e.target.value });
   }
 
   render() {
@@ -40,6 +60,7 @@ class SearchBar extends React.Component {
             type='search' 
             placeholder='Search Peroos' 
             onChange={this.handleSearch} 
+            onKeyUp={this.searchDebounce}
             onFocus={() => this.handleDropdown(false)} 
             onBlur={(e) => {
               if (!(e.relatedTarget && e.relatedTarget.classList[0] === 'search-background-highlight')) {
