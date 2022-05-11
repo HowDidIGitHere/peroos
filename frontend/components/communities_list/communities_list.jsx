@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FooterCard from "../sidebar/footer_card";
+import FooterCard from "../static/footer_card";
 
 class CommunitiesList extends React.Component {
   constructor(props) {

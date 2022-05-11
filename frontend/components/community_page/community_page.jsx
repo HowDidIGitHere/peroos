@@ -1,9 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CreatePostCardContainer from "../create_post/create_post_card_container";
-import NotFoundPage from "../not_found/not_found";
 import PostCard from "../post_card/post_card";
-import FooterCard from "../sidebar/footer_card";
+import FooterCard from "../static/footer_card";
 import CommunityAbout from "./community_about";
 import CommunityEditCardContainer from "./community_edit_card_container";
 

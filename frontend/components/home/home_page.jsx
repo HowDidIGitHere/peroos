@@ -1,6 +1,6 @@
 import React from "react";
 import HomeDescContainer from "../home_description/home_desc_container";
-import FooterCard from "../sidebar/footer_card";
+import FooterCard from "../static/footer_card";
 import CreatePostCardContainer from "../create_post/create_post_card_container";
 import PostCard from "../post_card/post_card";
 import MyCommunitiesListContainer from "../sidebar/my_communities_list_container";

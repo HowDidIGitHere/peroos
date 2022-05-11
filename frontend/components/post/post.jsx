@@ -5,7 +5,7 @@ import CreateCommentFormContainer from "../comment_form/create_comment_form_cont
 import CommunityPostAbout from "../community_page/community_post_about";
 import PleaseSignInToCommentContainer from "../login_prompt_comment/please_sigin_to_comment_container";
 import PostEditFormContainer from "../post_edit_form/post_edit_form_container";
-import FooterCard from "../sidebar/footer_card";
+import FooterCard from "../static/footer_card";
 
 class Post extends React.Component {
   constructor(props) {

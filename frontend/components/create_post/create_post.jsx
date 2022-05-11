@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import CommunityPostAbout from "../community_page/community_post_about";
-import FooterCard from "../sidebar/footer_card";
-import PostingToCard from "./posting_to_peroos_card";
+import FooterCard from "../static/footer_card";
+import PostingToCard from "../static/posting_to_peroos_card";
 
 class CreatePost extends React.Component {
   constructor(props) {
